@@ -1,4 +1,5 @@
 using HealthcareApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ public class DoctorController : ControllerBase
         _logger = logger;
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Doctor>>> GetDoctors()
     {
@@ -32,6 +34,7 @@ public class DoctorController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<ActionResult<Doctor>> GetDoctor(int id)
     {
@@ -55,6 +58,7 @@ public class DoctorController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Doctor>> PostDoctor(Doctor doctor)
     {
@@ -73,6 +77,7 @@ public class DoctorController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutDoctor(int id, Doctor doctor)
     {
@@ -110,6 +115,7 @@ public class DoctorController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDoctor(int id)
     {

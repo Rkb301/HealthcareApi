@@ -1,0 +1,115 @@
+2025-06-19 15:03:53.486 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-19 15:03:53.557 +05:30 [INF] Creating key {18224ef3-76a3-462e-8c03-09baae687550} with creation date 2025-06-19 09:33:53Z, activation date 2025-06-19 09:33:53Z, and expiration date 2025-09-17 09:33:53Z.
+2025-06-19 15:03:53.582 +05:30 [INF] Writing data to file 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys\key-18224ef3-76a3-462e-8c03-09baae687550.xml'.
+2025-06-19 15:03:53.666 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-19 15:03:53.672 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 15:03:53.675 +05:30 [INF] Hosting environment: Development
+2025-06-19 15:03:53.677 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-19 15:04:36.111 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 118
+2025-06-19 15:04:36.146 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-19 15:04:36.189 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-19 15:04:36.218 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-06-19 15:04:37.435 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-19 15:04:37.731 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 100) (DbType = AnsiString), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (Size = 20) (DbType = AnsiString), @p4='?' (Size = 50) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [User] ([CreatedAt], [Email], [PasswordHash], [Role], [Username])
+OUTPUT INSERTED.[UserID]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-06-19 15:04:37.781 +05:30 [INF] User registered: aakarsh@example.com
+2025-06-19 15:04:37.793 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 15:04:37.841 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 1616.7791ms
+2025-06-19 15:04:37.845 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-19 15:04:37.853 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 1719.9827 ms
+2025-06-19 15:04:37.871 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 null application/json; charset=utf-8 1765.1419ms
+2025-06-19 15:04:58.607 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 70
+2025-06-19 15:04:58.614 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-19 15:04:58.621 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-19 15:04:58.705 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-19 15:04:58.717 +05:30 [INF] User logged in: aakarsh@example.com
+2025-06-19 15:04:58.733 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 110.0926ms
+2025-06-19 15:04:58.736 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-19 15:04:58.739 +05:30 [ERR] Unhandled exception occurred
+System.ArgumentOutOfRangeException: IDX10653: The encryption algorithm 'HS256' requires a key size of at least '128' bits. Key '[PII of type 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]', is of size: '96'. (Parameter 'key')
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider..ctor(SecurityKey key, String algorithm, Boolean willCreateSignatures)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateSignatureProvider(SecurityKey key, String algorithm, Boolean willCreateSignatures, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(SecurityToken token)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 96
+   at lambda_method108(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-19 15:04:58.783 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 169.8684 ms
+2025-06-19 15:04:58.787 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 179.3938ms
+2025-06-19 15:08:18.610 +05:30 [INF] Application is shutting down...
+2025-06-19 15:12:34.758 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-19 15:12:34.963 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-19 15:12:34.971 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 15:12:34.974 +05:30 [INF] Hosting environment: Development
+2025-06-19 15:12:34.975 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-19 15:13:15.256 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 111
+2025-06-19 15:13:15.311 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-19 15:13:15.350 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-19 15:13:15.386 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-06-19 15:13:17.019 +05:30 [INF] Executed DbCommand (44ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-19 15:13:18.372 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 100) (DbType = AnsiString), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (Size = 20) (DbType = AnsiString), @p4='?' (Size = 50) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [User] ([CreatedAt], [Email], [PasswordHash], [Role], [Username])
+OUTPUT INSERTED.[UserID]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-06-19 15:13:18.424 +05:30 [INF] User registered: ruby@example.com
+2025-06-19 15:13:18.439 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 15:13:18.479 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 3085.8542ms
+2025-06-19 15:13:18.485 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-19 15:13:18.491 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 3195.7524 ms
+2025-06-19 15:13:18.508 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 null application/json; charset=utf-8 3253.548ms
+2025-06-19 15:13:35.971 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 68
+2025-06-19 15:13:35.977 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-19 15:13:35.981 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-19 15:13:36.070 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-19 15:13:36.809 +05:30 [INF] User logged in: ruby@example.com
+2025-06-19 15:13:36.836 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 15:13:36.841 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 856.7879ms
+2025-06-19 15:13:36.843 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-19 15:13:36.845 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 869.1168 ms
+2025-06-19 15:13:36.849 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 null application/json; charset=utf-8 877.6033ms
+2025-06-19 15:15:13.976 +05:30 [INF] Application is shutting down...

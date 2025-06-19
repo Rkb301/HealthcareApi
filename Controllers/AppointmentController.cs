@@ -1,4 +1,5 @@
 using HealthcareApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ public class AppointmentController : ControllerBase
         _logger = logger;
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
     {
@@ -32,6 +34,7 @@ public class AppointmentController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<Appointment>> GetAppointment(int id)
     {
@@ -55,6 +58,7 @@ public class AppointmentController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
     {
@@ -73,6 +77,7 @@ public class AppointmentController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
     {
@@ -110,6 +115,7 @@ public class AppointmentController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAppointment(int id)
     {
