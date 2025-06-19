@@ -1,166 +1,143 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using HealthcareApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HealthcareApi.Models;
 
-namespace HealthcareApi
+[ApiController]
+[Route("api/[controller]")]
+public class UserController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    private readonly AssignmentDbContext _context;
+    private readonly ILogger<UserController> _logger;
+
+    public UserController(AssignmentDbContext context, ILogger<UserController> logger)
     {
-        private readonly AssignmentDbContext _context;
+        _context = context;
+        _logger = logger;
+    }
 
-        public UserController(AssignmentDbContext context)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    {
+        _logger.LogInformation("Fetching all users");
+        try
         {
-            _context = context;
+            var users = await _context.Users.ToListAsync();
+            _logger.LogInformation("Returned {Count} users", users.Count);
+            return users;
         }
-
-        // GET: api/User
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        catch (Exception ex)
         {
-            return await _context.Users.ToListAsync();
+            _logger.LogError(ex, "Error fetching users");
+            return StatusCode(500, "Internal server error");
         }
+    }
 
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<User>> GetUser(int id)
+    {
+        _logger.LogInformation("Fetching user with ID {Id}", id);
+        try
         {
             var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
+                _logger.LogWarning("User with ID {Id} not found", id);
                 return NotFound();
             }
 
             return user;
         }
-
-        // PUT: api/User/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        catch (Exception ex)
         {
-            if (id != user.UserID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            _logger.LogError(ex, "Error fetching user with ID {Id}", id);
+            return StatusCode(500, "Internal server error");
         }
+    }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchUser(int id, [FromBody] UserUpdateDto updateDto)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            // Only update non-null fields
-            if (!string.IsNullOrEmpty(updateDto.Username))
-            {
-                user.Username = updateDto.Username;
-            }
-
-            if (!string.IsNullOrEmpty(updateDto.Email))
-            {
-                user.Email = updateDto.Email;
-            }
-
-            if (!string.IsNullOrEmpty(updateDto.Role))
-            {
-                user.Role = updateDto.Role;
-            }
-
-            if (!string.IsNullOrEmpty(updateDto.PasswordHash))
-            {
-                user.PasswordHash = updateDto.PasswordHash;
-            }
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok(user);
-        }
-
-        // Create this DTO class
-        public class UserUpdateDto
-        {
-            public string? Username { get; set; }
-            public string? Email { get; set; }
-            public string? Role { get; set; }
-            public string? PasswordHash { get; set; }
-        }
-
-
-        // POST: api/User
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+    [HttpPost]
+    public async Task<ActionResult<User>> PostUser(User user)
+    {
+        _logger.LogInformation("Creating new user");
+        try
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("User created with ID {Id}", user.UserID);
+            return CreatedAtAction(nameof(GetUser), new { id = user.UserID }, user);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating user");
+            return StatusCode(500, "Internal server error");
+        }
+    }
 
-            return CreatedAtAction("GetUser", new { id = user.UserID }, user);
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutUser(int id, User user)
+    {
+        if (id != user.UserID)
+        {
+            _logger.LogWarning("User ID mismatch: {Id} != {UserId}", id, user.UserID);
+            return BadRequest();
         }
 
-        // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        _context.Entry(user).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+            _logger.LogInformation("User {UserId} updated successfully", id);
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            _logger.LogError(ex, "Concurrency error updating user {UserId}", id);
+            if (!UserExists(id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error updating user {UserId}", id);
+            return StatusCode(500, "Internal server error");
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+        _logger.LogInformation("Deleting user with ID {Id}", id);
+        try
         {
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
+                _logger.LogWarning("User with ID {Id} not found for deletion", id);
                 return NotFound();
             }
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("User with ID {Id} deleted", id);
 
             return NoContent();
         }
-
-        private bool UserExists(int id)
+        catch (Exception ex)
         {
-            return _context.Users.Any(e => e.UserID == id);
+            _logger.LogError(ex, "Error deleting user with ID {Id}", id);
+            return StatusCode(500, "Internal server error");
         }
+    }
+
+    private bool UserExists(int id)
+    {
+        return _context.Users.Any(e => e.UserID == id);
     }
 }
