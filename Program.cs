@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+var AllowCORS = "_AllowCORS";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,14 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowCORS,
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200");
+    });
+});
 
 var app = builder.Build();
 
@@ -63,6 +72,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseCors(AllowCORS);
 app.UseAuthorization();
 app.MapControllers();
 

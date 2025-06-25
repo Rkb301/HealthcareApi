@@ -66,6 +66,8 @@ public class AuthController : ControllerBase
     public IActionResult Login([FromBody] LoginRequest req)
     {
         var user = _context.Users.SingleOrDefault(u => u.Email == req.Email);
+        Console.Write("req:", req.Password, req.Email);
+        _logger.LogInformation(req.ToString());
 
         if (user == null || !BCrypt.Net.BCrypt.EnhancedVerify(req.Password, user.PasswordHash))
         {

@@ -1,0 +1,658 @@
+2025-06-24 13:38:53.888 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 13:38:54.135 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 13:38:54.138 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 13:38:54.140 +05:30 [INF] Hosting environment: Development
+2025-06-24 13:38:54.140 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 13:38:55.191 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger - null null
+2025-06-24 13:38:55.286 +05:30 [INF] HTTP GET /swagger responded 301 in 28.4990 ms
+2025-06-24 13:38:55.308 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger - 301 0 null 119.1527ms
+2025-06-24 13:38:55.339 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 13:38:55.470 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 129.8361 ms
+2025-06-24 13:38:55.471 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 133.0139ms
+2025-06-24 13:38:55.495 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui.css - null null
+2025-06-24 13:38:55.504 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui-bundle.js - null null
+2025-06-24 13:38:55.508 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-24 13:38:55.554 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-24 13:38:55.557 +05:30 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 61.1638 ms
+2025-06-24 13:38:55.558 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui.css - 200 152034 text/css 62.7644ms
+2025-06-24 13:38:55.566 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-24 13:38:55.568 +05:30 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 58.6571 ms
+2025-06-24 13:38:55.568 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 60.0785ms
+2025-06-24 13:38:55.603 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-24 13:38:55.603 +05:30 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 98.7230 ms
+2025-06-24 13:38:55.604 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 99.7261ms
+2025-06-24 13:38:55.815 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 13:38:55.839 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/favicon-32x32.png - null null
+2025-06-24 13:38:55.841 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-24 13:38:55.843 +05:30 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 2.8926 ms
+2025-06-24 13:38:55.845 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/favicon-32x32.png - 200 628 image/png 5.61ms
+2025-06-24 13:38:55.988 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 172.2670 ms
+2025-06-24 13:38:55.988 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.6012ms
+2025-06-24 13:52:00.386 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 13:52:00.545 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 13:52:00.550 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 13:52:00.552 +05:30 [INF] Hosting environment: Development
+2025-06-24 13:52:00.552 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 13:52:01.339 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 13:52:01.506 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 132.3569 ms
+2025-06-24 13:52:01.512 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 175.8894ms
+2025-06-24 13:52:01.882 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 13:52:02.008 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 124.2889 ms
+2025-06-24 13:52:02.009 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 126.9262ms
+2025-06-24 15:11:34.831 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 15:11:34.978 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 15:11:34.981 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 15:11:34.982 +05:30 [INF] Hosting environment: Development
+2025-06-24 15:11:34.982 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 15:11:35.586 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 15:11:35.799 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 169.4406 ms
+2025-06-24 15:11:35.804 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 219.9559ms
+2025-06-24 15:11:35.935 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 15:11:36.099 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 160.6647 ms
+2025-06-24 15:11:36.100 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 167.3377ms
+2025-06-24 15:59:22.641 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 15:59:22.771 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 15:59:22.775 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 15:59:22.777 +05:30 [INF] Hosting environment: Development
+2025-06-24 15:59:22.777 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 15:59:23.333 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 15:59:23.483 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 128.2464 ms
+2025-06-24 15:59:23.489 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 156.7473ms
+2025-06-24 15:59:23.594 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 15:59:23.716 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 120.4115 ms
+2025-06-24 15:59:23.717 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 123.7709ms
+2025-06-24 15:59:40.669 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-06-24 15:59:40.673 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 15:59:40.729 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 15:59:40.758 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 15:59:42.005 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 15:59:42.083 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1309.6529ms
+2025-06-24 15:59:42.086 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 15:59:42.087 +05:30 [ERR] Unhandled exception occurred
+BCrypt.Net.SaltParseException: Invalid salt version
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.EnhancedVerify(String text, String hash, HashType hashType)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 70
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-24 15:59:42.162 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 1491.3948 ms
+2025-06-24 15:59:42.222 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 1553.3973ms
+2025-06-24 16:01:24.466 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-06-24 16:01:24.470 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:01:24.470 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:01:24.504 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 16:01:24.506 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 35.1838ms
+2025-06-24 16:01:24.506 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:01:24.507 +05:30 [ERR] Unhandled exception occurred
+BCrypt.Net.SaltParseException: Invalid salt version
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.EnhancedVerify(String text, String hash, HashType hashType)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 70
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-24 16:01:24.508 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 39.9728 ms
+2025-06-24 16:01:24.509 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 42.7304ms
+2025-06-24 16:01:29.439 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 68
+2025-06-24 16:01:29.442 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:01:29.442 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:01:29.492 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 16:01:29.493 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 51.297ms
+2025-06-24 16:01:29.494 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:01:29.495 +05:30 [ERR] Unhandled exception occurred
+BCrypt.Net.SaltParseException: Invalid salt version
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.EnhancedVerify(String text, String hash, HashType hashType)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 70
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-24 16:01:29.496 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 57.0291 ms
+2025-06-24 16:01:29.497 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 58.2349ms
+2025-06-24 16:07:49.484 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-06-24 16:07:49.485 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:07:49.486 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:07:49.505 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 16:07:49.506 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 18.5756ms
+2025-06-24 16:07:49.506 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:07:49.506 +05:30 [ERR] Unhandled exception occurred
+BCrypt.Net.SaltParseException: Invalid salt version
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.EnhancedVerify(String text, String hash, HashType hashType)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 70
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-24 16:07:49.508 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 22.5394 ms
+2025-06-24 16:07:49.508 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 24.4662ms
+2025-06-24 16:09:06.088 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 70
+2025-06-24 16:09:06.090 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:09:06.090 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:09:06.105 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 16:09:06.106 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 15.9265ms
+2025-06-24 16:09:06.107 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:09:06.108 +05:30 [ERR] Unhandled exception occurred
+BCrypt.Net.SaltParseException: Invalid salt version
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.EnhancedVerify(String text, String hash, HashType hashType)
+   at AuthController.Login(LoginRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 70
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-06-24 16:09:06.111 +05:30 [ERR] HTTP POST /api/auth/login responded 500 in 22.0466 ms
+2025-06-24 16:09:06.112 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 500 null application/json 23.6783ms
+2025-06-24 16:10:53.447 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 106
+2025-06-24 16:10:53.448 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-24 16:10:53.462 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:10:53.491 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-24 16:10:54.621 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (Size = 100) (DbType = AnsiString), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (Size = 20) (DbType = AnsiString), @p4='?' (Size = 50) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [User] ([CreatedAt], [Email], [PasswordHash], [Role], [Username])
+OUTPUT INSERTED.[UserID]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-06-24 16:10:54.674 +05:30 [INF] User registered: ruby@example.com
+2025-06-24 16:10:54.690 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 16:10:54.703 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 1240.3878ms
+2025-06-24 16:10:54.704 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-24 16:10:54.707 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 1259.2562 ms
+2025-06-24 16:10:54.708 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 null application/json; charset=utf-8 1261.2904ms
+2025-06-24 16:11:00.159 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-06-24 16:11:00.160 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:11:00.160 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:11:00.166 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__req_Email_0='?' (Size = 100) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[Email] = @__req_Email_0
+2025-06-24 16:11:00.964 +05:30 [INF] User logged in: ruby@example.com
+2025-06-24 16:11:00.989 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 16:11:00.993 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 832.3079ms
+2025-06-24 16:11:00.993 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:11:00.994 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 833.8844 ms
+2025-06-24 16:11:00.994 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 null application/json; charset=utf-8 835.5116ms
+2025-06-24 16:15:01.015 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - null null
+2025-06-24 16:15:01.020 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:15:01.026 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:15:01.026 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 11.0783 ms
+2025-06-24 16:15:01.027 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 12.2648ms
+2025-06-24 16:15:07.121 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - null null
+2025-06-24 16:15:07.123 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:15:07.124 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:15:07.124 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 2.6441 ms
+2025-06-24 16:15:07.124 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 3.3849ms
+2025-06-24 16:16:16.516 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - application/json 333
+2025-06-24 16:16:16.518 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:16:16.519 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:16:16.519 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 2.9934 ms
+2025-06-24 16:16:16.520 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 3.9976ms
+2025-06-24 16:16:30.967 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - application/json 333
+2025-06-24 16:16:30.968 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:16:30.968 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:16:30.969 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 0.9415 ms
+2025-06-24 16:16:30.969 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 1.832ms
+2025-06-24 16:17:58.603 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - application/json 333
+2025-06-24 16:17:58.604 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:17:58.605 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:17:58.605 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 0.7952 ms
+2025-06-24 16:17:58.605 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 1.5737ms
+2025-06-24 16:24:47.679 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - application/json 333
+2025-06-24 16:24:47.690 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(String inputString, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode[T](String input, Int32 offset, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(String rawString, Int32 startIndex, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-24 16:24:47.692 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-24 16:24:47.693 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-24 16:24:47.695 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-24 16:24:47.696 +05:30 [INF] HTTP GET /api/user/1 responded 401 in 16.7214 ms
+2025-06-24 16:24:47.696 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 401 0 null 17.7217ms
+2025-06-24 16:24:58.045 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - application/json 333
+2025-06-24 16:24:58.088 +05:30 [INF] Executing endpoint 'UserController.GetUser (HealthcareApi)'
+2025-06-24 16:24:58.094 +05:30 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.User]] GetUser(Int32) on controller UserController (HealthcareApi).
+2025-06-24 16:24:58.099 +05:30 [INF] Fetching user with ID 1
+2025-06-24 16:24:58.174 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-06-24 16:24:58.178 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.User'.
+2025-06-24 16:24:58.206 +05:30 [INF] Executed action UserController.GetUser (HealthcareApi) in 111.6084ms
+2025-06-24 16:24:58.206 +05:30 [INF] Executed endpoint 'UserController.GetUser (HealthcareApi)'
+2025-06-24 16:24:58.207 +05:30 [INF] HTTP GET /api/user/1 responded 200 in 161.7002 ms
+2025-06-24 16:24:58.207 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 200 null application/json; charset=utf-8 162.4483ms
+2025-06-24 16:25:25.988 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/1 - null null
+2025-06-24 16:25:25.991 +05:30 [INF] Executing endpoint 'UserController.GetUser (HealthcareApi)'
+2025-06-24 16:25:25.991 +05:30 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.User]] GetUser(Int32) on controller UserController (HealthcareApi).
+2025-06-24 16:25:25.993 +05:30 [INF] Fetching user with ID 1
+2025-06-24 16:25:26.009 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-06-24 16:25:26.010 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.User'.
+2025-06-24 16:25:26.011 +05:30 [INF] Executed action UserController.GetUser (HealthcareApi) in 19.4585ms
+2025-06-24 16:25:26.011 +05:30 [INF] Executed endpoint 'UserController.GetUser (HealthcareApi)'
+2025-06-24 16:25:26.012 +05:30 [INF] HTTP GET /api/user/1 responded 200 in 23.0644 ms
+2025-06-24 16:25:26.012 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/1 - 200 null application/json; charset=utf-8 24.1417ms
+2025-06-24 16:25:32.204 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user - null null
+2025-06-24 16:25:32.207 +05:30 [INF] Executing endpoint 'UserController.GetUsers (HealthcareApi)'
+2025-06-24 16:25:32.211 +05:30 [INF] Route matched with {action = "GetUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[HealthcareApi.Models.User]]] GetUsers() on controller UserController (HealthcareApi).
+2025-06-24 16:25:32.213 +05:30 [INF] Fetching all users
+2025-06-24 16:25:32.227 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [User] AS [u]
+2025-06-24 16:25:32.229 +05:30 [INF] Returned 11 users
+2025-06-24 16:25:32.229 +05:30 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 16:25:32.234 +05:30 [INF] Executed action UserController.GetUsers (HealthcareApi) in 23.2193ms
+2025-06-24 16:25:32.235 +05:30 [INF] Executed endpoint 'UserController.GetUsers (HealthcareApi)'
+2025-06-24 16:25:32.235 +05:30 [INF] HTTP GET /api/user responded 200 in 30.0324 ms
+2025-06-24 16:25:32.235 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user - 200 null application/json; charset=utf-8 31.0358ms
+2025-06-24 16:25:39.142 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/2 - null null
+2025-06-24 16:25:39.143 +05:30 [INF] Executing endpoint 'PatientController.GetPatient (HealthcareApi)'
+2025-06-24 16:25:39.149 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller PatientController (HealthcareApi).
+2025-06-24 16:25:39.152 +05:30 [INF] Fetching patient with ID 2
+2025-06-24 16:25:39.169 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[UserID]
+FROM [Patient] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-24 16:25:39.201 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-24 16:25:39.211 +05:30 [INF] Executed action PatientController.GetPatient (HealthcareApi) in 60.9647ms
+2025-06-24 16:25:39.211 +05:30 [INF] Executed endpoint 'PatientController.GetPatient (HealthcareApi)'
+2025-06-24 16:25:39.211 +05:30 [INF] HTTP GET /api/patient/2 responded 200 in 68.9759 ms
+2025-06-24 16:25:39.212 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/2 - 200 null application/json; charset=utf-8 69.8189ms
+2025-06-24 16:36:58.316 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 16:36:58.435 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 16:36:58.439 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 16:36:58.440 +05:30 [INF] Hosting environment: Development
+2025-06-24 16:36:58.440 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 16:36:58.955 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 16:36:59.114 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 131.8968 ms
+2025-06-24 16:36:59.120 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 167.4807ms
+2025-06-24 16:36:59.228 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 16:36:59.394 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 163.5383 ms
+2025-06-24 16:36:59.395 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 166.7988ms
+2025-06-24 16:39:46.993 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 16:39:47.000 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 16:39:47.029 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:39:47.052 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:39:47.170 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 16:39:47.212 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 157.1328ms
+2025-06-24 16:39:47.213 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:39:47.214 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 218.9903 ms
+2025-06-24 16:39:47.216 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 222.8365ms
+2025-06-24 16:58:35.761 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 16:58:35.767 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:58:35.768 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 16:58:35.776 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 16:58:35.778 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 9.098ms
+2025-06-24 16:58:35.778 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 16:58:35.778 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 12.9991 ms
+2025-06-24 16:58:35.779 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 18.2289ms
+2025-06-24 17:01:37.032 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:01:37.036 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:01:37.037 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:01:37.045 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:01:37.046 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 7.3128ms
+2025-06-24 17:01:37.047 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:01:37.048 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 13.8823 ms
+2025-06-24 17:01:37.048 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 16.4612ms
+2025-06-24 17:03:03.514 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:03:03.515 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:03:03.516 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:03:03.518 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:03:03.519 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.6668ms
+2025-06-24 17:03:03.520 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:03:03.520 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 4.8237 ms
+2025-06-24 17:03:03.521 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 6.7365ms
+2025-06-24 17:04:53.187 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:04:53.187 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:04:53.188 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:04:53.190 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:04:53.191 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.3041ms
+2025-06-24 17:04:53.191 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:04:53.193 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 5.6041 ms
+2025-06-24 17:04:53.193 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 6.7351ms
+2025-06-24 17:12:50.446 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:12:50.447 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:12:50.448 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:12:50.449 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:12:50.449 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.6763ms
+2025-06-24 17:12:50.450 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:12:50.451 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 4.4049 ms
+2025-06-24 17:12:50.452 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 6.644ms
+2025-06-24 17:13:29.844 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-24 17:13:29.845 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-06-24 17:13:29.847 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-06-24 17:13:29.848 +05:30 [INF] HTTP OPTIONS /api/auth/login responded 405 in 2.6483 ms
+2025-06-24 17:13:29.848 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 405 0 null 3.5916ms
+2025-06-24 17:14:18.129 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-24 17:14:18.130 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-06-24 17:14:18.131 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-06-24 17:14:18.131 +05:30 [INF] HTTP OPTIONS /api/auth/login responded 405 in 1.3444 ms
+2025-06-24 17:14:18.132 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 405 0 null 2.7677ms
+2025-06-24 17:20:57.384 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 17:20:57.496 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 17:20:57.499 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 17:20:57.500 +05:30 [INF] Hosting environment: Development
+2025-06-24 17:20:57.501 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 17:20:57.963 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 17:20:58.101 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 118.6632 ms
+2025-06-24 17:20:58.108 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 145.2451ms
+2025-06-24 17:20:58.197 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 17:20:58.314 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 115.7834 ms
+2025-06-24 17:20:58.316 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 119.1262ms
+2025-06-24 17:21:27.205 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:21:27.211 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 17:21:27.251 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:21:27.274 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:21:27.399 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:21:27.460 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 181.4248ms
+2025-06-24 17:21:27.460 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:21:27.461 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 252.9622 ms
+2025-06-24 17:21:27.463 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 258.1415ms
+2025-06-24 17:22:38.510 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 17:22:38.652 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 17:22:38.655 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 17:22:38.656 +05:30 [INF] Hosting environment: Development
+2025-06-24 17:22:38.657 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 17:22:39.140 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 17:22:39.286 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 116.7931 ms
+2025-06-24 17:22:39.293 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 152.5625ms
+2025-06-24 17:22:39.439 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 17:22:39.608 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 158.5739 ms
+2025-06-24 17:22:39.608 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 170.2637ms
+2025-06-24 17:22:45.373 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:22:45.379 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 17:22:45.469 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:22:45.491 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:22:45.591 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:22:45.633 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 138.2104ms
+2025-06-24 17:22:45.633 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:22:45.633 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 258.5705 ms
+2025-06-24 17:22:45.636 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 263.0137ms
+2025-06-24 17:23:24.927 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:23:24.931 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:23:24.932 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:23:24.941 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:23:24.942 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 9.3281ms
+2025-06-24 17:23:24.942 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:23:24.943 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 13.1086 ms
+2025-06-24 17:23:24.943 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 16.2549ms
+2025-06-24 17:23:38.293 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 17:23:38.471 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-24 17:23:38.474 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 17:23:38.475 +05:30 [INF] Hosting environment: Development
+2025-06-24 17:23:38.476 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-24 17:23:38.977 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-24 17:23:39.127 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 124.2559 ms
+2025-06-24 17:23:39.132 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 155.1715ms
+2025-06-24 17:23:39.245 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-24 17:23:39.374 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 126.6422 ms
+2025-06-24 17:23:39.375 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 130.3895ms
+2025-06-24 17:23:42.156 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:23:42.164 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 17:23:42.194 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:23:42.199 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:23:42.218 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:23:42.313 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:23:42.351 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 128.7175ms
+2025-06-24 17:23:42.351 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:23:42.351 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 193.0129 ms
+2025-06-24 17:23:42.354 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 197.7292ms
+2025-06-24 17:24:54.533 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:24:54.537 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:24:54.538 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:24:54.539 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:24:54.547 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:24:54.547 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 7.7268ms
+2025-06-24 17:24:54.548 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:24:54.548 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 12.4826 ms
+2025-06-24 17:24:54.549 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 15.9783ms
+2025-06-24 17:25:26.103 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:25:26.110 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:25:26.110 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:25:26.111 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:25:26.115 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:25:26.116 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 3.6254ms
+2025-06-24 17:25:26.116 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:25:26.117 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 13.6941 ms
+2025-06-24 17:25:26.117 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 14.7241ms
+2025-06-24 17:27:21.197 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:27:21.198 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:27:21.199 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:27:21.199 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:27:21.201 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:27:21.202 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2.548ms
+2025-06-24 17:27:21.203 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:27:21.203 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 5.7996 ms
+2025-06-24 17:27:21.204 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 7.0453ms
+2025-06-24 17:27:53.395 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:27:53.396 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:27:53.397 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:27:53.398 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:27:53.399 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:27:53.400 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.6644ms
+2025-06-24 17:27:53.401 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:27:53.401 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 5.4635 ms
+2025-06-24 17:27:53.402 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 7.1601ms
+2025-06-24 17:28:44.329 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:28:44.330 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:28:44.330 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:28:44.331 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:28:44.332 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:28:44.334 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2.157ms
+2025-06-24 17:28:44.335 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:28:44.335 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 5.6053 ms
+2025-06-24 17:28:44.337 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 7.9458ms
+2025-06-24 17:29:08.921 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 26
+2025-06-24 17:29:08.922 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:29:08.922 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:29:08.922 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:29:08.924 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:29:08.924 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.4092ms
+2025-06-24 17:29:08.925 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:29:08.925 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 3.5597 ms
+2025-06-24 17:29:08.926 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 4.3693ms
+2025-06-24 17:29:41.023 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 51
+2025-06-24 17:29:41.024 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:29:41.026 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:29:41.026 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:29:41.029 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:29:41.030 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 3.0746ms
+2025-06-24 17:29:41.031 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:29:41.031 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 7.2223 ms
+2025-06-24 17:29:41.032 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 8.4389ms
+2025-06-24 17:33:05.800 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 51
+2025-06-24 17:33:05.801 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:33:05.801 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:33:05.801 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:33:05.803 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:33:05.803 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.5423ms
+2025-06-24 17:33:05.803 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:33:05.804 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 3.2327 ms
+2025-06-24 17:33:05.804 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 4.1892ms
+2025-06-24 17:36:55.985 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 51
+2025-06-24 17:36:55.985 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:36:55.986 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:36:55.986 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:36:55.988 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:36:55.989 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2.1418ms
+2025-06-24 17:36:55.990 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:36:55.990 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 4.8658 ms
+2025-06-24 17:36:55.991 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 5.7892ms
+2025-06-24 17:41:15.998 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 48
+2025-06-24 17:41:15.999 +05:30 [INF] CORS policy execution successful.
+2025-06-24 17:41:15.999 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:41:16.000 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 17:41:16.001 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 17:41:16.002 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.7915ms
+2025-06-24 17:41:16.002 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 17:41:16.003 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 3.8687 ms
+2025-06-24 17:41:16.003 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 5.3226ms
+2025-06-24 18:01:07.123 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-24 18:01:07.125 +05:30 [INF] CORS policy execution successful.
+2025-06-24 18:01:07.125 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:01:07.127 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 18:01:07.129 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 18:01:07.130 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2.4158ms
+2025-06-24 18:01:07.130 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:01:07.130 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 6.1129 ms
+2025-06-24 18:01:07.131 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 7.5659ms
+2025-06-24 18:08:36.155 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-24 18:08:36.156 +05:30 [INF] CORS policy execution successful.
+2025-06-24 18:08:36.156 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:08:36.157 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 18:08:36.158 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 18:08:36.158 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.3514ms
+2025-06-24 18:08:36.159 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:08:36.160 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 3.7936 ms
+2025-06-24 18:08:36.160 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 4.5691ms
+2025-06-24 18:09:03.324 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-24 18:09:03.324 +05:30 [INF] CORS policy execution successful.
+2025-06-24 18:09:03.325 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:09:03.325 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 18:09:03.326 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 18:09:03.326 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.2035ms
+2025-06-24 18:09:03.327 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:09:03.327 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 3.3351 ms
+2025-06-24 18:09:03.328 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 4.1535ms
+2025-06-24 18:10:14.240 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-24 18:10:14.240 +05:30 [INF] CORS policy execution successful.
+2025-06-24 18:10:14.241 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:10:14.241 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 18:10:14.242 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 18:10:14.243 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.8332ms
+2025-06-24 18:10:14.244 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:10:14.244 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 4.3001 ms
+2025-06-24 18:10:14.245 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 5.5851ms
+2025-06-24 18:10:18.230 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-24 18:10:18.231 +05:30 [INF] CORS policy execution successful.
+2025-06-24 18:10:18.232 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:10:18.232 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-24 18:10:18.234 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-24 18:10:18.235 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1.9063ms
+2025-06-24 18:10:18.235 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-24 18:10:18.237 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 6.0279 ms
+2025-06-24 18:10:18.240 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 9.9186ms

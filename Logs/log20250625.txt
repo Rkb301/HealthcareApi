@@ -1,0 +1,72 @@
+2025-06-25 09:42:30.257 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-25 09:42:30.437 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-25 09:42:30.441 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-25 09:42:30.442 +05:30 [INF] Hosting environment: Development
+2025-06-25 09:42:30.443 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-25 09:42:31.081 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-25 09:42:31.291 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 165.4246 ms
+2025-06-25 09:42:31.298 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 220.2231ms
+2025-06-25 09:42:31.433 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-25 09:42:31.623 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 188.5893 ms
+2025-06-25 09:42:31.624 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 191.9879ms
+2025-06-25 09:42:36.661 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-25 09:42:36.667 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-25 09:42:36.764 +05:30 [INF] CORS policy execution successful.
+2025-06-25 09:42:36.768 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:42:36.800 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-25 09:42:37.040 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 09:42:37.100 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 295.9317ms
+2025-06-25 09:42:37.101 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:42:37.102 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 438.9707 ms
+2025-06-25 09:42:37.105 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 444.6591ms
+2025-06-25 09:43:15.911 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-25 09:43:15.915 +05:30 [INF] CORS policy execution successful.
+2025-06-25 09:43:15.915 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:43:15.916 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-25 09:43:15.926 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 09:43:15.927 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 10.6923ms
+2025-06-25 09:43:15.928 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:43:15.928 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 15.3357 ms
+2025-06-25 09:43:15.929 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 17.9161ms
+2025-06-25 09:47:15.485 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-25 09:47:15.637 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-25 09:47:15.649 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-25 09:47:15.651 +05:30 [INF] Hosting environment: Development
+2025-06-25 09:47:15.652 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-25 09:47:16.225 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-25 09:47:16.380 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 127.0784 ms
+2025-06-25 09:47:16.385 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 161.692ms
+2025-06-25 09:47:16.495 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-25 09:47:16.634 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 136.9293 ms
+2025-06-25 09:47:16.636 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 140.6571ms
+2025-06-25 09:49:50.034 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-25 09:49:50.039 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-25 09:49:50.071 +05:30 [INF] CORS policy execution successful.
+2025-06-25 09:49:50.074 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:49:50.094 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-25 09:49:50.219 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 09:49:50.269 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 171.6317ms
+2025-06-25 09:49:50.270 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:49:50.271 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 234.4163 ms
+2025-06-25 09:49:50.274 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 239.9025ms
+2025-06-25 09:54:30.259 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-25 09:54:30.393 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-25 09:54:30.396 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-25 09:54:30.396 +05:30 [INF] Hosting environment: Development
+2025-06-25 09:54:30.397 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-25 09:54:30.910 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/index.html - null null
+2025-06-25 09:54:31.066 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 125.4850 ms
+2025-06-25 09:54:31.072 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/index.html - 200 null text/html;charset=utf-8 163.8459ms
+2025-06-25 09:54:31.203 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-25 09:54:31.319 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 113.7112 ms
+2025-06-25 09:54:31.320 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 116.8842ms
+2025-06-25 09:54:33.711 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - text/plain;charset=UTF-8 34
+2025-06-25 09:54:33.717 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-25 09:54:33.748 +05:30 [INF] CORS policy execution successful.
+2025-06-25 09:54:33.751 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:54:33.769 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-25 09:54:33.863 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-06-25 09:54:33.899 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 127.0571ms
+2025-06-25 09:54:33.899 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-25 09:54:33.899 +05:30 [INF] HTTP POST /api/auth/login responded 415 in 186.3878 ms
+2025-06-25 09:54:33.902 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 415 null application/problem+json; charset=utf-8 190.5967ms
