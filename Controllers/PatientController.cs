@@ -1,29 +1,35 @@
 using HealthcareApi.Models;
+using HealthcareApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+namespace HealthcareApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class PatientController : ControllerBase
 {
-    private readonly AssignmentDbContext _context;
+    private readonly IPatientService _patientService;
     private readonly ILogger<PatientController> _logger;
 
-    public PatientController(AssignmentDbContext context, ILogger<PatientController> logger)
+    public PatientController(
+        IPatientService patientService,
+        ILogger<PatientController> logger)
     {
-        _context = context;
+        _patientService = patientService;
         _logger = logger;
     }
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
+    public async Task<ActionResult<List<Patient>>> GetPatients()
     {
         _logger.LogInformation("Fetching all patients");
         try
         {
-            var patients = await _context.Patients.ToListAsync();
+            var patients = await _patientService.GetAllPatients();
             _logger.LogInformation("Returned {Count} patients", patients.Count);
             return patients;
         }
@@ -41,14 +47,12 @@ public class PatientController : ControllerBase
         _logger.LogInformation("Fetching patient with ID {Id}", id);
         try
         {
-            var patient = await _context.Patients.FindAsync(id);
-
+            var patient = await _patientService.GetPatientById(id);
             if (patient == null)
             {
                 _logger.LogWarning("Patient with ID {Id} not found", id);
                 return NotFound();
             }
-
             return patient;
         }
         catch (Exception ex)
@@ -65,10 +69,12 @@ public class PatientController : ControllerBase
         _logger.LogInformation("Creating new patient");
         try
         {
-            _context.Patients.Add(patient);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("Patient created with ID {Id}", patient.PatientID);
-            return CreatedAtAction(nameof(GetPatient), new { id = patient.PatientID }, patient);
+            var createdPatient = await _patientService.AddPatient(patient);
+            _logger.LogInformation("Patient created with ID {Id}", createdPatient.PatientID);
+            return CreatedAtAction(
+                nameof(GetPatient), 
+                new { id = createdPatient.PatientID }, 
+                createdPatient);
         }
         catch (Exception ex)
         {
@@ -78,41 +84,31 @@ public class PatientController : ControllerBase
     }
 
     [Authorize(Roles = "Admin")]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutPatient(int id, Patient patient)
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchPatient(int id, [FromBody] JsonPatchDocument<Patient> patchDoc)
     {
-        if (id != patient.PatientID)
+        if (patchDoc == null)
         {
-            _logger.LogWarning("Patient ID mismatch: {Id} != {PatientId}", id, patient.PatientID);
+            _logger.LogWarning("Patch document is null");
             return BadRequest();
         }
 
-        _context.Entry(patient).State = EntityState.Modified;
-
         try
         {
-            await _context.SaveChangesAsync();
+            await _patientService.UpdatePatient(id, patchDoc);
             _logger.LogInformation("Patient {PatientId} updated successfully", id);
+            return NoContent();
         }
-        catch (DbUpdateConcurrencyException ex)
+        catch (NotFoundException)
         {
-            _logger.LogError(ex, "Concurrency error updating patient {PatientId}", id);
-            if (!PatientExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            _logger.LogWarning("Patient with ID {Id} not found", id);
+            return NotFound();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error updating patient {PatientId}", id);
+            _logger.LogError(ex, "Error updating patient {PatientId}", id);
             return StatusCode(500, "Internal server error");
         }
-
-        return NoContent();
     }
 
     [Authorize(Roles = "Admin")]
@@ -122,17 +118,13 @@ public class PatientController : ControllerBase
         _logger.LogInformation("Deleting patient with ID {Id}", id);
         try
         {
-            var patient = await _context.Patients.FindAsync(id);
-            if (patient == null)
+            var result = await _patientService.SoftDeletePatient(id);
+            if (!result)
             {
                 _logger.LogWarning("Patient with ID {Id} not found for deletion", id);
                 return NotFound();
             }
-
-            _context.Patients.Remove(patient);
-            await _context.SaveChangesAsync();
             _logger.LogInformation("Patient with ID {Id} deleted", id);
-
             return NoContent();
         }
         catch (Exception ex)
@@ -142,8 +134,20 @@ public class PatientController : ControllerBase
         }
     }
 
-    private bool PatientExists(int id)
+    [HttpGet("search")]
+    public async Task<ActionResult<PagedResult<Patient>>> GetWithParams([FromQuery] PatientQueryParams param)
     {
-        return _context.Patients.Any(e => e.PatientID == id);
+        _logger.LogInformation("Searching patients with params {@Params}", param);
+        try
+        {
+            var result = await _patientService.SearchPatients(param);
+            _logger.LogInformation("Found {Count} patients matching search", result.TotalCount);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error searching patients with params {@Params}", param);
+            return StatusCode(500, "Internal server error");
+        }
     }
 }

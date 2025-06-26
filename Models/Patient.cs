@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.OpenApi.Attributes;
 
 namespace HealthcareApi.Models;
 
-public partial class Patient
+public partial class Patient : IValidatableObject
 {
     public int PatientID { get; set; }
 
@@ -42,7 +41,22 @@ public partial class Patient
     [StringLength(500)]
     public string? CurrentMedications { get; set; }
 
-    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
+    
+    public bool isActive { get; set; } = true;
 
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     public virtual User User { get; set; } = null!;
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (DateOfBirth.HasValue && DateOfBirth.Value > DateOnly.FromDateTime(DateTime.UtcNow))
+        {
+            yield return new ValidationResult(
+                "Date of birth cannot be in the future.",
+                new[] { nameof(DateOfBirth) });
+        }
+    }
 }
