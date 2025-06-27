@@ -1,5 +1,8 @@
+using Azure;
 using HealthcareApi.Models;
+using HealthcareApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,29 +10,29 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 public class DoctorController : ControllerBase
 {
-    private readonly AssignmentDbContext _context;
+    private readonly IDoctorService _doctorService;
     private readonly ILogger<DoctorController> _logger;
 
-    public DoctorController(AssignmentDbContext context, ILogger<DoctorController> logger)
+    public DoctorController(IDoctorService doctorService, ILogger<DoctorController> logger)
     {
-        _context = context;
+        _doctorService = doctorService;
         _logger = logger;
     }
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Doctor>>> GetDoctors()
+    public async Task<ActionResult<List<Doctor>>> GetDoctors()
     {
         _logger.LogInformation("Fetching all doctors");
         try
         {
-            var doctors = await _context.Doctors.ToListAsync();
-            _logger.LogInformation("Returned {Count} doctors", doctors.Count);
+            var doctors = await _doctorService.GetAllDoctors();
+            _logger.LogInformation("Returned {count} doctors", doctors.Count);
             return doctors;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error fetching doctors");
+            _logger.LogError(ex, "Error fetching Doctors");
             return StatusCode(500, "Internal server error");
         }
     }
@@ -38,22 +41,20 @@ public class DoctorController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Doctor>> GetDoctor(int id)
     {
-        _logger.LogInformation("Fetching doctor with ID {Id}", id);
+        _logger.LogInformation("Fetching docor with ID {id}", id);
         try
         {
-            var doctor = await _context.Doctors.FindAsync(id);
-
+            var doctor = await _doctorService.GetDoctorById(id);
             if (doctor == null)
             {
-                _logger.LogWarning("Doctor with ID {Id} not found", id);
+                _logger.LogWarning("Doctor with ID {id} not found", id);
                 return NotFound();
             }
-
             return doctor;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error fetching doctor with ID {Id}", id);
+            _logger.LogError(ex, "Error fetching doctor with ID {id}", id);
             return StatusCode(500, "Internal server error");
         }
     }
@@ -65,10 +66,12 @@ public class DoctorController : ControllerBase
         _logger.LogInformation("Creating new doctor");
         try
         {
-            _context.Doctors.Add(doctor);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("Doctor created with ID {Id}", doctor.DoctorID);
-            return CreatedAtAction(nameof(GetDoctor), new { id = doctor.DoctorID }, doctor);
+            var createdDoctor = await _doctorService.AddDoctor(doctor);
+            _logger.LogInformation("Doctor created with ID {id}", createdDoctor.UserID);
+            return CreatedAtAction(
+                nameof(GetDoctor),
+                new { id = createdDoctor.UserID },
+                createdDoctor);
         }
         catch (Exception ex)
         {
@@ -78,61 +81,47 @@ public class DoctorController : ControllerBase
     }
 
     [Authorize(Roles = "Admin")]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutDoctor(int id, Doctor doctor)
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchDoctor(int id, [FromBody] JsonPatchDocument<Doctor> patchDoc)
     {
-        if (id != doctor.DoctorID)
+        if (patchDoc == null)
         {
-            _logger.LogWarning("Doctor ID mismatch: {Id} != {DoctorId}", id, doctor.DoctorID);
+            _logger.LogWarning("Patch document is null");
             return BadRequest();
         }
 
-        _context.Entry(doctor).State = EntityState.Modified;
-
         try
         {
-            await _context.SaveChangesAsync();
+            await _doctorService.UpdateDoctor(id, patchDoc);
             _logger.LogInformation("Doctor {DoctorId} updated successfully", id);
+            return NoContent();
         }
-        catch (DbUpdateConcurrencyException ex)
+        catch (NotFoundException)
         {
-            _logger.LogError(ex, "Concurrency error updating doctor {DoctorId}", id);
-            if (!DoctorExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            _logger.LogWarning("Doctor with ID {id} not found", id);
+            return NotFound();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error updating doctor {DoctorId}", id);
+            _logger.LogError(ex, "Error updating doctor {DoctorId}", id);
             return StatusCode(500, "Internal server error");
         }
-
-        return NoContent();
     }
 
     [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDoctor(int id)
     {
-        _logger.LogInformation("Deleting doctor with ID {Id}", id);
+        _logger.LogInformation("Deleting doctor with ID {id}", id);
         try
         {
-            var doctor = await _context.Doctors.FindAsync(id);
-            if (doctor == null)
+            var result = await _doctorService.SoftDeleteDoctor(id);
+            if (!result)
             {
-                _logger.LogWarning("Doctor with ID {Id} not found for deletion", id);
+                _logger.LogWarning("Doctor with ID {id} not found", id);
                 return NotFound();
             }
-
-            _context.Doctors.Remove(doctor);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("Doctor with ID {Id} deleted", id);
-
+            _logger.LogInformation("Doctor with ID {id} deleted", id);
             return NoContent();
         }
         catch (Exception ex)
@@ -142,8 +131,20 @@ public class DoctorController : ControllerBase
         }
     }
 
-    private bool DoctorExists(int id)
+    [HttpGet("search")]
+    public async Task<ActionResult<PagedResult<Doctor>>> GetWithParams([FromQuery] DoctorQueryParams param)
     {
-        return _context.Doctors.Any(e => e.DoctorID == id);
+        _logger.LogInformation("Searching doctors with params {@Params}", param);
+        try
+        {
+            var result = await _doctorService.SearchDoctors(param);
+            _logger.LogInformation("Found {Count} doctors matching search", result.TotalCount);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error searching doctors with params {@Params}", param);
+            return StatusCode(500, "Internal server error");
+        }
     }
 }
