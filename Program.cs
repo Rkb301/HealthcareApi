@@ -27,9 +27,9 @@ builder.Services.AddSession(options =>
     options.Cookie.Name = ".PowerHex.Session";
     options.IdleTimeout = TimeSpan.FromSeconds(30);
     options.Cookie.HttpOnly = true;
-    options.Cookie.Expiration = TimeSpan.FromMinutes(1);
     options.Cookie.IsEssential = true;
 });
+
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -88,11 +88,11 @@ var app = builder.Build();
 
 
 
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 //app.UseExceptionHandler("/error");
 
@@ -104,7 +104,6 @@ app.UseAuthorization();
 app.UseSerilogRequestLogging(); // Log all HTTP requests
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.MapControllers();
-app.UseResponseCompression();
 
 app.UseSession();
 
