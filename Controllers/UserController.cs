@@ -1,29 +1,37 @@
+using Azure;
 using HealthcareApi.Models;
+using HealthcareApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
+namespace HealthcareApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-    private readonly AssignmentDbContext _context;
+    private readonly IUserService _userService;
     private readonly ILogger<UserController> _logger;
 
-    public UserController(AssignmentDbContext context, ILogger<UserController> logger)
+
+    public UserController(
+        IUserService userService,
+        ILogger<UserController> logger
+    )
     {
-        _context = context;
+        _userService = userService;
         _logger = logger;
     }
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    public async Task<ActionResult<List<User>>> GetUsers()
     {
         _logger.LogInformation("Fetching all users");
         try
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _userService.GetAllUsers();
             _logger.LogInformation("Returned {Count} users", users.Count);
             return users;
         }
@@ -34,41 +42,42 @@ public class UserController : ControllerBase
         }
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetUser(int id)
     {
-        _logger.LogInformation("Fetching user with ID {Id}", id);
+        _logger.LogInformation("Fetching user with ID {id}", id);
         try
         {
-            var user = await _context.Users.FindAsync(id);
-
+            var user = await _userService.GetUserById(id);
             if (user == null)
             {
-                _logger.LogWarning("User with ID {Id} not found", id);
+                _logger.LogWarning("User with ID {id} not found", id);
                 return NotFound();
             }
-
             return user;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error fetching user with ID {Id}", id);
+            _logger.LogError(ex, "Error fetching user with ID {id}", id);
             return StatusCode(500, "Internal server error");
         }
+
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
         _logger.LogInformation("Creating new user");
         try
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("User created with ID {Id}", user.UserID);
-            return CreatedAtAction(nameof(GetUser), new { id = user.UserID }, user);
+            var createdUser = await _userService.AddUser(user);
+            _logger.LogInformation("User created with ID {id}", createdUser.UserID);
+            return CreatedAtAction(
+                nameof(GetUser),
+                new { id = createdUser.UserID },
+                createdUser);
         }
         catch (Exception ex)
         {
@@ -77,73 +86,71 @@ public class UserController : ControllerBase
         }
     }
 
-    [Authorize]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutUser(int id, User user)
+    [Authorize(Roles = "Admin")]
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchUser(int id, [FromBody] JsonPatchDocument<User> patchDoc)
     {
-        if (id != user.UserID)
+        if (patchDoc == null)
         {
-            _logger.LogWarning("User ID mismatch: {Id} != {UserId}", id, user.UserID);
+            _logger.LogWarning("Patch document is null");
             return BadRequest();
         }
 
-        _context.Entry(user).State = EntityState.Modified;
-
         try
         {
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("User {UserId} updated successfully", id);
+            await _userService.UpdateUser(id, patchDoc);
+            _logger.LogInformation("User {UserId} updated succesfully", id);
+            return NoContent();
         }
-        catch (DbUpdateConcurrencyException ex)
+        catch (NotFoundException)
         {
-            _logger.LogError(ex, "Concurrency error updating user {UserId}", id);
-            if (!UserExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+            _logger.LogWarning("User with ID {id} not found", id);
+            return NotFound();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error updating user {UserId}", id);
+            _logger.LogError(ex, "Error updating user {UserId}", id);
             return StatusCode(500, "Internal server error");
         }
-
-        return NoContent();
     }
 
     [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(int id)
     {
-        _logger.LogInformation("Deleting user with ID {Id}", id);
+        _logger.LogInformation("Deleting user with ID {id}", id);
         try
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var result = await _userService.SoftDeleteUser(id);
+            if (!result)
             {
-                _logger.LogWarning("User with ID {Id} not found for deletion", id);
+                _logger.LogWarning("User with ID {id} not found for deletion", id);
                 return NotFound();
             }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            _logger.LogInformation("User with ID {Id} deleted", id);
-
+            _logger.LogInformation("User with ID {id} deleted", id);
             return NoContent();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error deleting user with ID {Id}", id);
+            _logger.LogError(ex, "Error deleting User with ID {id}", id);
             return StatusCode(500, "Internal server error");
         }
     }
 
-    private bool UserExists(int id)
+    [HttpGet("search")]
+    public async Task<ActionResult<PagedResult<User>>> GetWithParams([FromQuery] UserQueryParams param)
     {
-        return _context.Users.Any(e => e.UserID == id);
+        _logger.LogInformation("Searching users with params {@Params}", param);
+        try
+        {
+            var result = await _userService.SearchUsers(param);
+            _logger.LogInformation("Found {count} users among search", result.TotalCount);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error searching users with params {@Params}", param);
+            return StatusCode(500, "Internal server error");
+        }
     }
 }

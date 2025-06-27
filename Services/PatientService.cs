@@ -80,13 +80,13 @@ public class PatientService : IPatientService
             query = query.Where(p => param.Phone.Contains(p.ContactNumber));
 
         // Sorting
-        if (param.Sort?.Any() == true)
-        {
-            query = param.Sort.Aggregate(
-                (IOrderedQueryable<Patient>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
-                (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
-            );
-        }
+            if (param.Sort?.Any() == true)
+            {
+                query = param.Sort.Aggregate(
+                    (IOrderedQueryable<Patient>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
+                    (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
+                );
+            }
 
         // Pagination
         return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
@@ -96,13 +96,12 @@ public class PatientService : IPatientService
     {
         return field.ToLower() switch
         {
-            "patientid" => p => p.PatientID,
             "userid" => p => p.UserID,
             "firstname" => p => p.FirstName,
             "lastname" => p => p.LastName,
             "dob" => p => p.DateOfBirth,
             "phone" => p => p.ContactNumber,
-            _ => p => p.PatientID
+            _ => p => p.UserID
         };
     }
 }

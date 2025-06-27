@@ -44,20 +44,20 @@ public class PatientController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Patient>> GetPatient(int id)
     {
-        _logger.LogInformation("Fetching patient with ID {Id}", id);
+        _logger.LogInformation("Fetching patient with ID {id}", id);
         try
         {
             var patient = await _patientService.GetPatientById(id);
             if (patient == null)
             {
-                _logger.LogWarning("Patient with ID {Id} not found", id);
+                _logger.LogWarning("Patient with ID {id} not found", id);
                 return NotFound();
             }
             return patient;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error fetching patient with ID {Id}", id);
+            _logger.LogError(ex, "Error fetching patient with ID {id}", id);
             return StatusCode(500, "Internal server error");
         }
     }
@@ -70,7 +70,7 @@ public class PatientController : ControllerBase
         try
         {
             var createdPatient = await _patientService.AddPatient(patient);
-            _logger.LogInformation("Patient created with ID {Id}", createdPatient.PatientID);
+            _logger.LogInformation("Patient created with ID {id}", createdPatient.PatientID);
             return CreatedAtAction(
                 nameof(GetPatient), 
                 new { id = createdPatient.PatientID }, 
@@ -101,7 +101,7 @@ public class PatientController : ControllerBase
         }
         catch (NotFoundException)
         {
-            _logger.LogWarning("Patient with ID {Id} not found", id);
+            _logger.LogWarning("Patient with ID {id} not found", id);
             return NotFound();
         }
         catch (Exception ex)
