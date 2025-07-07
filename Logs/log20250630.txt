@@ -1,0 +1,1304 @@
+2025-06-30 10:32:18.061 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 10:32:18.431 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 10:32:18.435 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 10:32:18.436 +05:30 [INF] Hosting environment: Development
+2025-06-30 10:32:18.437 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 11:17:53.525 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - null null
+2025-06-30 11:17:54.030 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 511.1859ms
+2025-06-30 11:17:56.052 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:17:56.063 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 11:17:56.066 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:17:56.138 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:17:56.143 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:17:56.144 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 401 0 null 93.291ms
+2025-06-30 11:18:45.156 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 11:18:45.159 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:18:45.160 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 3.7205ms
+2025-06-30 11:18:45.163 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 11:18:45.164 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:18:45.179 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:18:45.210 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 11:18:46.491 +05:30 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 11:18:47.870 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 11:18:48.003 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 11:18:48.093 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 11:18:48.141 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2926.2527ms
+2025-06-30 11:18:48.143 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:18:48.151 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 2980.2262 ms
+2025-06-30 11:18:48.159 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 2996.4196ms
+2025-06-30 11:31:25.654 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-06-30 11:31:25.655 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:25.656 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 1.4049ms
+2025-06-30 11:31:25.659 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 87
+2025-06-30 11:31:25.660 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:25.662 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-30 11:31:25.666 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-06-30 11:31:25.712 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-30 11:31:26.285 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 100), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 20), @p7='?' (Size = 50), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [Email], [ModifiedAt], [PasswordHash], [RefreshToken], [RefreshTokenExpiry], [Role], [Username], [isActive])
+OUTPUT INSERTED.[UserID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2025-06-30 11:31:26.296 +05:30 [INF] User registered: jake@testing.com
+2025-06-30 11:31:26.297 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 11:31:26.299 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 632.0379ms
+2025-06-30 11:31:26.299 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-06-30 11:31:26.299 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 637.8232 ms
+2025-06-30 11:31:26.300 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 43 application/json; charset=utf-8 641.039ms
+2025-06-30 11:31:45.702 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 11:31:45.702 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:45.703 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.8444ms
+2025-06-30 11:31:45.704 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 52
+2025-06-30 11:31:45.705 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:45.706 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:31:45.707 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 11:31:45.770 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 11:31:46.356 +05:30 [INF] User logged in: jake@testing.com
+2025-06-30 11:31:46.362 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 11:31:46.364 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 11:31:46.364 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 656.3876ms
+2025-06-30 11:31:46.365 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:31:46.365 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 658.8958 ms
+2025-06-30 11:31:46.366 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 532 application/json; charset=utf-8 660.8545ms
+2025-06-30 11:31:48.934 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:31:48.934 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:48.936 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:31:48.937 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:31:48.938 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 401 0 null 4.4453ms
+2025-06-30 11:31:59.510 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 11:31:59.511 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:59.512 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.5994ms
+2025-06-30 11:31:59.513 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 11:31:59.514 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:31:59.514 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:31:59.515 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 11:31:59.520 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 11:32:00.064 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 11:32:00.071 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 11:32:00.071 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 11:32:00.072 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 556.9106ms
+2025-06-30 11:32:00.072 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 11:32:00.072 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 558.1112 ms
+2025-06-30 11:32:00.073 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 559.5417ms
+2025-06-30 11:32:00.816 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:32:00.817 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:32:00.819 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:32:00.819 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:32:00.820 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 401 0 null 3.5463ms
+2025-06-30 11:35:06.519 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:06.520 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:06.520 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 204 null null 0.9967ms
+2025-06-30 11:35:06.523 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:06.523 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:06.523 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:35:06.524 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:35:06.524 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 401 0 null 1.2302ms
+2025-06-30 11:35:15.938 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:15.939 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:15.939 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 204 null null 1.0367ms
+2025-06-30 11:35:15.946 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:15.947 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:15.948 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:35:15.949 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:35:15.951 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 401 0 null 5.1695ms
+2025-06-30 11:35:52.585 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient?userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:52.586 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:52.588 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient?userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 204 null null 3.4187ms
+2025-06-30 11:35:52.597 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient?userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - null null
+2025-06-30 11:35:52.597 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:35:52.599 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi)'
+2025-06-30 11:35:52.605 +05:30 [INF] Route matched with {action = "GetPatients", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[HealthcareApi.Models.Patient]]] GetPatients() on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 11:35:52.610 +05:30 [INF] Fetching all patients
+2025-06-30 11:35:52.715 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+2025-06-30 11:35:52.771 +05:30 [INF] Returned 5 patients
+2025-06-30 11:35:52.774 +05:30 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-30 11:35:52.800 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi) in 195.3358ms
+2025-06-30 11:35:52.801 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi)'
+2025-06-30 11:35:52.801 +05:30 [INF] HTTP GET /api/patient responded 200 in 203.0111 ms
+2025-06-30 11:35:52.802 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient?userid=1&firstname=Michael&lastname=Brown&dob=1985-07-12&phone=555-2001 - 200 1878 application/json; charset=utf-8 205.3329ms
+2025-06-30 11:36:34.150 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:36:34.151 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:36:34.151 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.9509ms
+2025-06-30 11:36:34.159 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:36:34.164 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:36:34.166 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:36:34.167 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:36:34.169 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 9.2927ms
+2025-06-30 11:44:32.527 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:44:32.527 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:44:32.528 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.2207ms
+2025-06-30 11:44:32.531 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:44:32.533 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:44:32.534 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:44:32.535 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:44:32.535 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 4.4821ms
+2025-06-30 11:45:00.336 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 11:45:00.488 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 11:45:00.491 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 11:45:00.491 +05:30 [INF] Hosting environment: Development
+2025-06-30 11:45:00.492 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 11:45:05.315 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:45:05.361 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 11:45:05.363 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:45:05.376 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 63.0825ms
+2025-06-30 11:45:05.383 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:45:05.395 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:45:05.430 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:45:05.433 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:45:05.436 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 52.2158ms
+2025-06-30 11:59:06.727 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 11:59:06.844 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 11:59:06.846 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 11:59:06.847 +05:30 [INF] Hosting environment: Development
+2025-06-30 11:59:06.847 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 11:59:14.307 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:59:14.357 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 11:59:14.360 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:59:14.376 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 75.2937ms
+2025-06-30 11:59:14.391 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:59:14.403 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:59:14.456 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:59:14.461 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:59:14.464 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 73.4075ms
+2025-06-30 11:59:21.252 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:59:21.255 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:59:21.257 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 4.8882ms
+2025-06-30 11:59:21.268 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 11:59:21.270 +05:30 [INF] CORS policy execution successful.
+2025-06-30 11:59:21.279 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 11:59:21.281 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 11:59:21.282 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 13.6066ms
+2025-06-30 12:16:43.253 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:16:43.397 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:16:43.401 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:16:43.402 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:16:43.402 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:17:28.872 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:17:28.915 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:17:28.917 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:17:28.928 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 57.5668ms
+2025-06-30 12:17:28.935 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:17:28.949 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:17:29.001 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:17:29.026 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:17:29.036 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 102.1465ms
+2025-06-30 12:20:04.087 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:20:04.273 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:20:04.276 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:20:04.277 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:20:04.278 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:20:16.249 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:20:16.282 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:20:16.284 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:20:16.295 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 47.2857ms
+2025-06-30 12:20:16.301 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:20:16.305 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:20:16.347 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:20:16.378 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:20:18.009 +05:30 [INF] Executed DbCommand (48ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:20:19.868 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:20:19.869 +05:30 [INF] Role: Admin
+2025-06-30 12:20:19.870 +05:30 [INF] Role: Admin
+2025-06-30 12:20:19.871 +05:30 [INF] the user: HealthcareApi.Models.User
+2025-06-30 12:20:20.064 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:20:20.156 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:20:20.229 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 3844.4947ms
+2025-06-30 12:20:20.232 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:20:20.238 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 3895.1725 ms
+2025-06-30 12:20:20.265 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 3963.6769ms
+2025-06-30 12:22:04.558 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:22:04.724 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:22:04.727 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:22:04.728 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:22:04.728 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:22:18.884 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:22:18.910 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:22:18.911 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:22:18.923 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 40.5841ms
+2025-06-30 12:22:18.928 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:22:18.933 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:22:18.977 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:22:19.003 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:22:20.171 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:22:21.049 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:22:21.049 +05:30 [INF] Role: Admin
+2025-06-30 12:22:21.050 +05:30 [INF] Role: Admin
+2025-06-30 12:22:21.050 +05:30 [INF] claims of token: sub: aakarshbatra01@gmail.com
+2025-06-30 12:22:21.136 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:22:21.175 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:22:21.208 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2200.425ms
+2025-06-30 12:22:21.209 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:22:21.215 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 2242.0906 ms
+2025-06-30 12:22:21.227 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 2298.827ms
+2025-06-30 12:22:23.604 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:22:23.606 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:22:23.606 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.2543ms
+2025-06-30 12:22:23.610 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:22:23.622 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:22:23.633 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:22:23.637 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:22:23.637 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 27.4648ms
+2025-06-30 12:23:30.940 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:23:31.087 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:23:31.090 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:23:31.091 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:23:31.091 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:23:33.255 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:23:33.282 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:23:33.283 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:23:33.293 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 39.4825ms
+2025-06-30 12:23:33.299 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:23:33.303 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:23:33.346 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:23:33.377 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:23:34.793 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:23:35.896 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:23:35.896 +05:30 [INF] Role: Admin
+2025-06-30 12:23:35.897 +05:30 [INF] Role: Admin
+2025-06-30 12:23:35.897 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:23:36.024 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:23:36.072 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:23:36.149 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2766.9054ms
+2025-06-30 12:23:36.150 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:23:36.177 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 2830.2965 ms
+2025-06-30 12:23:36.192 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 2893.3665ms
+2025-06-30 12:23:37.686 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:23:37.688 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:23:37.690 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 3.8311ms
+2025-06-30 12:23:37.692 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:23:37.697 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:23:37.706 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:23:37.711 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:23:37.712 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 20.1517ms
+2025-06-30 12:25:25.843 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:25:25.995 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:25:25.999 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:25:26.000 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:25:26.000 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:25:38.022 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:25:38.052 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:25:38.053 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:25:38.065 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 42.9807ms
+2025-06-30 12:25:38.071 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:25:38.075 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:25:38.114 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:25:38.141 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:25:39.276 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:25:40.127 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:25:40.128 +05:30 [INF] Role: Admin
+2025-06-30 12:25:40.128 +05:30 [INF] Role: Admin
+2025-06-30 12:25:40.129 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:25:40.222 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:25:40.256 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:25:40.284 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2139.5017ms
+2025-06-30 12:25:40.285 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:25:40.290 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 2179.8803 ms
+2025-06-30 12:25:40.300 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 2229.9137ms
+2025-06-30 12:25:41.089 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:25:41.091 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:25:41.091 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.5228ms
+2025-06-30 12:25:41.101 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:25:41.112 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:25:41.123 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:25:41.128 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:25:41.129 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 27.2393ms
+2025-06-30 12:28:21.040 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:28:21.206 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:28:21.210 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:28:21.211 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:28:21.212 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:28:32.306 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:28:32.350 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:28:32.352 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:28:32.362 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 58.556ms
+2025-06-30 12:28:32.369 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:28:32.374 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:28:32.456 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:28:32.491 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:28:34.471 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:28:35.695 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:28:35.696 +05:30 [INF] Role: Admin
+2025-06-30 12:28:35.697 +05:30 [INF] Role: Admin
+2025-06-30 12:28:35.698 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:28:35.841 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:28:35.894 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:28:35.947 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 3449.6247ms
+2025-06-30 12:28:35.949 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:28:35.954 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 3505.2882 ms
+2025-06-30 12:28:35.982 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 3613.1294ms
+2025-06-30 12:28:38.746 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:28:38.747 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:28:38.748 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.8758ms
+2025-06-30 12:28:38.750 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:28:38.760 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:28:38.769 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:28:38.774 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:28:38.774 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 24.286ms
+2025-06-30 12:35:37.524 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:35:37.529 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:35:37.530 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 6.1612ms
+2025-06-30 12:35:37.534 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:35:37.536 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:35:37.545 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:35:37.546 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:35:37.547 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 12.5816ms
+2025-06-30 12:35:41.130 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:35:41.131 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:35:41.133 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:35:41.134 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:35:41.135 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 4.2426ms
+2025-06-30 12:37:53.445 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:37:53.446 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:37:53.447 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.2199ms
+2025-06-30 12:37:53.457 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:37:53.458 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:37:53.459 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:37:53.460 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:37:53.461 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 4.1415ms
+2025-06-30 12:40:49.597 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:40:49.600 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:49.603 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 6.3824ms
+2025-06-30 12:40:49.609 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:40:49.610 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:49.610 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:40:49.611 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:40:49.611 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 2.2816ms
+2025-06-30 12:40:53.459 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:40:53.460 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:53.460 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:40:53.461 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:40:53.461 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 2.3942ms
+2025-06-30 12:40:56.974 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:40:56.974 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:56.976 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.374ms
+2025-06-30 12:40:56.978 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:40:56.979 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:56.980 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:40:56.981 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:40:57.018 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:40:57.849 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:40:57.849 +05:30 [INF] Role: Admin
+2025-06-30 12:40:57.849 +05:30 [INF] Role: Admin
+2025-06-30 12:40:57.850 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:40:57.857 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:40:57.859 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:40:57.860 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 877.737ms
+2025-06-30 12:40:57.861 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:40:57.861 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 881.7728 ms
+2025-06-30 12:40:57.862 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 883.5989ms
+2025-06-30 12:40:58.811 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:40:58.812 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:58.813 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.7317ms
+2025-06-30 12:40:58.818 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:40:58.819 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:40:58.845 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values. (Parameter 'IDX10820: Invalid character found in Base64UrlEncoding. Character: '123', Encoding: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.')
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode(String input, Int32 offset, Int32 length, Byte[] output)
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode[T](String input, Int32 offset, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(String rawString, Int32 startIndex, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:40:58.886 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:40:58.887 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:40:58.889 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:40:58.890 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 72.3077ms
+2025-06-30 12:41:47.376 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:41:47.377 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:47.377 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.8602ms
+2025-06-30 12:41:47.379 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:41:47.380 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:47.380 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:41:47.381 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:41:47.381 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:41:47.382 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:41:47.382 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 2.8798ms
+2025-06-30 12:41:51.378 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:41:51.379 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:51.379 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.0958ms
+2025-06-30 12:41:51.381 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:41:51.381 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:51.382 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:41:51.382 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:41:51.444 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:41:52.015 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:41:52.016 +05:30 [INF] Role: Admin
+2025-06-30 12:41:52.016 +05:30 [INF] Role: Admin
+2025-06-30 12:41:52.016 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:41:52.022 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:41:52.023 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:41:52.024 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 641.2798ms
+2025-06-30 12:41:52.024 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:41:52.025 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 642.9429 ms
+2025-06-30 12:41:52.025 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 644.1087ms
+2025-06-30 12:41:53.834 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:41:53.835 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:53.835 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.624ms
+2025-06-30 12:41:53.839 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:41:53.842 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:41:53.842 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:41:53.843 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:41:53.844 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:41:53.844 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:41:53.845 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 5.424ms
+2025-06-30 12:42:05.361 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:42:05.362 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:05.363 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.4485ms
+2025-06-30 12:42:05.365 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:42:05.366 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:05.366 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:42:05.367 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:42:05.367 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 1.828ms
+2025-06-30 12:42:09.266 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:42:09.267 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:09.268 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.2448ms
+2025-06-30 12:42:09.271 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:42:09.272 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:09.273 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:42:09.273 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:42:09.277 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:42:09.903 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:42:09.904 +05:30 [INF] Role: Admin
+2025-06-30 12:42:09.904 +05:30 [INF] Role: Admin
+2025-06-30 12:42:09.905 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:42:09.909 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:42:09.909 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:42:09.910 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 636.3056ms
+2025-06-30 12:42:09.911 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:42:09.911 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 638.0035 ms
+2025-06-30 12:42:09.912 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 641.2424ms
+2025-06-30 12:42:10.634 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:42:10.635 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:10.636 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.2518ms
+2025-06-30 12:42:10.643 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:42:10.646 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:42:10.649 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values. (Parameter 'IDX10820: Invalid character found in Base64UrlEncoding. Character: '123', Encoding: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.')
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode(String input, Int32 offset, Int32 length, Byte[] output)
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.Decode[T](String input, Int32 offset, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(String rawString, Int32 startIndex, Int32 length, Func`3 action)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:42:10.651 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:42:10.654 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:42:10.655 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:42:10.656 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 12.7699ms
+2025-06-30 12:43:20.394 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:43:20.394 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:43:20.397 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.8382ms
+2025-06-30 12:43:20.419 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:43:20.420 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:43:20.421 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:43:20.422 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:43:20.423 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:43:20.424 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:43:20.428 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 9.7113ms
+2025-06-30 12:43:23.457 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:43:23.457 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:43:23.457 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.6123ms
+2025-06-30 12:43:23.460 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:43:23.460 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:43:23.461 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:43:23.462 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:43:23.467 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:43:24.087 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:43:24.087 +05:30 [INF] Role: Admin
+2025-06-30 12:43:24.087 +05:30 [INF] Role: Admin
+2025-06-30 12:43:24.088 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:43:24.096 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:43:24.097 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:43:24.098 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 635.5731ms
+2025-06-30 12:43:24.098 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:43:24.099 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 637.4970 ms
+2025-06-30 12:43:24.099 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 639.4139ms
+2025-06-30 12:43:24.758 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:43:24.762 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:43:24.763 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:43:24.766 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:43:24.769 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:43:24.770 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:43:24.772 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 13.1432ms
+2025-06-30 12:46:11.550 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:11.551 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:11.553 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 3.5706ms
+2025-06-30 12:46:11.563 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:11.563 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:11.565 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:11.565 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:11.567 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:11.568 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:11.568 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 5.5683ms
+2025-06-30 12:46:14.660 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:46:14.661 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:14.661 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.1776ms
+2025-06-30 12:46:14.663 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:46:14.664 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:14.664 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:14.665 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:46:14.670 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:46:15.216 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:46:15.216 +05:30 [INF] Role: Admin
+2025-06-30 12:46:15.216 +05:30 [INF] Role: Admin
+2025-06-30 12:46:15.216 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:46:15.224 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:46:15.225 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:46:15.225 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 560.4352ms
+2025-06-30 12:46:15.226 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:15.226 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 561.9355 ms
+2025-06-30 12:46:15.226 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 562.9631ms
+2025-06-30 12:46:15.903 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:15.904 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:15.906 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:15.907 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:15.907 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:15.913 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:15.914 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 11.271ms
+2025-06-30 12:46:36.013 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:36.014 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:36.014 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.0791ms
+2025-06-30 12:46:36.030 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:36.030 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:36.033 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:36.038 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:36.042 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:36.043 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:36.043 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 13.2418ms
+2025-06-30 12:46:37.309 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:46:37.310 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:37.310 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.884ms
+2025-06-30 12:46:37.313 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:46:37.313 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:37.314 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:37.314 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:46:37.318 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:46:37.908 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:46:37.908 +05:30 [INF] Role: Admin
+2025-06-30 12:46:37.909 +05:30 [INF] Role: Admin
+2025-06-30 12:46:37.909 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:46:37.911 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:46:37.912 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:46:37.913 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 598.2051ms
+2025-06-30 12:46:37.913 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:37.913 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 599.4684 ms
+2025-06-30 12:46:37.913 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 600.8234ms
+2025-06-30 12:46:38.663 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:38.666 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:38.667 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:38.669 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:38.670 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:38.670 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:38.671 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 7.5253ms
+2025-06-30 12:46:51.224 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:51.226 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:51.228 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 3.7616ms
+2025-06-30 12:46:51.235 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:51.237 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:51.240 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:51.245 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:51.246 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:51.247 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:51.251 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 14.5057ms
+2025-06-30 12:46:52.682 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:46:52.682 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:52.683 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.8932ms
+2025-06-30 12:46:52.685 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:46:52.686 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:52.686 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:52.687 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:46:52.692 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:46:53.665 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:46:53.666 +05:30 [INF] Role: Admin
+2025-06-30 12:46:53.666 +05:30 [INF] Role: Admin
+2025-06-30 12:46:53.667 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:46:53.675 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:46:53.676 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:46:53.677 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 990.2798ms
+2025-06-30 12:46:53.678 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:46:53.678 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 991.9388 ms
+2025-06-30 12:46:53.678 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 993.4559ms
+2025-06-30 12:46:54.211 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:46:54.211 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:46:54.212 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:46:54.214 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:46:54.214 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:46:54.214 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:46:54.215 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 3.7402ms
+2025-06-30 12:47:26.296 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:47:26.297 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:26.298 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.7336ms
+2025-06-30 12:47:26.316 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:47:26.318 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:26.325 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:47:26.332 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:47:26.332 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:47:26.333 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:47:26.333 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 16.5011ms
+2025-06-30 12:47:27.656 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:47:27.656 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:27.657 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.1578ms
+2025-06-30 12:47:27.659 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:47:27.659 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:27.660 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:47:27.661 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:47:27.669 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:47:28.781 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:47:28.781 +05:30 [INF] Role: Admin
+2025-06-30 12:47:28.782 +05:30 [INF] Role: Admin
+2025-06-30 12:47:28.782 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:47:28.787 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:47:28.788 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:47:28.788 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1127.0068ms
+2025-06-30 12:47:28.789 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:47:28.789 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1129.3686 ms
+2025-06-30 12:47:28.790 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 1130.9138ms
+2025-06-30 12:47:29.404 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:47:29.405 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:29.406 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:47:29.407 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:47:29.407 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:47:29.408 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:47:29.408 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 4.4996ms
+2025-06-30 12:47:44.416 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:47:44.416 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:44.417 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.1699ms
+2025-06-30 12:47:44.420 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:47:44.422 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:44.423 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:47:44.423 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:47:44.427 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:47:44.427 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:47:44.428 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 7.707ms
+2025-06-30 12:47:46.062 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:47:46.063 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:46.064 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.4968ms
+2025-06-30 12:47:46.067 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:47:46.067 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:47:46.068 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:47:46.068 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:47:46.072 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:47:47.050 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:47:47.050 +05:30 [INF] Role: Admin
+2025-06-30 12:47:47.050 +05:30 [INF] Role: Admin
+2025-06-30 12:47:47.051 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:47:47.059 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:47:47.060 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:47:47.061 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 992.5869ms
+2025-06-30 12:47:47.062 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:47:47.062 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 994.5785 ms
+2025-06-30 12:47:47.063 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 996.311ms
+2025-06-30 12:49:17.596 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:17.597 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:17.597 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.7623ms
+2025-06-30 12:49:17.604 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:17.607 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:17.607 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-06-30 12:49:17.608 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-06-30 12:49:17.608 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:49:17.608 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:49:17.610 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 6.013ms
+2025-06-30 12:49:48.385 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:48.385 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:48.386 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.709ms
+2025-06-30 12:49:48.393 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:48.394 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:48.395 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:49:48.396 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:49:48.397 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 3.3207ms
+2025-06-30 12:49:56.378 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:56.380 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:56.381 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.7703ms
+2025-06-30 12:49:56.386 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:49:56.387 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:49:56.390 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:49:56.390 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:49:56.391 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 5.4238ms
+2025-06-30 12:50:03.880 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:50:03.880 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:50:03.880 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.911ms
+2025-06-30 12:50:03.882 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:50:03.883 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:50:03.883 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:50:03.884 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:50:03.889 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:50:04.881 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:50:04.882 +05:30 [INF] Role: Admin
+2025-06-30 12:50:04.882 +05:30 [INF] Role: Admin
+2025-06-30 12:50:04.882 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:50:04.892 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:50:04.894 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:50:04.895 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1010.9193ms
+2025-06-30 12:50:04.895 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:50:04.896 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1012.8466 ms
+2025-06-30 12:50:04.897 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 1014.1271ms
+2025-06-30 12:50:05.485 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:50:05.486 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:50:05.486 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.6024ms
+2025-06-30 12:50:05.488 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:50:05.491 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:50:05.539 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:50:05.549 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:50:05.554 +05:30 [INF] Fetching patient with ID 1
+2025-06-30 12:50:05.616 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:50:05.675 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:50:05.713 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 162.6719ms
+2025-06-30 12:50:05.713 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:50:05.714 +05:30 [INF] HTTP GET /api/patient/1 responded 200 in 175.3781 ms
+2025-06-30 12:50:05.717 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 200 378 application/json; charset=utf-8 228.6378ms
+2025-06-30 12:51:01.392 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:01.393 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:01.393 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.1901ms
+2025-06-30 12:51:01.396 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:01.397 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:01.398 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:51:01.398 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:51:01.399 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 2.1294ms
+2025-06-30 12:51:35.415 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:35.415 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:35.415 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.6684ms
+2025-06-30 12:51:35.418 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:35.419 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:35.419 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-06-30 12:51:35.419 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:51:35.419 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 1.2467ms
+2025-06-30 12:51:42.142 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:51:42.142 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:42.143 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.5057ms
+2025-06-30 12:51:42.144 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:51:42.144 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:42.145 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:51:42.145 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:51:42.150 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:51:42.715 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:51:42.716 +05:30 [INF] Role: Admin
+2025-06-30 12:51:42.716 +05:30 [INF] Role: Admin
+2025-06-30 12:51:42.716 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:51:42.723 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:51:42.724 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:51:42.724 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 578.7574ms
+2025-06-30 12:51:42.724 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:51:42.725 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 580.2293 ms
+2025-06-30 12:51:42.725 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 581.1916ms
+2025-06-30 12:51:43.342 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:43.342 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:43.342 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 0.4418ms
+2025-06-30 12:51:43.348 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:51:43.350 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:51:43.353 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:51:43.353 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:51:43.355 +05:30 [INF] Fetching patient with ID 1
+2025-06-30 12:51:43.361 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:51:43.362 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:51:43.363 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 9.5051ms
+2025-06-30 12:51:43.364 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:51:43.364 +05:30 [INF] HTTP GET /api/patient/1 responded 200 in 11.7012 ms
+2025-06-30 12:51:43.365 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 200 378 application/json; charset=utf-8 16.111ms
+2025-06-30 12:53:25.153 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-30 12:53:25.302 +05:30 [INF] Now listening on: http://localhost:5122
+2025-06-30 12:53:25.305 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-30 12:53:25.306 +05:30 [INF] Hosting environment: Development
+2025-06-30 12:53:25.306 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-06-30 12:53:34.662 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:53:34.687 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-30 12:53:34.690 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:34.700 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 39.0836ms
+2025-06-30 12:53:34.707 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:53:34.710 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:34.748 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:53:34.768 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:53:35.801 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:53:36.672 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:53:36.672 +05:30 [INF] Role: Admin
+2025-06-30 12:53:36.673 +05:30 [INF] Role: Admin
+2025-06-30 12:53:36.674 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:53:36.752 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:53:36.785 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:53:36.809 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 2038.312ms
+2025-06-30 12:53:36.810 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:53:36.815 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 2071.6926 ms
+2025-06-30 12:53:36.834 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 2127.3414ms
+2025-06-30 12:53:37.484 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:53:37.486 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:37.486 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 2.7748ms
+2025-06-30 12:53:37.490 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:53:37.496 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:37.560 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:37.567 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:53:37.573 +05:30 [INF] Fetching patient with ID 1
+2025-06-30 12:53:37.671 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:53:37.713 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:53:37.746 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 177.7093ms
+2025-06-30 12:53:37.746 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:37.747 +05:30 [INF] HTTP GET /api/patient/1 responded 200 in 187.8269 ms
+2025-06-30 12:53:37.748 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 200 378 application/json; charset=utf-8 257.5374ms
+2025-06-30 12:53:47.866 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:53:47.867 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:47.867 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/1 - 204 null null 1.2543ms
+2025-06-30 12:53:47.869 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:53:47.870 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:47.876 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:47.876 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:53:47.881 +05:30 [INF] Fetching patient with ID 1
+2025-06-30 12:53:47.974 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:53:47.975 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:53:47.976 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 99.5018ms
+2025-06-30 12:53:47.977 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:47.978 +05:30 [INF] HTTP GET /api/patient/1 responded 200 in 102.0280 ms
+2025-06-30 12:53:47.980 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 200 378 application/json; charset=utf-8 110.4952ms
+2025-06-30 12:53:50.021 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:53:50.022 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:53:50.025 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:50.026 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:53:50.030 +05:30 [INF] Fetching patient with ID 1
+2025-06-30 12:53:50.036 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:53:50.037 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:53:50.039 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 12.1519ms
+2025-06-30 12:53:50.039 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:53:50.040 +05:30 [INF] HTTP GET /api/patient/1 responded 200 in 14.5351 ms
+2025-06-30 12:53:50.041 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 200 378 application/json; charset=utf-8 19.2357ms
+2025-06-30 12:54:24.401 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/2 - null null
+2025-06-30 12:54:24.402 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:54:24.403 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/2 - 204 null null 1.6133ms
+2025-06-30 12:54:24.405 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/2 - null null
+2025-06-30 12:54:24.406 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:54:24.408 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-30 12:54:24.412 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:54:24.413 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/2 - 401 0 null 7.7185ms
+2025-06-30 12:54:28.035 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-06-30 12:54:28.035 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:54:28.036 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.4628ms
+2025-06-30 12:54:28.038 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-06-30 12:54:28.039 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:54:28.040 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:54:28.040 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-06-30 12:54:28.047 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-06-30 12:54:28.648 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-06-30 12:54:28.648 +05:30 [INF] Role: Admin
+2025-06-30 12:54:28.648 +05:30 [INF] Role: Admin
+2025-06-30 12:54:28.648 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-06-30 12:54:28.655 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-06-30 12:54:28.656 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-30 12:54:28.657 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 616.2624ms
+2025-06-30 12:54:28.657 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-06-30 12:54:28.658 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 618.3467 ms
+2025-06-30 12:54:28.659 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 620.163ms
+2025-06-30 12:54:29.183 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/2 - null null
+2025-06-30 12:54:29.184 +05:30 [INF] CORS policy execution successful.
+2025-06-30 12:54:29.185 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:54:29.185 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:54:29.186 +05:30 [INF] Fetching patient with ID 2
+2025-06-30 12:54:29.197 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[PatientID] = @__p_0
+2025-06-30 12:54:29.199 +05:30 [INF] Executing ObjectResult, writing value of type 'HealthcareApi.Models.Patient'.
+2025-06-30 12:54:29.200 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 14.2458ms
+2025-06-30 12:54:29.200 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-06-30 12:54:29.201 +05:30 [INF] HTTP GET /api/patient/2 responded 200 in 16.1030 ms
+2025-06-30 12:54:29.202 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/2 - 200 374 application/json; charset=utf-8 18.1595ms
+2025-06-30 12:54:52.206 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/1 - null null
+2025-06-30 12:54:52.207 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-30 12:54:52.208 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:54:52.208 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/1 - 401 0 null 1.8175ms
+2025-06-30 12:54:55.805 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/2 - null null
+2025-06-30 12:54:55.806 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-30 12:54:55.806 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-30 12:54:55.807 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/2 - 401 0 null 1.9239ms
+2025-06-30 12:55:08.601 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient - null null
+2025-06-30 12:55:08.602 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi)'
+2025-06-30 12:55:08.606 +05:30 [INF] Route matched with {action = "GetPatients", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[HealthcareApi.Models.Patient]]] GetPatients() on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-06-30 12:55:08.607 +05:30 [INF] Fetching all patients
+2025-06-30 12:55:08.626 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+2025-06-30 12:55:08.629 +05:30 [INF] Returned 5 patients
+2025-06-30 12:55:08.638 +05:30 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-30 12:55:08.640 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi) in 34.2948ms
+2025-06-30 12:55:08.641 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatients (HealthcareApi)'
+2025-06-30 12:55:08.641 +05:30 [INF] HTTP GET /api/patient responded 200 in 38.7851 ms
+2025-06-30 12:55:08.642 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient - 200 1878 application/json; charset=utf-8 40.0779ms
+2025-06-30 12:55:08.732 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/.well-known/appspecific/com.chrome.devtools.json - null null
+2025-06-30 12:55:08.735 +05:30 [INF] HTTP GET /.well-known/appspecific/com.chrome.devtools.json responded 404 in 0.5596 ms
+2025-06-30 12:55:08.736 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 3.3933ms
+2025-06-30 12:55:08.737 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
+2025-06-30 12:55:08.741 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/favicon.ico - null null
+2025-06-30 12:55:08.743 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 0.5850 ms
+2025-06-30 12:55:08.743 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/favicon.ico - 404 0 null 2.1514ms
+2025-06-30 12:55:08.744 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/favicon.ico, Response status code: 404

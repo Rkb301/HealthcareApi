@@ -38,9 +38,9 @@ public partial class Doctor
     [StringLength(255, ErrorMessage = "Schedule cannot exceed 255 characters")]
     public string? Schedule { get; set; }
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
     
-    public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? ModifiedAt { get; set; } = DateTime.UtcNow;
     
     public bool isActive { get; set; } = true;
 

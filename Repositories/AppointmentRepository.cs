@@ -20,7 +20,12 @@ public class AppointmentRepository : IAppointmentRepository
         return appointment;
     }
 
-    public IQueryable<Appointment> GetBaseQuery() => _context.Appointments.AsQueryable();
+    public IQueryable<Appointment> GetBaseQuery() {
+        return _context.Appointments
+            .Include(a => a.Patient)
+            .Include(a => a.Doctor)
+            .AsQueryable();
+    }
 
     public async Task<Appointment> GetByIdAsync(int id)
     {

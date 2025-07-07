@@ -1,0 +1,13 @@
+2025-07-05 15:37:25.411 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-07-05 15:37:25.425 +05:30 [INF] CORS policy execution successful.
+2025-07-05 15:37:25.426 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - 204 null null 14.2227ms
+2025-07-05 15:37:25.458 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-07-05 15:37:25.460 +05:30 [INF] CORS policy execution successful.
+2025-07-05 15:37:25.486 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-05 15:37:25.486 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Patient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.Patient]] SearchLucene(System.String, Int32, Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-05 15:37:25.487 +05:30 [INF] Lucene search for 'null'
+2025-07-05 15:37:25.489 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-05 15:37:25.490 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi) in 3.36ms
+2025-07-05 15:37:25.490 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-05 15:37:25.491 +05:30 [INF] HTTP GET /api/patient/search-lucene responded 200 in 27.1503 ms
+2025-07-05 15:37:25.491 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - 200 4102 application/json; charset=utf-8 32.4238ms

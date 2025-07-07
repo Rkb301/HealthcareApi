@@ -12,13 +12,16 @@ public class PatientService : IPatientService
 {
     private readonly IPatientRepository _repository;
     private readonly ILogger<PatientService> _logger;
+    private readonly LucenePatientIndexService _lucene;
 
     public PatientService(
-        IPatientRepository repository, 
-        ILogger<PatientService> logger)
+        IPatientRepository repository,
+        ILogger<PatientService> logger,
+        LucenePatientIndexService lucene)
     {
         _repository = repository;
         _logger = logger;
+        _lucene = lucene;
     }
 
     public async Task<List<Patient>> GetAllPatients()
@@ -35,17 +38,20 @@ public class PatientService : IPatientService
     {
         patient.CreatedAt = DateTime.UtcNow;
         patient.ModifiedAt = DateTime.UtcNow;
-        return await _repository.AddAsync(patient);
+        var returnee = await _repository.AddAsync(patient);
+        _lucene.IndexPatient(patient);
+        return returnee;
     }
 
     public async Task UpdatePatient(int id, JsonPatchDocument<Patient> patchDoc)
     {
         var patient = await _repository.GetByIdAsync(id);
         if (patient == null) throw new NotFoundException();
-        
+
         patchDoc.ApplyTo(patient);
         patient.ModifiedAt = DateTime.UtcNow;
         await _repository.UpdateAsync(patient);
+        _lucene.IndexPatient(patient);
     }
 
     public async Task<bool> SoftDeletePatient(int id)

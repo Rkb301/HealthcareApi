@@ -1,3 +1,4 @@
+using System.Configuration;
 using Azure;
 using HealthcareApi.Models;
 using Microsoft.AspNetCore.JsonPatch;
@@ -12,4 +13,5 @@ public interface IAppointmentService
     Task UpdateAppointment(int id, JsonPatchDocument<Appointment> patchDoc);
     Task<bool> SoftDeleteAppointment(int id);
     Task<PagedResult<Appointment>> SearchAppointments(AppointmentQueryParams param);
+    Task<PagedResult<AppointmentWithNamesDTO>> SearchAppointmentsWithNames(AppointmentQueryParams param);
 }

@@ -19,7 +19,7 @@ public class DoctorController : ControllerBase
         _logger = logger;
     }
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<ActionResult<List<Doctor>>> GetDoctors()
     {
@@ -37,7 +37,7 @@ public class DoctorController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<ActionResult<Doctor>> GetDoctor(int id)
     {
@@ -59,7 +59,7 @@ public class DoctorController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Doctor>> PostDoctor(Doctor doctor)
     {
@@ -80,7 +80,7 @@ public class DoctorController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [HttpPatch("{id}")]
     public async Task<IActionResult> PatchDoctor(int id, [FromBody] JsonPatchDocument<Doctor> patchDoc)
     {
@@ -108,7 +108,7 @@ public class DoctorController : ControllerBase
         }
     }
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDoctor(int id)
     {

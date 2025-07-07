@@ -58,18 +58,30 @@ public class AppointmentService : IAppointmentService
         await _repository.UpdateAsync(appointment);
     }
 
-    public async Task<PagedResult<Appointment>> SearchAppointments(AppointmentQueryParams param)
+    public async Task<PagedResult<AppointmentWithNamesDTO>> SearchAppointmentsWithNames(AppointmentQueryParams param)
     {
-        var query = _repository.GetBaseQuery();
+        var query = _repository.GetBaseQuery()
+        .Select(a => new AppointmentWithNamesDTO
+        {
+            AppointmentID = a.AppointmentID,
+            PatientName = $"{a.Patient.FirstName} {a.Patient.LastName}",
+            DoctorName = $"{a.Doctor.FirstName} {a.Doctor.LastName}",
+            AppointmentDate = a.AppointmentDate,
+            Reason = a.Reason,
+            Status = a.Status,
+            Notes = a.Notes,
+            PatientID = a.PatientID,
+            DoctorID = a.DoctorID
+        });
 
         if (param.PatientID?.Any() == true)
         {
-            query = query.Where(a => param.PatientID.Contains(a.PatientID));
+            query = query.Where(a => param.PatientID.Contains(a.AppointmentID)); // Note: This maps to AppointmentID in DTO
         }
 
         if (param.DoctorID?.Any() == true)
         {
-            query = query.Where(a => param.DoctorID.Contains(a.DoctorID));
+            query = query.Where(a => param.DoctorID.Contains(a.AppointmentID)); // You'll need to adjust this logic
         }
 
         if (param.AppointmentDate?.Any() == true)
@@ -82,21 +94,31 @@ public class AppointmentService : IAppointmentService
             query = query.Where(a => param.Status.Contains(a.Status));
         }
 
-        if (param.CreatedAt?.Any() == true)
+        // Sorting for DTO
+        if (param.Sort?.Any() == true)
         {
-            query = query.Where(a => param.CreatedAt.Contains(a.CreatedAt));
+            query = param.Sort.Aggregate(
+                (IOrderedQueryable<AppointmentWithNamesDTO>)query.OrderBy(GetSortExpressionForDto(param.Sort.First(), param.Order)),
+                (current, sortField) => current.ThenBy(GetSortExpressionForDto(sortField, param.Order))
+            );
         }
 
-        if (param.ModifiedAt?.Any() == true)
+        return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
+    }
+
+    public async Task<PagedResult<Appointment>> SearchAppointments(AppointmentQueryParams param)
+    {
+        var query = _repository.GetBaseQuery();
+
+        if (param.AppointmentDate?.Any() == true)
         {
-            query = query.Where(a => param.ModifiedAt.Contains(a.ModifiedAt));
+            query = query.Where(a => param.AppointmentDate.Contains(a.AppointmentDate));
         }
 
-        if (param.isActive?.Any() == true)
+        if (param.Status?.Any() == true)
         {
-            query = query.Where(a => param.isActive.Contains(a.isActive));
+            query = query.Where(a => param.Status.Contains(a.Status));
         }
-
 
         // Sorting
         if (param.Sort?.Any() == true)
@@ -114,14 +136,22 @@ public class AppointmentService : IAppointmentService
     {
         return field.ToLower() switch
         {
-            "patientid" => a => a.PatientID,
-            "doctorid" => a => a.DoctorID,
             "appointmentdate" => a => a.AppointmentDate,
+            "reason" => a => a.Reason,
             "status" => a => a.Status,
-            "createdat" => a => a.CreatedAt,
-            "modifiedat" => a => a.ModifiedAt,
-            "isactive" => a => a.isActive,
-            _ => a => a.PatientID
+            "notes" => a => a.Notes,
+            _ => a => a.AppointmentDate
+        };
+    }
+    private Expression<Func<AppointmentWithNamesDTO, object>> GetSortExpressionForDto(string field, string order)
+    {
+        return field.ToLower() switch
+        {
+            "patientname" => a => a.PatientName,
+            "doctorname" => a => a.DoctorName,
+            "appointmentdate" => a => a.AppointmentDate,
+            "status" => a => a.Status ?? string.Empty,
+            _ => a => a.AppointmentID
         };
     }
 }

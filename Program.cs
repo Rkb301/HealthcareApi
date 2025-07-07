@@ -6,10 +6,38 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using HealthcareApi.Repositories;
 using HealthcareApi.Services;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Lucene.Net.Util;
+using Lucene.Net.Store;
+using Lucene.Net.Analysis.Standard;
+using Lucene.Net.Index;
 
 var AllowCORS = "_AllowCORS";
 
 var builder = WebApplication.CreateBuilder(args);
+
+const LuceneVersion LUCENE_VERSION = LuceneVersion.LUCENE_48;
+var indexPath = Path.Combine(builder.Environment.ContentRootPath, "LuceneIndex");
+var luceneDir = FSDirectory.Open(indexPath);
+
+// 2. Create and register a shared analyzer
+var analyzer = new StandardAnalyzer(LUCENE_VERSION);
+builder.Services.AddSingleton<StandardAnalyzer>(analyzer);
+
+// 3. Configure and register the IndexWriter
+var indexConfig = new IndexWriterConfig(LUCENE_VERSION, analyzer)
+{
+    OpenMode = OpenMode.CREATE_OR_APPEND
+};
+var writer = new IndexWriter(luceneDir, indexConfig);
+builder.Services.AddSingleton<IndexWriter>(writer);
+
+// 4. Register the Directory as singleton
+builder.Services.AddSingleton<FSDirectory>(luceneDir);
+
+// 5. Register your custom Lucene indexing/search service
+builder.Services.AddScoped<LucenePatientIndexService>();
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -57,7 +85,6 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-#pragma warning disable CS8604 // Possible null reference argument.
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -69,16 +96,21 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Key"]))
     };
-#pragma warning restore CS8604 // Possible null reference argument.
 });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(
+    options =>
+{
+    options.AddPolicy("RequireAdminRole",
+        policy => policy.RequireRole("Admin"));
+}
+);
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: AllowCORS,
     policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "http://localhost:5122")
+        policy.WithOrigins("http://localhost:4200","http://localhost:5122")
         .AllowAnyMethod()
         .AllowAnyHeader();
     });
@@ -86,6 +118,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+using var scope = app.Services.CreateScope();
+var lucene = scope.ServiceProvider.GetRequiredService<LucenePatientIndexService>();
+var patients = scope.ServiceProvider.GetRequiredService<IPatientService>().GetAllPatients().Result;
+foreach (var p in patients) lucene.IndexPatient(p);
 
 
 if (app.Environment.IsDevelopment())
@@ -102,7 +138,7 @@ app.UseCors(AllowCORS);
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSerilogRequestLogging(); // Log all HTTP requests
-app.UseMiddleware<ErrorHandlerMiddleware>();
+app.UseMiddleware<ErrorHandlerMiddleware>(); // custom exception handler
 app.MapControllers();
 
 app.UseSession();

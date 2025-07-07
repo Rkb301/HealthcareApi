@@ -33,9 +33,9 @@ public partial class Appointment : IValidatableObject
     [StringLength(1000, ErrorMessage = "Notes cannot exceed 1000 characters")]
     public string? Notes { get; set; }
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
     
-    public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? ModifiedAt { get; set; } = DateTime.UtcNow;
     
     public bool isActive { get; set; } = true;
 

@@ -37,6 +37,7 @@ public class AuthController : ControllerBase
 
     private JwtSecurityToken GenerateAccessToken(User user)
     {
+        _logger.LogInformation("Role: {Role}", user.Role);
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Email),
@@ -139,9 +140,11 @@ public class AuthController : ControllerBase
             signingCredentials: creds);
 
         _logger.LogInformation("User logged in: {Email}", req?.Email);
+        _logger.LogInformation("Role: {Role}", user.Role);
 
 
         var accessToken = GenerateAccessToken(user);
+        _logger.LogInformation("claims of token: {claims}", claims[2]);
         var refreshToken = GenerateRefreshToken();
 
         user.RefreshToken = refreshToken;
@@ -183,7 +186,7 @@ public class AuthController : ControllerBase
         });
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {

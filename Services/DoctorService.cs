@@ -63,12 +63,7 @@ public class DoctorService : IDoctorService
     public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams param)
     {
         var query = _repository.GetBaseQuery();
-
-        if (param.UID?.Any() == true)
-        {
-            query = query.Where(d => param.UID.Contains(d.UserID));
-        }
-
+        
         if (param.FirstName?.Any() == true)
         {
             query = query.Where(d => param.FirstName.Contains(d.FirstName));
@@ -94,22 +89,6 @@ public class DoctorService : IDoctorService
             query = query.Where(d => param.Email.Contains(d.Email));
         }
 
-        if (param.CreatedAt?.Any() == true)
-        {
-            query = query.Where(d => param.CreatedAt.Contains(d.CreatedAt));
-        }
-
-        if (param.ModifiedAt?.Any() == true)
-        {
-            query = query.Where(d => param.ModifiedAt.Contains(d.ModifiedAt));
-        }
-
-        if (param.isActive?.Any() == true)
-        {
-            query = query.Where(d => param.isActive.Contains(d.isActive));
-        }
-
-
         // Sorting
         if (param.Sort?.Any() == true)
         {
@@ -126,16 +105,12 @@ public class DoctorService : IDoctorService
     {
         return field.ToLower() switch
         {
-            "userid" => d => d.UserID,
             "firstname" => d => d.FirstName,
             "lastname" => d => d.LastName,
-            "special" => d => d.Specialization,
+            "specialization" => d => d.Specialization,
             "phone" => d => d.ContactNumber,
             "email" => d => d.Email,
-            "createdat" => d => d.CreatedAt,
-            "modifiedat" => d => d.ModifiedAt,
-            "isactive" => d => d.isActive,
-            _ => d => d.UserID
+            _ => d => d.FirstName
         };
     }
 }
