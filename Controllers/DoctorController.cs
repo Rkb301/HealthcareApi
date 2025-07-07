@@ -12,11 +12,17 @@ public class DoctorController : ControllerBase
 {
     private readonly IDoctorService _doctorService;
     private readonly ILogger<DoctorController> _logger;
+    private readonly LuceneDoctorIndexService _lucene;
 
-    public DoctorController(IDoctorService doctorService, ILogger<DoctorController> logger)
+    public DoctorController(
+        IDoctorService doctorService,
+        ILogger<DoctorController> logger,
+        LuceneDoctorIndexService lucene
+        )
     {
         _doctorService = doctorService;
         _logger = logger;
+        _lucene = lucene;
     }
 
     // [Authorize(Roles = "Admin")]
@@ -146,5 +152,13 @@ public class DoctorController : ControllerBase
             _logger.LogError(ex, "Error searching doctors with params {@Params}", param);
             return StatusCode(500, "Internal server error");
         }
+    }
+
+    [HttpGet("search-lucene")]
+    public ActionResult<PagedResult<Doctor>> SearchLucene([FromQuery] string? query, int pageNumber = 1, int pageSize = 10)
+    {
+        _logger.LogInformation("Lucene search for '{query}'", query);
+        var result = _lucene.Search(query, pageNumber, pageSize);
+        return Ok(result);
     }
 }

@@ -21,11 +21,9 @@ const LuceneVersion LUCENE_VERSION = LuceneVersion.LUCENE_48;
 var indexPath = Path.Combine(builder.Environment.ContentRootPath, "LuceneIndex");
 var luceneDir = FSDirectory.Open(indexPath);
 
-// 2. Create and register a shared analyzer
 var analyzer = new StandardAnalyzer(LUCENE_VERSION);
 builder.Services.AddSingleton<StandardAnalyzer>(analyzer);
 
-// 3. Configure and register the IndexWriter
 var indexConfig = new IndexWriterConfig(LUCENE_VERSION, analyzer)
 {
     OpenMode = OpenMode.CREATE_OR_APPEND
@@ -33,11 +31,11 @@ var indexConfig = new IndexWriterConfig(LUCENE_VERSION, analyzer)
 var writer = new IndexWriter(luceneDir, indexConfig);
 builder.Services.AddSingleton<IndexWriter>(writer);
 
-// 4. Register the Directory as singleton
 builder.Services.AddSingleton<FSDirectory>(luceneDir);
 
-// 5. Register your custom Lucene indexing/search service
 builder.Services.AddScoped<LucenePatientIndexService>();
+builder.Services.AddScoped<LuceneAppointmentIndexService>();
+builder.Services.AddScoped<LuceneDoctorIndexService>();
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -76,7 +74,6 @@ builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-
 
 builder.Services.AddAuthentication(options =>
 {
@@ -119,9 +116,18 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
-var lucene = scope.ServiceProvider.GetRequiredService<LucenePatientIndexService>();
+
+var lucenePatient = scope.ServiceProvider.GetRequiredService<LucenePatientIndexService>();
 var patients = scope.ServiceProvider.GetRequiredService<IPatientService>().GetAllPatients().Result;
-foreach (var p in patients) lucene.IndexPatient(p);
+foreach (var p in patients) lucenePatient.IndexPatient(p);
+
+var luceneAppointment = scope.ServiceProvider.GetRequiredService<LuceneAppointmentIndexService>();
+var appointments = scope.ServiceProvider.GetRequiredService<IAppointmentService>().GetAllAppointments().Result;
+foreach (var a in appointments) luceneAppointment.IndexAppointment(a);
+
+var luceneDoctor = scope.ServiceProvider.GetRequiredService<LuceneDoctorIndexService>();
+var doctors = scope.ServiceProvider.GetRequiredService<IDoctorService>().GetAllDoctors().Result;
+foreach (var d in doctors) luceneDoctor.IndexDoctor(d);
 
 
 if (app.Environment.IsDevelopment())

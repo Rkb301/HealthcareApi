@@ -13,11 +13,17 @@ public class AppointmentController : ControllerBase
 {
     private readonly IAppointmentService _appointmentService;
     private readonly ILogger<AppointmentController> _logger;
+    private readonly LuceneAppointmentIndexService _lucene;
 
-    public AppointmentController(IAppointmentService appointmentService, ILogger<AppointmentController> logger)
+    public AppointmentController(
+        IAppointmentService appointmentService,
+        ILogger<AppointmentController> logger,
+        LuceneAppointmentIndexService lucene
+        )
     {
         _appointmentService = appointmentService;
         _logger = logger;
+        _lucene = lucene;
     }
 
     // [Authorize(Roles = "Admin")]
@@ -164,5 +170,13 @@ public class AppointmentController : ControllerBase
             _logger.LogError(ex, "Error searching appointments with names using params {@Params}", param);
             return StatusCode(500, "Internal server error");
         }
+    }
+
+    [HttpGet("search-lucene")]
+    public ActionResult<PagedResult<Appointment>> SearchLucene([FromQuery] string? query, int pageNumber = 1, int pageSize = 10)
+    {
+        _logger.LogInformation("Lucene search for '{query}'", query);
+        var result = _lucene.Search(query, pageNumber, pageSize);
+        return Ok(result);
     }
 }

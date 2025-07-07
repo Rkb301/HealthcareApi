@@ -154,7 +154,6 @@ public class PatientController : ControllerBase
         }
     }
     
-    //
     [HttpGet("search-lucene")]
     public ActionResult<PagedResult<Patient>> SearchLucene([FromQuery] string? query, int pageNumber = 1, int pageSize = 10)
     {

@@ -12,14 +12,17 @@ public class DoctorService : IDoctorService
 
     private readonly IDoctorRepository _repository;
     private readonly ILogger<DoctorService> _logger;
+    private readonly LuceneDoctorIndexService _lucene;
 
     public DoctorService(
         IDoctorRepository repository,
-        ILogger<DoctorService> logger
+        ILogger<DoctorService> logger,
+        LuceneDoctorIndexService lucene
     )
     {
         _repository = repository;
         _logger = logger;
+        _lucene = lucene;
     }
 
     public async Task<List<Doctor>> GetAllDoctors()
@@ -36,7 +39,9 @@ public class DoctorService : IDoctorService
     {
         doctor.CreatedAt = DateTime.UtcNow;
         doctor.ModifiedAt = DateTime.UtcNow;
-        return await _repository.AddAsync(doctor);
+        var returnee = await _repository.AddAsync(doctor);
+        _lucene.IndexDoctor(doctor);
+        return returnee;
     }
 
     public async Task UpdateDoctor(int id, JsonPatchDocument<Doctor> patchDoc)
@@ -47,6 +52,7 @@ public class DoctorService : IDoctorService
         patchDoc.ApplyTo(doctor);
         doctor.ModifiedAt = DateTime.UtcNow;
         await _repository.UpdateAsync(doctor);
+        _lucene.IndexDoctor(doctor);
     }
 
     public async Task<bool> SoftDeleteDoctor(int id)

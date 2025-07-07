@@ -69,7 +69,6 @@ public class PatientService : IPatientService
     {
         var query = _repository.GetBaseQuery();
         
-        // Filtering
         if (param.UID?.Any() == true)
             query = query.Where(p => param.UID.Contains(p.UserID));
         
@@ -85,7 +84,6 @@ public class PatientService : IPatientService
         if (param.Phone?.Any() == true)
             query = query.Where(p => param.Phone.Contains(p.ContactNumber));
 
-        // Sorting
             if (param.Sort?.Any() == true)
             {
                 query = param.Sort.Aggregate(
@@ -94,7 +92,6 @@ public class PatientService : IPatientService
                 );
             }
 
-        // Pagination
         return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
     }
     

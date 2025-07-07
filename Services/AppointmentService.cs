@@ -10,21 +10,27 @@ namespace HealthcareApi.Services;
 public class AppointmentService : IAppointmentService
 {
     private readonly IAppointmentRepository _repository;
-    public readonly ILogger<AppointmentService> _logger;
+    private readonly ILogger<AppointmentService> _logger;
+    private readonly LuceneAppointmentIndexService _lucene;
 
     public AppointmentService(
         IAppointmentRepository repository,
-        ILogger<AppointmentService> logger)
+        ILogger<AppointmentService> logger,
+        LuceneAppointmentIndexService lucene
+        )
     {
         _repository = repository;
         _logger = logger;
+        _lucene = lucene;
     }
 
     public async Task<Appointment> AddAppointment(Appointment appointment)
     {
         appointment.CreatedAt = DateTime.UtcNow;
         appointment.ModifiedAt = DateTime.UtcNow;
-        return await _repository.AddAsync(appointment);
+        var returnee = await _repository.AddAsync(appointment);
+        _lucene.IndexAppointment(appointment);
+        return returnee;
     }
 
     public async Task<List<Appointment>> GetAllAppointments()
@@ -56,6 +62,7 @@ public class AppointmentService : IAppointmentService
         patchDoc.ApplyTo(appointment);
         appointment.ModifiedAt = DateTime.UtcNow;
         await _repository.UpdateAsync(appointment);
+        _lucene.IndexAppointment(appointment);
     }
 
     public async Task<PagedResult<AppointmentWithNamesDTO>> SearchAppointmentsWithNames(AppointmentQueryParams param)
