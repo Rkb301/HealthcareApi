@@ -7,6 +7,7 @@ using Lucene.Net.Store;
 using Lucene.Net.Util;
 using HealthcareApi.Models;
 using System.Linq;
+using System.Linq.Expressions;
 
 public class LucenePatientIndexService
 {
@@ -29,7 +30,7 @@ public class LucenePatientIndexService
 
     public LucenePatientIndexService(IndexWriter writer, StandardAnalyzer analyzer)
     {
-        _writer   = writer;
+        _writer = writer;
         _analyzer = analyzer;
     }
 
@@ -55,46 +56,104 @@ public class LucenePatientIndexService
         _writer.Flush(triggerMerge: false, applyAllDeletes: true);
     }
 
-    public PagedResult<Patient> Search(string queryText, int pageNumber, int pageSize)
+    public PagedResult<Patient> Search(string queryText, int pageNumber, int pageSize, string? sortField = null, string? sortOrder = null)
     {
-        using var reader   = DirectoryReader.Open(_writer, applyAllDeletes: true);
-        var searcher       = new IndexSearcher(reader);
+        using var reader = DirectoryReader.Open(_writer, applyAllDeletes: true);
+        var searcher = new IndexSearcher(reader);
 
         Query luceneQuery = string.IsNullOrWhiteSpace(queryText)
             ? new MatchAllDocsQuery()
             : new MultiFieldQueryParser(VERSION, Fields, _analyzer)
-                  {
-                      DefaultOperator = Operator.AND
-                  }
-                  .Parse(QueryParserBase.Escape(queryText));
+            {
+                DefaultOperator = Operator.AND
+            }
+            .Parse(QueryParserBase.Escape(queryText));
 
-        var topDocs = searcher.Search(luceneQuery, pageNumber * pageSize);
-        var hits    = topDocs.ScoreDocs
-                             .Skip((pageNumber - 1) * pageSize)
-                             .Take(pageSize);
+        Sort sort = null;
+        if (!string.IsNullOrWhiteSpace(sortField))
+        {
+            var sortFieldObj = CreateSortField(sortField, sortOrder);
+            sort = new Sort(sortFieldObj);
+        }
+
+        TopDocs topDocs = sort != null 
+            ? searcher.Search(luceneQuery, pageNumber * pageSize, sort)
+            : searcher.Search(luceneQuery, pageNumber * pageSize);
+
+        var hits = topDocs.ScoreDocs
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize);
 
         var results = hits.Select(h =>
         {
             var d = searcher.Doc(h.Doc);
+
             return new Patient
             {
-                PatientID         = int.Parse(d.Get(nameof(Patient.PatientID))),
-                FirstName         = d.Get(nameof(Patient.FirstName)),
-                LastName          = d.Get(nameof(Patient.LastName)),
-                DateOfBirth       = DateOnly.Parse(d.Get("DateOfBirth")),
-                Gender            = d.Get(nameof(Patient.Gender)),
-                ContactNumber     = d.Get(nameof(Patient.ContactNumber)),
-                Address           = d.Get(nameof(Patient.Address)),
-                MedicalHistory    = d.Get(nameof(Patient.MedicalHistory)),
-                Allergies         = d.Get(nameof(Patient.Allergies)),
-                CurrentMedications= d.Get(nameof(Patient.CurrentMedications))
+                FirstName = d.Get(nameof(Patient.FirstName)),
+                LastName = d.Get(nameof(Patient.LastName)),
+                DateOfBirth = DateOnly.Parse(d.Get("DateOfBirth")),
+                Gender = d.Get(nameof(Patient.Gender)),
+                ContactNumber = d.Get(nameof(Patient.ContactNumber)),
+                Address = d.Get(nameof(Patient.Address)),
+                MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
+                Allergies = d.Get(nameof(Patient.Allergies)),
+                CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
             };
         }).ToList();
 
         return new PagedResult<Patient>
         {
-            Data       = results,
-            TotalCount = topDocs.TotalHits
+            Data = results,
+            TotalCount = topDocs.TotalHits,
+            PageNumber = pageNumber,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling((double)topDocs.TotalHits / pageSize)
         };
+    }
+
+    private SortField CreateSortField(string fieldName, string? sortOrder)
+    {
+        bool reverse = false;
+        if (!string.IsNullOrWhiteSpace(sortOrder) && sortOrder.ToLower() == "desc")
+        {
+            reverse = true;
+        }
+
+        if (sortOrder == "desc")
+        {
+            return fieldName.ToLower() switch
+            {
+                "firstname" => new SortField(nameof(Patient.FirstName), SortFieldType.STRING, reverse),
+                "lastname" => new SortField(nameof(Patient.LastName), SortFieldType.STRING, reverse),
+                "dateofbirth" => new SortField("DateOfBirth", SortFieldType.STRING, reverse),
+                "contactnumber" => new SortField(nameof(Patient.ContactNumber), SortFieldType.STRING, reverse),
+                "medicalhistory" => new SortField(nameof(Patient.Address), SortFieldType.STRING, reverse),
+                "allergies" => new SortField(nameof(Patient.Allergies), SortFieldType.STRING, reverse),
+                "currentmedications" => new SortField(nameof(Patient.CurrentMedications), SortFieldType.STRING, reverse),
+                "" => new SortField(nameof(Patient.PatientID), SortFieldType.STRING, reverse),
+                _ => new SortField(nameof(Patient.PatientID), SortFieldType.INT32, reverse) // Default sort
+            };
+        }
+        else if (sortOrder == "asc")
+        {
+            return fieldName.ToLower() switch
+            {
+                "firstname" => new SortField(nameof(Patient.FirstName), SortFieldType.STRING),
+                "lastname" => new SortField(nameof(Patient.LastName), SortFieldType.STRING),
+                "dateofbirth" => new SortField("DateOfBirth", SortFieldType.STRING),
+                "contactnumber" => new SortField(nameof(Patient.ContactNumber), SortFieldType.STRING),
+                "medicalhistory" => new SortField(nameof(Patient.Address), SortFieldType.STRING),
+                "allergies" => new SortField(nameof(Patient.Allergies), SortFieldType.STRING),
+                "currentmedications" => new SortField(nameof(Patient.CurrentMedications), SortFieldType.STRING),
+                "" => new SortField(nameof(Patient.PatientID), SortFieldType.STRING),
+                _ => new SortField(nameof(Patient.PatientID), SortFieldType.INT32) // Default sort
+            };
+        }
+        else
+        {
+            Console.WriteLine("error");
+            return null;
+        }
     }
 }

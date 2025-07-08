@@ -7,7 +7,6 @@ using Lucene.Net.Store;
 using Lucene.Net.Util;
 using HealthcareApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace HealthcareApi.Services
@@ -18,6 +17,7 @@ namespace HealthcareApi.Services
         private readonly StandardAnalyzer _analyzer;
         private static readonly LuceneVersion VERSION = LuceneVersion.LUCENE_48;
 
+        // Use DTO field names so Search returns AppointmentWithNamesDTO correctly
         private static readonly string[] Fields = new[]
         {
             nameof(AppointmentWithNamesDTO.PatientName),
@@ -35,37 +35,51 @@ namespace HealthcareApi.Services
         }
 
         /// <summary>
-        /// Indexes an appointment for free-text search, storing all searchable fields.
+        /// Indexes an Appointment entity for free-text search.
         /// </summary>
-        public void IndexAppointment(AppointmentWithNamesDTO dto)
+        public void IndexAppointment(Appointment entity)
         {
-            _writer.DeleteDocuments(new Term(nameof(AppointmentWithNamesDTO.AppointmentID), dto.AppointmentID.ToString()));
+            // Delete any existing document for this AppointmentID
+            _writer.DeleteDocuments(new Term(nameof(Appointment.AppointmentID), entity.AppointmentID.ToString()));
 
+            // Build combined names
+            var patientName = entity.Patient != null
+                ? $"{entity.Patient.FirstName} {entity.Patient.LastName}"
+                : string.Empty;
+            var doctorName = entity.Doctor != null
+                ? $"{entity.Doctor.FirstName} {entity.Doctor.LastName}"
+                : string.Empty;
+
+            // Create and add document
             var doc = new Document
             {
-                new StringField(nameof(AppointmentWithNamesDTO.AppointmentID),
-                                dto.AppointmentID.ToString(),
+                // Store the AppointmentID for retrieval/parsing
+                new StringField(nameof(Appointment.AppointmentID),
+                                entity.AppointmentID.ToString(),
                                 Field.Store.YES),
 
+                // Indexed text fields (DTO names)
                 new TextField(nameof(AppointmentWithNamesDTO.PatientName),
-                              dto.PatientName ?? string.Empty,
+                              patientName,
                               Field.Store.YES),
                 new TextField(nameof(AppointmentWithNamesDTO.DoctorName),
-                              dto.DoctorName ?? string.Empty,
+                              doctorName,
                               Field.Store.YES),
 
+                // Date as lexicographically sortable string
                 new StringField(nameof(AppointmentWithNamesDTO.AppointmentDate),
-                                dto.AppointmentDate.ToString("yyyy-MM-dd"),
+                                entity.AppointmentDate.ToString("yyyy-MM-dd"),
                                 Field.Store.YES),
 
+                // Other searchable fields
                 new TextField(nameof(AppointmentWithNamesDTO.Reason),
-                              dto.Reason ?? string.Empty,
+                              entity.Reason ?? string.Empty,
                               Field.Store.YES),
                 new TextField(nameof(AppointmentWithNamesDTO.Status),
-                              dto.Status ?? string.Empty,
+                              entity.Status ?? string.Empty,
                               Field.Store.YES),
                 new TextField(nameof(AppointmentWithNamesDTO.Notes),
-                              dto.Notes ?? string.Empty,
+                              entity.Notes ?? string.Empty,
                               Field.Store.YES)
             };
 
@@ -74,29 +88,21 @@ namespace HealthcareApi.Services
         }
 
         /// <summary>
-        /// Searches the Lucene index for appointments matching the free-text query
-        /// across PatientName, DoctorName, AppointmentDate, Reason, Status, and Notes.
+        /// Performs a paged, multi-field, AND-based free-text search
+        /// and returns AppointmentWithNamesDTO results.
         /// </summary>
         public PagedResult<AppointmentWithNamesDTO> Search(string queryText, int pageNumber, int pageSize)
         {
             using var reader   = DirectoryReader.Open(_writer, applyAllDeletes: true);
             var searcher       = new IndexSearcher(reader);
 
-            Query luceneQuery;
-
-            if (string.IsNullOrWhiteSpace(queryText))
-            {
-                luceneQuery = new MatchAllDocsQuery();
-            }
-            else
-            {
-                var parser = new MultiFieldQueryParser(VERSION, Fields, _analyzer)
-                {
-                    DefaultOperator = Operator.AND
-                };
-                var escaped = QueryParserBase.Escape(queryText);
-                luceneQuery = parser.Parse(escaped);
-            }
+            Query luceneQuery = string.IsNullOrWhiteSpace(queryText)
+                ? new MatchAllDocsQuery()
+                : new MultiFieldQueryParser(VERSION, Fields, _analyzer)
+                      {
+                          DefaultOperator = Operator.AND
+                      }
+                      .Parse(QueryParserBase.Escape(queryText));
 
             var topDocs = searcher.Search(luceneQuery, pageNumber * pageSize);
             var hits    = topDocs.ScoreDocs
@@ -108,7 +114,7 @@ namespace HealthcareApi.Services
                 var d = searcher.Doc(h.Doc);
                 return new AppointmentWithNamesDTO
                 {
-                    AppointmentID   = int.Parse(d.Get(nameof(AppointmentWithNamesDTO.AppointmentID))),
+                    AppointmentID   = int.Parse(d.Get(nameof(Appointment.AppointmentID))),
                     PatientName     = d.Get(nameof(AppointmentWithNamesDTO.PatientName)),
                     DoctorName      = d.Get(nameof(AppointmentWithNamesDTO.DoctorName)),
                     AppointmentDate = DateTime.Parse(d.Get(nameof(AppointmentWithNamesDTO.AppointmentDate))),

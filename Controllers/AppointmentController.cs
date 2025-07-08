@@ -173,7 +173,7 @@ public class AppointmentController : ControllerBase
     }
 
     [HttpGet("search-lucene")]
-    public ActionResult<PagedResult<Appointment>> SearchLucene([FromQuery] string? query, int pageNumber = 1, int pageSize = 10)
+    public ActionResult<PagedResult<Appointment>> SearchLucene([FromQuery] string? query, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
         _logger.LogInformation("Lucene search for '{query}'", query);
         var result = _lucene.Search(query, pageNumber, pageSize);

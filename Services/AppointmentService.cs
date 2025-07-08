@@ -81,14 +81,14 @@ public class AppointmentService : IAppointmentService
             DoctorID = a.DoctorID
         });
 
-        if (param.PatientID?.Any() == true)
+        if (param.PatientName?.Any() == true)
         {
-            query = query.Where(a => param.PatientID.Contains(a.AppointmentID)); // Note: This maps to AppointmentID in DTO
+            query = query.Where(a => param.PatientName.Contains(a.PatientName));
         }
 
-        if (param.DoctorID?.Any() == true)
+        if (param.DoctorName?.Any() == true)
         {
-            query = query.Where(a => param.DoctorID.Contains(a.AppointmentID)); // You'll need to adjust this logic
+            query = query.Where(a => param.DoctorName.Contains(a.DoctorName));
         }
 
         if (param.AppointmentDate?.Any() == true)
@@ -101,7 +101,6 @@ public class AppointmentService : IAppointmentService
             query = query.Where(a => param.Status.Contains(a.Status));
         }
 
-        // Sorting for DTO
         if (param.Sort?.Any() == true)
         {
             query = param.Sort.Aggregate(
@@ -161,4 +160,13 @@ public class AppointmentService : IAppointmentService
             _ => a => a.AppointmentID
         };
     }
+
+    public async Task<PagedResult<AppointmentWithNamesDTO>> SearchLucene(
+            string query,
+            int pageNumber = 1,
+            int pageSize   = 10)
+        {
+            var result = _lucene.Search(query, pageNumber, pageSize);
+            return await Task.FromResult(result);
+        }
 }

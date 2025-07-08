@@ -37,7 +37,6 @@ builder.Services.AddScoped<LucenePatientIndexService>();
 builder.Services.AddScoped<LuceneAppointmentIndexService>();
 builder.Services.AddScoped<LuceneDoctorIndexService>();
 
-// Configure Serilog
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()

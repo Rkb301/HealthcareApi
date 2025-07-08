@@ -69,9 +69,6 @@ public class PatientService : IPatientService
     {
         var query = _repository.GetBaseQuery();
         
-        if (param.UID?.Any() == true)
-            query = query.Where(p => param.UID.Contains(p.UserID));
-        
         if (param.FirstName?.Any() == true)
             query = query.Where(p => param.FirstName.Contains(p.FirstName));
         

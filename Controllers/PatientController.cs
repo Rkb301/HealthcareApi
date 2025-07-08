@@ -155,10 +155,16 @@ public class PatientController : ControllerBase
     }
     
     [HttpGet("search-lucene")]
-    public ActionResult<PagedResult<Patient>> SearchLucene([FromQuery] string? query, int pageNumber = 1, int pageSize = 10)
+    public ActionResult<PagedResult<Patient>> SearchLucene(
+        [FromQuery] string? query, 
+        [FromQuery] string? sort,
+        [FromQuery] string? order,
+        int pageNumber = 1, 
+        int pageSize = 10)
     {
-        _logger.LogInformation("Lucene search for '{query}'", query);
-        var result = _luceneIndexService.Search(query, pageNumber, pageSize);
+        _logger.LogInformation("Lucene search for '{query}' with sort '{sort}' order '{order}'", query, sort, order);
+        var result = _luceneIndexService.Search(query, pageNumber, pageSize, sort, order);
         return Ok(result);
     }
+
 }

@@ -2,8 +2,8 @@ namespace HealthcareApi.Models;
 
 public class AppointmentQueryParams
 {
-    public List<int>? PatientID { get; set; }
-    public List<int>? DoctorID { get; set; }
+    public string? PatientName { get; set; }
+    public string? DoctorName { get; set; }
     public List<DateTime>? AppointmentDate { get; set; }
     public string? Reason { get; set; }
     public List<string>? Status { get; set; }
