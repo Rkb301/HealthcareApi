@@ -8,6 +8,7 @@ using Lucene.Net.Util;
 using HealthcareApi.Models;
 using System.Linq;
 using System.Linq.Expressions;
+using Lucene.Net.Documents.Extensions;
 
 public class LucenePatientIndexService
 {
@@ -37,37 +38,62 @@ public class LucenePatientIndexService
     public void IndexPatient(Patient p)
     {
         _writer.DeleteDocuments(new Term(nameof(Patient.PatientID), p.PatientID.ToString()));
-
-        var doc = new Document
+        if (p.isActive)
         {
-            new StringField(nameof(Patient.PatientID), p.PatientID.ToString(), Field.Store.YES),
-            new TextField(nameof(Patient.FirstName), p.FirstName ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.LastName),  p.LastName  ?? "", Field.Store.YES),
-            new StringField("DateOfBirth", p.DateOfBirth?.ToString("yyyy-MM-dd") ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.Gender), p.Gender ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.ContactNumber), p.ContactNumber ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.Address),       p.Address       ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.MedicalHistory),p.MedicalHistory?? "", Field.Store.YES),
-            new TextField(nameof(Patient.Allergies),     p.Allergies     ?? "", Field.Store.YES),
-            new TextField(nameof(Patient.CurrentMedications), p.CurrentMedications ?? "", Field.Store.YES)
-        };
+            var doc = new Document
+            {
+                new StringField(nameof(Patient.PatientID), p.PatientID.ToString(), Field.Store.YES),
+                new TextField(nameof(Patient.FirstName), p.FirstName ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.LastName),  p.LastName  ?? "", Field.Store.YES),
+                new StringField("DateOfBirth", p.DateOfBirth?.ToString("yyyy-MM-dd") ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.Gender), p.Gender ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.ContactNumber), p.ContactNumber ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.Address),       p.Address       ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.MedicalHistory),p.MedicalHistory?? "", Field.Store.YES),
+                new TextField(nameof(Patient.Allergies),     p.Allergies     ?? "", Field.Store.YES),
+                new TextField(nameof(Patient.CurrentMedications), p.CurrentMedications ?? "", Field.Store.YES)
+            };
 
-        _writer.AddDocument(doc);
+            _writer.AddDocument(doc);
+        }
+        
         _writer.Flush(triggerMerge: false, applyAllDeletes: true);
     }
 
-    public PagedResult<Patient> Search(string queryText, int pageNumber, int pageSize, string? sortField = null, string? sortOrder = null)
+    public PagedResult<Patient> Search(string? queryText, int pageNumber, int pageSize, string? sortField = null, string? sortOrder = null)
     {
         using var reader = DirectoryReader.Open(_writer, applyAllDeletes: true);
         var searcher = new IndexSearcher(reader);
 
-        Query luceneQuery = string.IsNullOrWhiteSpace(queryText)
-            ? new MatchAllDocsQuery()
-            : new MultiFieldQueryParser(VERSION, Fields, _analyzer)
+        
+        // If the incoming text is empty or null, match all documents.
+        // Otherwise, build a MultiFieldQueryParser over your indexed fields,
+        // escape the user input, and append '*' for prefix (dynamic) matching.
+        Query luceneQuery;
+        if (string.IsNullOrWhiteSpace(queryText))
+        {
+            luceneQuery = new MatchAllDocsQuery();
+        }
+        else
+        {
+            var parser = new MultiFieldQueryParser(LuceneVersion.LUCENE_48, 
+                                                  new[] {
+                                                    nameof(Patient.FirstName),
+                                                    nameof(Patient.LastName),
+                                                    nameof(Patient.DateOfBirth),
+                                                    nameof(Patient.Gender),
+                                                    nameof(Patient.ContactNumber),
+                                                    nameof(Patient.Address),
+                                                    nameof(Patient.MedicalHistory),
+                                                    nameof(Patient.Allergies),
+                                                    nameof(Patient.CurrentMedications)
+                                                  },
+                                                  _analyzer)
             {
-                DefaultOperator = Operator.AND
-            }
-            .Parse(QueryParserBase.Escape(queryText));
+                DefaultOperator = Operator.OR
+            };
+            luceneQuery = parser.Parse(QueryParserBase.Escape(queryText) + "*");
+        }
 
         Sort sort = null;
         if (!string.IsNullOrWhiteSpace(sortField))
@@ -88,18 +114,39 @@ public class LucenePatientIndexService
         {
             var d = searcher.Doc(h.Doc);
 
-            return new Patient
+            if (d.GetValues("DateOfBirth") != null)
             {
-                FirstName = d.Get(nameof(Patient.FirstName)),
-                LastName = d.Get(nameof(Patient.LastName)),
-                DateOfBirth = DateOnly.Parse(d.Get("DateOfBirth")),
-                Gender = d.Get(nameof(Patient.Gender)),
-                ContactNumber = d.Get(nameof(Patient.ContactNumber)),
-                Address = d.Get(nameof(Patient.Address)),
-                MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
-                Allergies = d.Get(nameof(Patient.Allergies)),
-                CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
-            };
+                return new Patient
+                {
+                    PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
+                    UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
+                    FirstName = d.Get(nameof(Patient.FirstName)),
+                    LastName = d.Get(nameof(Patient.LastName)),
+                    DateOfBirth = DateOnly.Parse(d.Get("DateOfBirth")),
+                    Gender = d.Get(nameof(Patient.Gender)),
+                    ContactNumber = d.Get(nameof(Patient.ContactNumber)),
+                    Address = d.Get(nameof(Patient.Address)),
+                    MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
+                    Allergies = d.Get(nameof(Patient.Allergies)),
+                    CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
+                };
+            }
+            else
+            {
+                return new Patient
+                {
+                    PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
+                    UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
+                    FirstName = d.Get(nameof(Patient.FirstName)),
+                    LastName = d.Get(nameof(Patient.LastName)),
+                    Gender = d.Get(nameof(Patient.Gender)),
+                    ContactNumber = d.Get(nameof(Patient.ContactNumber)),
+                    Address = d.Get(nameof(Patient.Address)),
+                    MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
+                    Allergies = d.Get(nameof(Patient.Allergies)),
+                    CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
+                };
+            }
         }).ToList();
 
         return new PagedResult<Patient>
@@ -128,7 +175,7 @@ public class LucenePatientIndexService
                 "lastname" => new SortField(nameof(Patient.LastName), SortFieldType.STRING, reverse),
                 "dateofbirth" => new SortField("DateOfBirth", SortFieldType.STRING, reverse),
                 "contactnumber" => new SortField(nameof(Patient.ContactNumber), SortFieldType.STRING, reverse),
-                "medicalhistory" => new SortField(nameof(Patient.Address), SortFieldType.STRING, reverse),
+                "medicalhistory" => new SortField(nameof(Patient.MedicalHistory), SortFieldType.STRING, reverse),
                 "allergies" => new SortField(nameof(Patient.Allergies), SortFieldType.STRING, reverse),
                 "currentmedications" => new SortField(nameof(Patient.CurrentMedications), SortFieldType.STRING, reverse),
                 "" => new SortField(nameof(Patient.PatientID), SortFieldType.STRING, reverse),
@@ -143,7 +190,7 @@ public class LucenePatientIndexService
                 "lastname" => new SortField(nameof(Patient.LastName), SortFieldType.STRING),
                 "dateofbirth" => new SortField("DateOfBirth", SortFieldType.STRING),
                 "contactnumber" => new SortField(nameof(Patient.ContactNumber), SortFieldType.STRING),
-                "medicalhistory" => new SortField(nameof(Patient.Address), SortFieldType.STRING),
+                "medicalhistory" => new SortField(nameof(Patient.MedicalHistory), SortFieldType.STRING),
                 "allergies" => new SortField(nameof(Patient.Allergies), SortFieldType.STRING),
                 "currentmedications" => new SortField(nameof(Patient.CurrentMedications), SortFieldType.STRING),
                 "" => new SortField(nameof(Patient.PatientID), SortFieldType.STRING),

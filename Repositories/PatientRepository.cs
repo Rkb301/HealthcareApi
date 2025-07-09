@@ -12,11 +12,13 @@ public class PatientRepository : IPatientRepository
         _context = context;
     }
 
-    public IQueryable<Patient> GetBaseQuery() => _context.Patients.AsQueryable();
+    public IQueryable<Patient> GetBaseQuery() => _context.Patients.Where(p => p.isActive == true).AsQueryable();
 
     public async Task<Patient> GetByIdAsync(int id)
     {
-        return await _context.Patients.FindAsync(id);
+        return await _context.Patients
+        .Where(p => p.isActive)
+        .FirstOrDefaultAsync(p => p.PatientID == id);
     }
 
     public async Task<Patient> AddAsync(Patient patient)

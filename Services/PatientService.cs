@@ -62,12 +62,18 @@ public class PatientService : IPatientService
         patient.isActive = false;
         patient.ModifiedAt = DateTime.UtcNow;
         await _repository.UpdateAsync(patient);
+
+        _lucene.IndexPatient(patient);
+
         return true;
     }
 
     public async Task<PagedResult<Patient>> SearchPatients(PatientQueryParams param)
     {
         var query = _repository.GetBaseQuery();
+        
+        if (param.UID?.Any() == true)
+            query = query.Where(p => param.UID.Contains(p.UserID));
         
         if (param.FirstName?.Any() == true)
             query = query.Where(p => param.FirstName.Contains(p.FirstName));

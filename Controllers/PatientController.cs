@@ -162,8 +162,9 @@ public class PatientController : ControllerBase
         int pageNumber = 1, 
         int pageSize = 10)
     {
-        _logger.LogInformation("Lucene search for '{query}' with sort '{sort}' order '{order}'", query, sort, order);
+        _logger.LogInformation("Lucene search for query '{query}' with sort '{sort}' order '{order}'", query, sort, order);
         var result = _luceneIndexService.Search(query, pageNumber, pageSize, sort, order);
+        
         return Ok(result);
     }
 
