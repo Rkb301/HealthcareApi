@@ -36,6 +36,7 @@ public class PatientService : IPatientService
 
     public async Task<Patient> AddPatient(Patient patient)
     {
+        patient.UserID = 1;                 // ONLY UNTIL NO AUTH
         patient.CreatedAt = DateTime.UtcNow;
         patient.ModifiedAt = DateTime.UtcNow;
         var returnee = await _repository.AddAsync(patient);
@@ -73,7 +74,7 @@ public class PatientService : IPatientService
         var query = _repository.GetBaseQuery();
         
         if (param.UID?.Any() == true)
-            query = query.Where(p => param.UID.Contains(p.UserID));
+            query = query.Where(p => param.UID.Contains((int)p.UserID));
         
         if (param.FirstName?.Any() == true)
             query = query.Where(p => param.FirstName.Contains(p.FirstName));

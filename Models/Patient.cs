@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace HealthcareApi.Models;
 
@@ -8,8 +9,7 @@ public partial class Patient : IValidatableObject
 {
     public int PatientID { get; set; }
 
-    [Required]
-    public int UserID { get; set; }
+    public int? UserID { get; set; }
 
     [Required]
     [StringLength(50)]
@@ -47,8 +47,10 @@ public partial class Patient : IValidatableObject
     
     public bool isActive { get; set; } = true;
 
+    [JsonIgnore]
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-    public virtual User User { get; set; } = null!;
+    [JsonIgnore]
+    public virtual User? User { get; set; } = null!;
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
