@@ -6,7 +6,8 @@ using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Lucene.Net.Util;
 using HealthcareApi.Models;
-using System.Linq;
+
+namespace HealthcareApi.Services;
 
 public class LuceneDoctorIndexService
 {
@@ -33,59 +34,68 @@ public class LuceneDoctorIndexService
     public void IndexDoctor(Doctor d)
     {
         _writer.DeleteDocuments(new Term(nameof(Doctor.DoctorID), d.DoctorID.ToString()));
-
-        var doc = new Document
+        if (d.isActive)
         {
-            new StringField(nameof(Doctor.DoctorID), d.DoctorID.ToString(), Field.Store.YES),
-            new TextField(nameof(Doctor.FirstName), d.FirstName ?? "", Field.Store.YES),
-            new TextField(nameof(Doctor.LastName),  d.LastName  ?? "", Field.Store.YES),
-            new TextField(nameof(Doctor.Specialization), d.Specialization ?? "", Field.Store.YES),
-            new TextField(nameof(Doctor.ContactNumber), d.ContactNumber ?? "", Field.Store.YES),
-            new TextField(nameof(Doctor.Email), d.Email ?? "", Field.Store.YES),
-            new TextField(nameof(Doctor.Schedule), d.Schedule ?? "", Field.Store.YES)
-        };
-
-        _writer.AddDocument(doc);
-        _writer.Flush(triggerMerge: false, applyAllDeletes: true);
+            var doc = new Document
+            {
+                new StringField(nameof(Doctor.DoctorID), d.DoctorID.ToString(), Field.Store.YES),
+                new TextField(nameof(Doctor.FirstName), d.FirstName, Field.Store.YES),
+                new TextField(nameof(Doctor.LastName),  d.LastName,  Field.Store.YES),
+                new TextField(nameof(Doctor.Specialization), d.Specialization ?? "", Field.Store.YES),
+                new TextField(nameof(Doctor.ContactNumber), d.ContactNumber ?? "", Field.Store.YES),
+                new TextField(nameof(Doctor.Email), d.Email ?? "", Field.Store.YES),
+                new TextField(nameof(Doctor.Schedule), d.Schedule ?? "", Field.Store.YES)
+            };
+            _writer.AddDocument(doc);
+        }
+        _writer.Flush(applyAllDeletes: true, triggerMerge: false);
     }
 
-    public PagedResult<Doctor> Search(string queryText, int pageNumber, int pageSize)
+    public PagedResult<Doctor> Search(
+        string? queryText, int pageNumber, int pageSize,
+        string? sortField = null, string? sortOrder = null)
     {
         using var reader   = DirectoryReader.Open(_writer, applyAllDeletes: true);
         var searcher       = new IndexSearcher(reader);
-
-        Query luceneQuery = string.IsNullOrWhiteSpace(queryText)
+        Query luceneQuery  = string.IsNullOrWhiteSpace(queryText)
             ? new MatchAllDocsQuery()
             : new MultiFieldQueryParser(VERSION, Fields, _analyzer)
                   {
-                      DefaultOperator = Operator.AND
+                      DefaultOperator = Operator.OR
                   }
-                  .Parse(QueryParserBase.Escape(queryText));
-
-        var topDocs = searcher.Search(luceneQuery, pageNumber * pageSize);
-        var hits    = topDocs.ScoreDocs
-                             .Skip((pageNumber - 1) * pageSize)
-                             .Take(pageSize);
-
-        var results = hits.Select(h =>
-        {
-            var d = searcher.Doc(h.Doc);
-            return new Doctor
+                  .Parse(QueryParserBase.Escape(queryText) + "*");
+        TopDocs top = string.IsNullOrWhiteSpace(sortField)
+            ? searcher.Search(luceneQuery, pageNumber * pageSize)
+            : searcher.Search(
+                luceneQuery,
+                pageNumber * pageSize,
+                new Sort(new SortField(sortField, SortFieldType.STRING,
+                    sortOrder?.ToLower() == "desc")));
+        var hits = top.ScoreDocs
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .Select(h =>
             {
-                DoctorID = int.Parse(d.Get(nameof(Doctor.DoctorID))),
-                FirstName = d.Get(nameof(Doctor.FirstName)),
-                LastName = d.Get(nameof(Doctor.LastName)),
-                Specialization = d.Get(nameof(Doctor.Specialization)),
-                ContactNumber = d.Get(nameof(Doctor.ContactNumber)),
-                Email = d.Get(nameof(Doctor.Email)),
-                Schedule = d.Get(nameof(Doctor.Schedule)),
-            };
-        }).ToList();
-
+                var d = searcher.Doc(h.Doc);
+                return new Doctor
+                {
+                    DoctorID       = int.Parse(d.Get(nameof(Doctor.DoctorID))),
+                    FirstName      = d.Get(nameof(Doctor.FirstName)),
+                    LastName       = d.Get(nameof(Doctor.LastName)),
+                    Specialization = d.Get(nameof(Doctor.Specialization)),
+                    ContactNumber  = d.Get(nameof(Doctor.ContactNumber)),
+                    Email          = d.Get(nameof(Doctor.Email)),
+                    Schedule       = d.Get(nameof(Doctor.Schedule))
+                };
+            })
+            .ToList();
         return new PagedResult<Doctor>
         {
-            Data       = results,
-            TotalCount = topDocs.TotalHits
+            Data       = hits,
+            TotalCount = (int)top.TotalHits,
+            PageNumber = pageNumber,
+            PageSize   = pageSize,
+            TotalPages = (int)Math.Ceiling(top.TotalHits / (double)pageSize)
         };
     }
 }

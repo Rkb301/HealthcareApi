@@ -6,29 +6,26 @@ namespace HealthcareApi.Repositories;
 public class DoctorRepository : IDoctorRepository
 {
     private readonly AssignmentDbContext _context;
+    public DoctorRepository(AssignmentDbContext ctx) => _context = ctx;
 
-    public DoctorRepository(AssignmentDbContext context)
+    public IQueryable<Doctor> GetBaseQuery() =>
+        _context.Doctors.Where(d => d.isActive);
+
+    public async Task<Doctor?> GetByIdAsync(int id) =>
+        await _context.Doctors
+            .Where(d => d.isActive && d.DoctorID == id)
+            .FirstOrDefaultAsync();
+
+    public async Task<Doctor> AddAsync(Doctor d)
     {
-        _context = context;
-    }
-
-    public IQueryable<Doctor> GetBaseQuery() => _context.Doctors.AsQueryable();
-
-    public async Task<Doctor> GetByIdAsync(int id)
-    {
-        return await _context.Doctors.FindAsync(id);
-    }
-
-    public async Task<Doctor> AddAsync(Doctor doctor)
-    {
-        _context.Doctors.Add(doctor);
+        _context.Doctors.Add(d);
         await _context.SaveChangesAsync();
-        return doctor;
+        return d;
     }
 
-    public async Task UpdateAsync(Doctor doctor)
+    public async Task UpdateAsync(Doctor d)
     {
-        _context.Entry(doctor).State = EntityState.Modified;
+        _context.Entry(d).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 }

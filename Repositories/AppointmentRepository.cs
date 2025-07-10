@@ -5,36 +5,27 @@ namespace HealthcareApi.Repositories;
 
 public class AppointmentRepository : IAppointmentRepository
 {
-
     private readonly AssignmentDbContext _context;
+    public AppointmentRepository(AssignmentDbContext ctx) => _context = ctx;
 
-    public AppointmentRepository(AssignmentDbContext context)
-    {
-        _context = context;
-    }
+    public IQueryable<Appointment> GetBaseQuery() =>
+        _context.Appointments.Where(a => a.isActive);
 
-    public async Task<Appointment> AddAsync(Appointment appointment)
+    public async Task<Appointment?> GetByIdAsync(int id) =>
+        await _context.Appointments
+            .Where(a => a.isActive && a.AppointmentID == id)
+            .FirstOrDefaultAsync();
+
+    public async Task<Appointment> AddAsync(Appointment a)
     {
-        _context.Appointments.Add(appointment);
+        _context.Appointments.Add(a);
         await _context.SaveChangesAsync();
-        return appointment;
+        return a;
     }
 
-    public IQueryable<Appointment> GetBaseQuery() {
-        return _context.Appointments
-            .Include(a => a.Patient)
-            .Include(a => a.Doctor)
-            .AsQueryable();
-    }
-
-    public async Task<Appointment> GetByIdAsync(int id)
+    public async Task UpdateAsync(Appointment a)
     {
-        return await _context.Appointments.FindAsync(id);
-    }
-
-    public async Task UpdateAsync(Appointment appointment)
-    {
-        _context.Entry(appointment).State = EntityState.Modified;
+        _context.Entry(a).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 }

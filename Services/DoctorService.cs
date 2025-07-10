@@ -1,122 +1,62 @@
-using System.Linq.Expressions;
 using HealthcareApi.Extensions;
 using HealthcareApi.Models;
 using HealthcareApi.Repositories;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.EntityFrameworkCore;
 
 namespace HealthcareApi.Services;
 
-public class DoctorService : IDoctorService
+public class DoctorService: IDoctorService
 {
-
-    private readonly IDoctorRepository _repository;
-    private readonly ILogger<DoctorService> _logger;
+    private readonly IDoctorRepository _repo;
     private readonly LuceneDoctorIndexService _lucene;
 
     public DoctorService(
-        IDoctorRepository repository,
-        ILogger<DoctorService> logger,
-        LuceneDoctorIndexService lucene
-    )
+        IDoctorRepository repo,
+        LuceneDoctorIndexService lucene)
     {
-        _repository = repository;
-        _logger = logger;
+        _repo   = repo;
         _lucene = lucene;
     }
 
-    public async Task<List<Doctor>> GetAllDoctors()
+    public async Task<Doctor> AddDoctor(Doctor d)
     {
-        return await _repository.GetBaseQuery().ToListAsync();
-    }
-
-    public async Task<Doctor> GetDoctorById(int id)
-    {
-        return await _repository.GetByIdAsync(id);
-    }
-
-    public async Task<Doctor> AddDoctor(Doctor doctor)
-    {
-        doctor.CreatedAt = DateTime.UtcNow;
-        doctor.ModifiedAt = DateTime.UtcNow;
-        var returnee = await _repository.AddAsync(doctor);
-        _lucene.IndexDoctor(doctor);
-        return returnee;
-    }
-
-    public async Task UpdateDoctor(int id, JsonPatchDocument<Doctor> patchDoc)
-    {
-        var doctor = await _repository.GetByIdAsync(id);
-        if (doctor == null) throw new NotFoundException();
-
-        patchDoc.ApplyTo(doctor);
-        doctor.ModifiedAt = DateTime.UtcNow;
-        await _repository.UpdateAsync(doctor);
-        _lucene.IndexDoctor(doctor);
+        d.CreatedAt  = DateTime.UtcNow;
+        d.ModifiedAt = DateTime.UtcNow;
+        var ret = await _repo.AddAsync(d);
+        _lucene.IndexDoctor(ret);
+        return ret;
     }
 
     public async Task<bool> SoftDeleteDoctor(int id)
     {
-        var doctor = await _repository.GetByIdAsync(id);
-        if (doctor == null) return false;
-
-        doctor.isActive = false;
-        doctor.ModifiedAt = DateTime.UtcNow;
-        await _repository.UpdateAsync(doctor);
+        var d = await _repo.GetByIdAsync(id);
+        if (d == null) return false;
+        d.isActive    = false;
+        d.ModifiedAt  = DateTime.UtcNow;
+        await _repo.UpdateAsync(d);
+        _lucene.IndexDoctor(d);
         return true;
     }
 
-    public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams param)
+    public async Task UpdateDoctor(int id, JsonPatchDocument patch)
     {
-        var query = _repository.GetBaseQuery();
-        
-        if (param.FirstName?.Any() == true)
-        {
-            query = query.Where(d => param.FirstName.Contains(d.FirstName));
-        }
-
-        if (param.LastName?.Any() == true)
-        {
-            query = query.Where(d => param.LastName.Contains(d.LastName));
-        }
-
-        if (param.Specialization?.Any() == true)
-        {
-            query = query.Where(d => param.Specialization.Contains(d.Specialization));
-        }
-
-        if (param.Phone?.Any() == true)
-        {
-            query = query.Where(d => param.Phone.Contains(d.ContactNumber));
-        }
-
-        if (param.Email?.Any() == true)
-        {
-            query = query.Where(d => param.Email.Contains(d.Email));
-        }
-
-        // Sorting
-        if (param.Sort?.Any() == true)
-        {
-            query = param.Sort.Aggregate(
-                (IOrderedQueryable<Doctor>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
-                (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
-            );
-        }
-
-        return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
+        var d = await _repo.GetByIdAsync(id) ?? throw new KeyNotFoundException();
+        patch.ApplyTo(d);
+        d.ModifiedAt = DateTime.UtcNow;
+        await _repo.UpdateAsync(d);
+        _lucene.IndexDoctor(d);
     }
 
-    private Expression<Func<Doctor, object>> GetSortExpression(string field, string order)
+    public async Task<Doctor?> GetDoctorById(int id) =>
+        await _repo.GetByIdAsync(id);
+
+    public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams qp)
     {
-        return field.ToLower() switch
+        if (string.IsNullOrWhiteSpace(qp.Query))
         {
-            "firstname" => d => d.FirstName,
-            "lastname" => d => d.LastName,
-            "specialization" => d => d.Specialization,
-            "phone" => d => d.ContactNumber,
-            "email" => d => d.Email,
-            _ => d => d.FirstName
-        };
+            return await _repo.GetBaseQuery()
+                .GetPagedResultAsync(qp.pageNumber, qp.pageSize);
+        }
+        return _lucene.Search(qp.Query, qp.pageNumber, qp.pageSize, qp.Sort?.FirstOrDefault(), qp.Order);
     }
 }

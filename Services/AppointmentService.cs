@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using HealthcareApi.Extensions;
 using HealthcareApi.Models;
 using HealthcareApi.Repositories;
@@ -7,166 +6,83 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthcareApi.Services;
 
-public class AppointmentService : IAppointmentService
+public class AppointmentService: IAppointmentService
 {
-    private readonly IAppointmentRepository _repository;
-    private readonly ILogger<AppointmentService> _logger;
+    private readonly IAppointmentRepository _repo;
     private readonly LuceneAppointmentIndexService _lucene;
+    private readonly AssignmentDbContext _ctx;
 
     public AppointmentService(
-        IAppointmentRepository repository,
-        ILogger<AppointmentService> logger,
-        LuceneAppointmentIndexService lucene
-        )
+        IAppointmentRepository repo,
+        LuceneAppointmentIndexService lucene,
+        AssignmentDbContext ctx)
     {
-        _repository = repository;
-        _logger = logger;
+        _repo   = repo;
         _lucene = lucene;
+        _ctx    = ctx;
     }
 
-    public async Task<Appointment> AddAppointment(Appointment appointment)
+    public async Task<Appointment> AddAppointment(Appointment a)
     {
-        appointment.CreatedAt = DateTime.UtcNow;
-        appointment.ModifiedAt = DateTime.UtcNow;
-        var returnee = await _repository.AddAsync(appointment);
-        _lucene.IndexAppointment(appointment);
-        return returnee;
-    }
-
-    public async Task<List<Appointment>> GetAllAppointments()
-    {
-        return await _repository.GetBaseQuery().ToListAsync();
-    }
-
-    public async Task<Appointment> GetAppointmentById(int id)
-    {
-        return await _repository.GetByIdAsync(id);
+        a.CreatedAt  = DateTime.UtcNow;
+        a.ModifiedAt = DateTime.UtcNow;
+        var ret = await _repo.AddAsync(a);
+        _lucene.IndexAppointment(ret);
+        return ret;
     }
 
     public async Task<bool> SoftDeleteAppointment(int id)
     {
-        var appointment = await _repository.GetByIdAsync(id);
-        if (appointment == null) return false;
-
-        appointment.isActive = false;
-        appointment.ModifiedAt = DateTime.UtcNow;
-        await _repository.UpdateAsync(appointment);
+        var a = await _repo.GetByIdAsync(id);
+        if (a == null) return false;
+        a.isActive    = false;
+        a.ModifiedAt  = DateTime.UtcNow;
+        await _repo.UpdateAsync(a);
+        _lucene.IndexAppointment(a);
         return true;
     }
 
-    public async Task UpdateAppointment(int id, JsonPatchDocument<Appointment> patchDoc)
+    public async Task UpdateAppointment(int id, JsonPatchDocument patch)
     {
-        var appointment = await _repository.GetByIdAsync(id);
-        if (appointment == null) throw new NotFoundException();
-
-        patchDoc.ApplyTo(appointment);
-        appointment.ModifiedAt = DateTime.UtcNow;
-        await _repository.UpdateAsync(appointment);
-        _lucene.IndexAppointment(appointment);
+        var a = await _repo.GetByIdAsync(id) ?? throw new KeyNotFoundException();
+        patch.ApplyTo(a);
+        a.ModifiedAt = DateTime.UtcNow;
+        await _repo.UpdateAsync(a);
+        _lucene.IndexAppointment(a);
     }
 
-    public async Task<PagedResult<AppointmentWithNamesDTO>> SearchAppointmentsWithNames(AppointmentQueryParams param)
+    public async Task<Appointment?> GetAppointmentById(int id) =>
+        await _repo.GetByIdAsync(id);
+
+    public async Task<PagedResult<AppointmentWithNamesDTO>> SearchAppointments(AppointmentQueryParams qp)
     {
-        var query = _repository.GetBaseQuery()
-        .Select(a => new AppointmentWithNamesDTO
+        if (string.IsNullOrWhiteSpace(qp.Query))
         {
-            AppointmentID = a.AppointmentID,
-            PatientName = $"{a.Patient.FirstName} {a.Patient.LastName}",
-            DoctorName = $"{a.Doctor.FirstName} {a.Doctor.LastName}",
-            AppointmentDate = a.AppointmentDate,
-            Reason = a.Reason,
-            Status = a.Status,
-            Notes = a.Notes,
-            PatientID = a.PatientID,
-            DoctorID = a.DoctorID
-        });
-
-        if (param.PatientName?.Any() == true)
-        {
-            query = query.Where(a => param.PatientName.Contains(a.PatientName));
+            var query = _repo.GetBaseQuery();
+            return await query
+                .Select(a => new AppointmentWithNamesDTO
+                {
+                    AppointmentID   = a.AppointmentID,
+                    PatientName     = a.Patient.FirstName + " " + a.Patient.LastName,
+                    DoctorName      = a.Doctor.FirstName  + " " + a.Doctor.LastName,
+                    AppointmentDate = a.AppointmentDate,
+                    Reason          = a.Reason,
+                    Status          = a.Status,
+                    Notes           = a.Notes
+                })
+                .GetPagedResultAsync(qp.pageNumber, qp.pageSize);
         }
 
-        if (param.DoctorName?.Any() == true)
+        var lucRes = _lucene.Search(qp.Query, qp.pageNumber, qp.pageSize, qp.Sort?.FirstOrDefault(), qp.Order);
+        foreach (var dto in lucRes.Data)
         {
-            query = query.Where(a => param.DoctorName.Contains(a.DoctorName));
+            var a = await _ctx.Appointments
+                .Include(x => x.Patient)
+                .Include(x => x.Doctor)
+                .FirstAsync(x => x.AppointmentID == dto.AppointmentID);
+            dto.PatientName = a.Patient.FirstName + " " + a.Patient.LastName;
+            dto.DoctorName  = a.Doctor.FirstName  + " " + a.Doctor.LastName;
         }
-
-        if (param.AppointmentDate?.Any() == true)
-        {
-            query = query.Where(a => param.AppointmentDate.Contains(a.AppointmentDate));
-        }
-
-        if (param.Status?.Any() == true)
-        {
-            query = query.Where(a => param.Status.Contains(a.Status));
-        }
-
-        if (param.Sort?.Any() == true)
-        {
-            query = param.Sort.Aggregate(
-                (IOrderedQueryable<AppointmentWithNamesDTO>)query.OrderBy(GetSortExpressionForDto(param.Sort.First(), param.Order)),
-                (current, sortField) => current.ThenBy(GetSortExpressionForDto(sortField, param.Order))
-            );
-        }
-
-        return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
+        return lucRes;
     }
-
-    public async Task<PagedResult<Appointment>> SearchAppointments(AppointmentQueryParams param)
-    {
-        var query = _repository.GetBaseQuery();
-
-        if (param.AppointmentDate?.Any() == true)
-        {
-            query = query.Where(a => param.AppointmentDate.Contains(a.AppointmentDate));
-        }
-
-        if (param.Status?.Any() == true)
-        {
-            query = query.Where(a => param.Status.Contains(a.Status));
-        }
-
-        // Sorting
-        if (param.Sort?.Any() == true)
-        {
-            query = param.Sort.Aggregate(
-                (IOrderedQueryable<Appointment>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
-                (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
-            );
-        }
-
-        return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
-    }
-
-    private Expression<Func<Appointment, object>> GetSortExpression(string field, string order)
-    {
-        return field.ToLower() switch
-        {
-            "appointmentdate" => a => a.AppointmentDate,
-            "reason" => a => a.Reason,
-            "status" => a => a.Status,
-            "notes" => a => a.Notes,
-            _ => a => a.AppointmentDate
-        };
-    }
-    private Expression<Func<AppointmentWithNamesDTO, object>> GetSortExpressionForDto(string field, string order)
-    {
-        return field.ToLower() switch
-        {
-            "patientname" => a => a.PatientName,
-            "doctorname" => a => a.DoctorName,
-            "appointmentdate" => a => a.AppointmentDate,
-            "status" => a => a.Status ?? string.Empty,
-            _ => a => a.AppointmentID
-        };
-    }
-
-    public async Task<PagedResult<AppointmentWithNamesDTO>> SearchLucene(
-            string query,
-            int pageNumber = 1,
-            int pageSize   = 10)
-        {
-            var result = _lucene.Search(query, pageNumber, pageSize);
-            return await Task.FromResult(result);
-        }
 }

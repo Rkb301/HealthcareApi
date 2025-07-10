@@ -114,38 +114,56 @@ public class LucenePatientIndexService
         {
             var d = searcher.Doc(h.Doc);
 
-            if (d.GetValues("DateOfBirth") != null)
+            try
             {
-                return new Patient
+                if (d.Get("DateOfBirth") != null)
                 {
-                    PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
-                    UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
-                    FirstName = d.Get(nameof(Patient.FirstName)),
-                    LastName = d.Get(nameof(Patient.LastName)),
-                    DateOfBirth = DateOnly.Parse(d.Get("DateOfBirth")),
-                    Gender = d.Get(nameof(Patient.Gender)),
-                    ContactNumber = d.Get(nameof(Patient.ContactNumber)),
-                    Address = d.Get(nameof(Patient.Address)),
-                    MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
-                    Allergies = d.Get(nameof(Patient.Allergies)),
-                    CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
-                };
+                    return new Patient
+                    {
+                        PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
+                        UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
+                        FirstName = d.Get(nameof(Patient.FirstName)),
+                        LastName = d.Get(nameof(Patient.LastName)),
+                        DateOfBirth = DateOnly.Parse(d?.Get("DateOfBirth")),
+                        Gender = d.Get(nameof(Patient.Gender)),
+                        ContactNumber = d.Get(nameof(Patient.ContactNumber)),
+                        Address = d.Get(nameof(Patient.Address)),
+                        MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
+                        Allergies = d.Get(nameof(Patient.Allergies)),
+                        CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
+                    };
+                }
+                else if (d.Get("DateOfBirth") == null)
+                {
+                    return new Patient
+                    {
+                        PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
+                        UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
+                        FirstName = d.Get(nameof(Patient.FirstName)),
+                        LastName = d.Get(nameof(Patient.LastName)),
+                        Gender = d.Get(nameof(Patient.Gender)),
+                        ContactNumber = d.Get(nameof(Patient.ContactNumber)),
+                        Address = d.Get(nameof(Patient.Address)),
+                        MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
+                        Allergies = d.Get(nameof(Patient.Allergies)),
+                        CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
+                    };
+                }
+                else
+                {
+                    try
+                    {
+                        return new Patient();
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        throw;
+                    }
+                }
             }
-            else
+            catch (ArgumentNullException)
             {
-                return new Patient
-                {
-                    PatientID = d.GetField("PatientID").GetInt32ValueOrDefault(),
-                    UserID = d.GetField("UserID").GetInt32ValueOrDefault(),
-                    FirstName = d.Get(nameof(Patient.FirstName)),
-                    LastName = d.Get(nameof(Patient.LastName)),
-                    Gender = d.Get(nameof(Patient.Gender)),
-                    ContactNumber = d.Get(nameof(Patient.ContactNumber)),
-                    Address = d.Get(nameof(Patient.Address)),
-                    MedicalHistory = d.Get(nameof(Patient.MedicalHistory)),
-                    Allergies = d.Get(nameof(Patient.Allergies)),
-                    CurrentMedications = d.Get(nameof(Patient.CurrentMedications))
-                };
+                throw;
             }
         }).ToList();
 

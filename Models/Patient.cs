@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace HealthcareApi.Models;
@@ -20,6 +21,7 @@ public partial class Patient : IValidatableObject
     public string LastName { get; set; } = null!;
 
     [DataType(DataType.Date)]
+    [AllowNull]
     public DateOnly? DateOfBirth { get; set; }
 
     [StringLength(10)]
