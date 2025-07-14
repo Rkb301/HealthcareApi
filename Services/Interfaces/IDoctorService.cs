@@ -10,5 +10,6 @@ namespace HealthcareApi.Services
         Task UpdateDoctor(int id, JsonPatchDocument patch);
         Task<Doctor?> GetDoctorById(int id);
         Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams queryParams);
+        public Task<List<CurrentAppointmentsDTO>> GetPresentAppointments(int? id, string? status);
     }
 }

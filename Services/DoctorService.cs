@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace HealthcareApi.Services;
 
-public class DoctorService: IDoctorService
+public class DoctorService : IDoctorService
 {
     private readonly IDoctorRepository _repo;
     private readonly LuceneDoctorIndexService _lucene;
@@ -14,13 +14,13 @@ public class DoctorService: IDoctorService
         IDoctorRepository repo,
         LuceneDoctorIndexService lucene)
     {
-        _repo   = repo;
+        _repo = repo;
         _lucene = lucene;
     }
 
     public async Task<Doctor> AddDoctor(Doctor d)
     {
-        d.CreatedAt  = DateTime.UtcNow;
+        d.CreatedAt = DateTime.UtcNow;
         d.ModifiedAt = DateTime.UtcNow;
         var ret = await _repo.AddAsync(d);
         _lucene.IndexDoctor(ret);
@@ -31,8 +31,8 @@ public class DoctorService: IDoctorService
     {
         var d = await _repo.GetByIdAsync(id);
         if (d == null) return false;
-        d.isActive    = false;
-        d.ModifiedAt  = DateTime.UtcNow;
+        d.isActive = false;
+        d.ModifiedAt = DateTime.UtcNow;
         await _repo.UpdateAsync(d);
         _lucene.IndexDoctor(d);
         return true;
@@ -58,5 +58,10 @@ public class DoctorService: IDoctorService
                 .GetPagedResultAsync(qp.pageNumber, qp.pageSize);
         }
         return _lucene.Search(qp.Query, qp.pageNumber, qp.pageSize, qp.Sort?.FirstOrDefault(), qp.Order);
+    }
+
+    public async Task<List<CurrentAppointmentsDTO>> GetPresentAppointments(int? id, string? status)
+    {
+        return await _repo.GetTodayAppointmentsAsync(id, status);
     }
 }

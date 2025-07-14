@@ -55,9 +55,25 @@ public partial class AssignmentDbContext : DbContext
                 .HasConstraintName("FK__Appointme__Patie__4316F928");
         });
 
+        modelBuilder.Entity<CurrentAppointmentsDTO>().HasNoKey().ToView(null);
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.AppointmentID).HasColumnName("AppointmentID");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.PatientID).HasColumnName("PatientID");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.DoctorID).HasColumnName("DoctorID");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Date).HasColumnName("date");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Reason).HasColumnName("Reason");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Status).HasColumnName("Status");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Notes).HasColumnName("Notes");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.PatientName).HasColumnName("patientName");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.DOB).HasColumnName("dob");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Gender).HasColumnName("gender");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Contact).HasColumnName("contact");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.MedicalHistory).HasColumnName("medicalHistory");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.Allergies).HasColumnName("allergies");
+        modelBuilder.Entity<CurrentAppointmentsDTO>().Property(e => e.CurrentMedications).HasColumnName("currentMedications");
+
         // Configure other entities similarly
         // Add CreatedAt/ModifiedAt defaults if needed
-        
+
         OnModelCreatingPartial(modelBuilder);
     }
 

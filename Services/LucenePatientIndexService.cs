@@ -65,10 +65,6 @@ public class LucenePatientIndexService
         using var reader = DirectoryReader.Open(_writer, applyAllDeletes: true);
         var searcher = new IndexSearcher(reader);
 
-        
-        // If the incoming text is empty or null, match all documents.
-        // Otherwise, build a MultiFieldQueryParser over your indexed fields,
-        // escape the user input, and append '*' for prefix (dynamic) matching.
         Query luceneQuery;
         if (string.IsNullOrWhiteSpace(queryText))
         {

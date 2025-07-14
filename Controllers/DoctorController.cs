@@ -1,4 +1,5 @@
 using HealthcareApi.Models;
+using HealthcareApi.Repositories;
 using HealthcareApi.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,12 @@ namespace HealthcareApi.Controllers;
 public class DoctorController : ControllerBase
 {
     private readonly IDoctorService _svc;
+    private readonly IDoctorRepository _repo;
 
-    public DoctorController(IDoctorService svc) => _svc = svc;
+    public DoctorController(IDoctorService svc, IDoctorRepository repo) {
+        _svc = svc;
+        _repo = repo;
+    }
 
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] DoctorQueryParams qp) =>
@@ -44,4 +49,10 @@ public class DoctorController : ControllerBase
     public async Task<IActionResult> SearchLucene(
         [FromQuery] DoctorQueryParams qp) =>
         Ok(await _svc.SearchDoctors(qp));
+
+    [HttpGet("proc")]
+    public async Task<IActionResult> PresentAppointments([FromQuery] int? id, [FromQuery] string? filter)
+    {
+        return Ok(await _svc.GetPresentAppointments(id, filter));
+    }
 }
