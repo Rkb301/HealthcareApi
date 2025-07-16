@@ -155,7 +155,8 @@ public class AuthController : ControllerBase
         {
             accessToken = new JwtSecurityTokenHandler().WriteToken(accessToken),
             refreshToken = refreshToken,
-            expiresIn = accessToken.ValidTo
+            expiresIn = accessToken.ValidTo,
+            role = user.Role
         });
     }
 
@@ -186,7 +187,7 @@ public class AuthController : ControllerBase
         });
     }
 
-    // [Authorize]
+    [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {

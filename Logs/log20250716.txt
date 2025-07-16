@@ -1,0 +1,528 @@
+2025-07-16 09:49:44.598 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc - null null
+2025-07-16 09:49:44.640 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:49:44.640 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 09:49:44.641 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 09:49:44.823 +05:30 [INF] Executed DbCommand (121ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-16 09:49:44.825 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 09:49:44.826 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 185.4517ms
+2025-07-16 09:49:44.827 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 09:49:44.827 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 186.8989 ms
+2025-07-16 09:49:44.828 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc - 200 2164 application/json; charset=utf-8 229.8123ms
+2025-07-16 09:49:52.332 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-07-16 09:49:52.333 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:49:52.333 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 09:49:52.334 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Patient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.Patient]] SearchLucene(System.String, System.String, System.String, Int32, Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:49:52.339 +05:30 [INF] Lucene search for query 'null' with sort 'null' order 'null'
+2025-07-16 09:49:52.349 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 09:49:52.351 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi) in 17.2207ms
+2025-07-16 09:49:52.351 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 09:49:52.352 +05:30 [INF] HTTP GET /api/patient/search-lucene responded 200 in 18.1580 ms
+2025-07-16 09:49:52.352 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - 200 3973 application/json; charset=utf-8 19.3703ms
+2025-07-16 09:51:11.435 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 09:51:11.436 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:51:11.436 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0919 ms
+2025-07-16 09:51:11.436 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.5639ms
+2025-07-16 09:51:11.437 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 09:51:11.438 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - null null
+2025-07-16 09:51:11.438 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - null null
+2025-07-16 09:51:11.439 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:51:11.439 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:51:11.439 +05:30 [INF] HTTP GET /api/patient/lab-results/recent responded 404 in 0.0651 ms
+2025-07-16 09:51:11.439 +05:30 [INF] HTTP GET /api/patient/prescriptions/active responded 404 in 0.1449 ms
+2025-07-16 09:51:11.439 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - 404 0 null 1.1454ms
+2025-07-16 09:51:11.439 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - 404 0 null 1.4938ms
+2025-07-16 09:51:11.440 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/lab-results/recent, Response status code: 404
+2025-07-16 09:51:11.440 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/prescriptions/active, Response status code: 404
+2025-07-16 09:51:11.442 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - null null
+2025-07-16 09:51:11.442 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:51:11.442 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/notifications - null null
+2025-07-16 09:51:11.443 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:51:11.444 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:51:11.444 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:51:11.444 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:51:11.445 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:51:11.445 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:51:11.445 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 0.8874ms
+2025-07-16 09:51:11.445 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:51:11.445 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:51:11.446 +05:30 [INF] HTTP GET /api/patient/primary-doctor responded 400 in 2.9315 ms
+2025-07-16 09:51:11.446 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.1096ms
+2025-07-16 09:51:11.446 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - 400 253 application/problem+json; charset=utf-8 4.3804ms
+2025-07-16 09:51:11.446 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:51:11.447 +05:30 [INF] HTTP GET /api/patient/notifications responded 400 in 2.2363 ms
+2025-07-16 09:51:11.447 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/notifications - 400 252 application/problem+json; charset=utf-8 4.2863ms
+2025-07-16 09:54:31.331 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 09:54:31.332 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - null null
+2025-07-16 09:54:31.332 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:31.332 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:31.332 +05:30 [INF] HTTP GET /api/patient/prescriptions/active responded 404 in 0.1266 ms
+2025-07-16 09:54:31.332 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0340 ms
+2025-07-16 09:54:31.333 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - 404 0 null 0.9876ms
+2025-07-16 09:54:31.333 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.7049ms
+2025-07-16 09:54:31.333 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/prescriptions/active, Response status code: 404
+2025-07-16 09:54:31.333 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 09:54:31.333 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - null null
+2025-07-16 09:54:31.333 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:31.334 +05:30 [INF] HTTP GET /api/patient/lab-results/recent responded 404 in 0.1727 ms
+2025-07-16 09:54:31.334 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - 404 0 null 0.8939ms
+2025-07-16 09:54:31.334 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/lab-results/recent, Response status code: 404
+2025-07-16 09:54:31.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - null null
+2025-07-16 09:54:31.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/notifications - null null
+2025-07-16 09:54:31.335 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:31.336 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:31.336 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:31.336 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:31.336 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:31.336 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:31.337 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:31.337 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:31.337 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 0.9385ms
+2025-07-16 09:54:31.337 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 0.9064ms
+2025-07-16 09:54:31.337 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:31.337 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:31.338 +05:30 [INF] HTTP GET /api/patient/primary-doctor responded 400 in 1.8755 ms
+2025-07-16 09:54:31.338 +05:30 [INF] HTTP GET /api/patient/notifications responded 400 in 1.9774 ms
+2025-07-16 09:54:31.338 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - 400 253 application/problem+json; charset=utf-8 2.8598ms
+2025-07-16 09:54:31.338 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/notifications - 400 252 application/problem+json; charset=utf-8 2.8277ms
+2025-07-16 09:54:39.791 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 09:54:39.792 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:39.792 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1108 ms
+2025-07-16 09:54:39.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - null null
+2025-07-16 09:54:39.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - null null
+2025-07-16 09:54:39.792 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - null null
+2025-07-16 09:54:39.792 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.1243ms
+2025-07-16 09:54:39.793 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 09:54:39.793 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:39.793 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/notifications - null null
+2025-07-16 09:54:39.792 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:39.793 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:39.793 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:39.793 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:39.794 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:39.794 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:39.794 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:39.794 +05:30 [INF] HTTP GET /api/patient/lab-results/recent responded 404 in 0.0796 ms
+2025-07-16 09:54:39.794 +05:30 [INF] HTTP GET /api/patient/prescriptions/active responded 404 in 0.0838 ms
+2025-07-16 09:54:39.795 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:39.795 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - 404 0 null 2.9368ms
+2025-07-16 09:54:39.795 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - 404 0 null 3.0937ms
+2025-07-16 09:54:39.795 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:39.795 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/lab-results/recent, Response status code: 404
+2025-07-16 09:54:39.795 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.2971ms
+2025-07-16 09:54:39.796 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/prescriptions/active, Response status code: 404
+2025-07-16 09:54:39.796 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.1941ms
+2025-07-16 09:54:39.796 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:39.797 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:39.798 +05:30 [INF] HTTP GET /api/patient/notifications responded 400 in 3.4262 ms
+2025-07-16 09:54:39.798 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/notifications - 400 252 application/problem+json; charset=utf-8 5.0007ms
+2025-07-16 09:54:39.797 +05:30 [INF] HTTP GET /api/patient/primary-doctor responded 400 in 4.0081 ms
+2025-07-16 09:54:39.798 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - 400 253 application/problem+json; charset=utf-8 5.9336ms
+2025-07-16 09:54:47.795 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 09:54:47.795 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:47.796 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0826 ms
+2025-07-16 09:54:47.797 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - null null
+2025-07-16 09:54:47.797 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:47.797 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.8355ms
+2025-07-16 09:54:47.797 +05:30 [INF] HTTP GET /api/patient/prescriptions/active responded 404 in 0.0806 ms
+2025-07-16 09:54:47.797 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - null null
+2025-07-16 09:54:47.798 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:47.798 +05:30 [INF] HTTP GET /api/patient/lab-results/recent responded 404 in 0.1076 ms
+2025-07-16 09:54:47.798 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - null null
+2025-07-16 09:54:47.798 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - 404 0 null 1.2731ms
+2025-07-16 09:54:47.799 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:47.797 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 09:54:47.798 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - 404 0 null 1.5966ms
+2025-07-16 09:54:47.799 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/lab-results/recent, Response status code: 404
+2025-07-16 09:54:47.799 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:47.799 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/prescriptions/active, Response status code: 404
+2025-07-16 09:54:47.800 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:47.801 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/notifications - null null
+2025-07-16 09:54:47.801 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:47.801 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.0483ms
+2025-07-16 09:54:47.801 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:47.801 +05:30 [INF] HTTP GET /api/patient/primary-doctor responded 400 in 2.4192 ms
+2025-07-16 09:54:47.801 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - 400 253 application/problem+json; charset=utf-8 3.9549ms
+2025-07-16 09:54:47.802 +05:30 [INF] CORS policy execution successful.
+2025-07-16 09:54:47.802 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:47.802 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 09:54:47.804 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 09:54:47.804 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.841ms
+2025-07-16 09:54:47.805 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 09:54:47.805 +05:30 [INF] HTTP GET /api/patient/notifications responded 400 in 2.8546 ms
+2025-07-16 09:54:47.805 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/notifications - 400 252 application/problem+json; charset=utf-8 4.4172ms
+2025-07-16 10:29:45.024 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 10:29:45.024 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - null null
+2025-07-16 10:29:45.024 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - null null
+2025-07-16 10:29:45.024 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:29:45.025 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:29:45.025 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:29:45.025 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - null null
+2025-07-16 10:29:45.025 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/notifications - null null
+2025-07-16 10:29:45.025 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.2030 ms
+2025-07-16 10:29:45.025 +05:30 [INF] HTTP GET /api/patient/prescriptions/active responded 404 in 0.0633 ms
+2025-07-16 10:29:45.026 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/prescriptions/active - 404 0 null 2.0081ms
+2025-07-16 10:29:45.025 +05:30 [INF] HTTP GET /api/patient/lab-results/recent responded 404 in 0.0586 ms
+2025-07-16 10:29:45.025 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:29:45.026 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:29:45.026 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.9979ms
+2025-07-16 10:29:45.026 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 10:29:45.026 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/prescriptions/active, Response status code: 404
+2025-07-16 10:29:45.026 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/lab-results/recent - 404 0 null 1.9515ms
+2025-07-16 10:29:45.026 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 10:29:45.026 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 10:29:45.028 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 10:29:45.027 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/lab-results/recent, Response status code: 404
+2025-07-16 10:29:45.027 +05:30 [INF] Route matched with {action = "GetPatient", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[HealthcareApi.Models.Patient]] GetPatient(Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 10:29:45.029 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 10:29:45.029 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-16 10:29:45.030 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.5405ms
+2025-07-16 10:29:45.030 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi) in 1.2694ms
+2025-07-16 10:29:45.030 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 10:29:45.030 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.GetPatient (HealthcareApi)'
+2025-07-16 10:29:45.030 +05:30 [INF] HTTP GET /api/patient/primary-doctor responded 400 in 3.9415 ms
+2025-07-16 10:29:45.031 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/primary-doctor - 400 253 application/problem+json; charset=utf-8 6.1369ms
+2025-07-16 10:29:45.030 +05:30 [INF] HTTP GET /api/patient/notifications responded 400 in 3.6368 ms
+2025-07-16 10:29:45.033 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/notifications - 400 252 application/problem+json; charset=utf-8 7.9899ms
+2025-07-16 10:42:11.673 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 10:42:11.674 +05:30 [INF] CORS policy execution successful.
+2025-07-16 10:42:11.674 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1201 ms
+2025-07-16 10:42:11.675 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.2173ms
+2025-07-16 10:42:11.675 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:08:32.008 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:08:32.009 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:08:32.009 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1490 ms
+2025-07-16 11:08:32.009 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.167ms
+2025-07-16 11:08:32.009 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:11:17.866 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:11:17.866 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:11:17.866 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0768 ms
+2025-07-16 11:11:17.867 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8618ms
+2025-07-16 11:11:17.867 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:11:25.898 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:11:25.898 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:11:25.899 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0918 ms
+2025-07-16 11:11:25.899 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8951ms
+2025-07-16 11:11:25.899 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:11:58.920 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:11:58.921 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:11:58.921 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0567 ms
+2025-07-16 11:11:58.921 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.5719ms
+2025-07-16 11:11:58.921 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:17:50.943 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:17:50.944 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:17:50.944 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1232 ms
+2025-07-16 11:17:50.944 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.0905ms
+2025-07-16 11:17:50.944 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:18:32.946 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:18:32.947 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:18:32.947 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0737 ms
+2025-07-16 11:18:32.947 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.9452ms
+2025-07-16 11:18:32.947 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:21:13.900 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:21:13.901 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:21:13.901 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1438 ms
+2025-07-16 11:21:13.901 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.128ms
+2025-07-16 11:21:13.902 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:22:10.832 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:22:10.833 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:22:10.833 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0885 ms
+2025-07-16 11:22:10.833 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.9821ms
+2025-07-16 11:22:10.834 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:22:34.721 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:22:34.722 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:22:34.722 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1240 ms
+2025-07-16 11:22:34.723 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.4095ms
+2025-07-16 11:22:34.723 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:22:41.802 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:22:41.802 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:22:41.802 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0891 ms
+2025-07-16 11:22:41.803 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.1276ms
+2025-07-16 11:22:41.803 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:31:44.609 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 11:31:44.610 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:31:44.610 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.8236ms
+2025-07-16 11:31:44.611 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-07-16 11:31:44.612 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:31:44.612 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 11:31:44.612 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 11:31:44.626 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 11:31:45.183 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-07-16 11:31:45.183 +05:30 [INF] Role: Admin
+2025-07-16 11:31:45.183 +05:30 [INF] Role: Admin
+2025-07-16 11:31:45.183 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 11:31:45.190 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 11:31:45.190 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 11:31:45.190 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 577.9536ms
+2025-07-16 11:31:45.190 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 11:31:45.191 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 578.6950 ms
+2025-07-16 11:31:45.191 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 540 application/json; charset=utf-8 579.3201ms
+2025-07-16 11:31:49.071 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:31:49.072 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:31:49.072 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0820 ms
+2025-07-16 11:31:49.072 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8381ms
+2025-07-16 11:31:49.073 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:32:10.405 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:32:10.405 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:32:10.406 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0571 ms
+2025-07-16 11:32:10.406 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8052ms
+2025-07-16 11:32:10.406 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 11:36:46.962 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 11:36:46.962 +05:30 [INF] CORS policy execution successful.
+2025-07-16 11:36:46.963 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1214 ms
+2025-07-16 11:36:46.963 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.7623ms
+2025-07-16 11:36:46.963 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 12:02:50.504 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 12:02:50.504 +05:30 [INF] CORS policy execution successful.
+2025-07-16 12:02:50.505 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1362 ms
+2025-07-16 12:02:50.505 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.2208ms
+2025-07-16 12:02:50.505 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 12:20:01.088 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 12:20:01.089 +05:30 [INF] CORS policy execution successful.
+2025-07-16 12:20:01.089 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1914 ms
+2025-07-16 12:20:01.089 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.3547ms
+2025-07-16 12:20:01.090 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 12:41:50.441 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc - null null
+2025-07-16 12:41:50.442 +05:30 [INF] CORS policy execution successful.
+2025-07-16 12:41:50.443 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 12:41:50.443 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 12:41:50.468 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-16 12:41:50.469 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 12:41:50.470 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 26.6118ms
+2025-07-16 12:41:50.470 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 12:41:50.470 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 27.6798 ms
+2025-07-16 12:41:50.471 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc - 200 2164 application/json; charset=utf-8 29.0948ms
+2025-07-16 12:57:51.924 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc - null null
+2025-07-16 12:57:51.925 +05:30 [INF] CORS policy execution successful.
+2025-07-16 12:57:51.926 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 12:57:51.926 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 12:57:51.956 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-16 12:57:51.957 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 12:57:51.957 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 31.2069ms
+2025-07-16 12:57:51.957 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 12:57:51.958 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 32.3147 ms
+2025-07-16 12:57:51.958 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc - 200 2164 application/json; charset=utf-8 34.0375ms
+2025-07-16 13:32:31.057 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc - null null
+2025-07-16 13:32:31.059 +05:30 [INF] CORS policy execution successful.
+2025-07-16 13:32:31.063 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 13:32:31.063 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 13:32:31.185 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-16 13:32:31.186 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 13:32:31.186 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 122.4776ms
+2025-07-16 13:32:31.187 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 13:32:31.187 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 124.6266 ms
+2025-07-16 13:32:31.189 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc - 200 2164 application/json; charset=utf-8 131.2153ms
+2025-07-16 14:05:14.161 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc - null null
+2025-07-16 14:05:14.162 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:05:14.162 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 14:05:14.163 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 14:05:14.217 +05:30 [INF] Executed DbCommand (46ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-16 14:05:14.218 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 14:05:14.219 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 56.2771ms
+2025-07-16 14:05:14.220 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-16 14:05:14.220 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 58.1459 ms
+2025-07-16 14:05:14.221 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc - 200 2164 application/json; charset=utf-8 59.7449ms
+2025-07-16 14:05:21.775 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:05:21.776 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:05:21.776 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0593 ms
+2025-07-16 14:05:21.776 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8393ms
+2025-07-16 14:05:21.776 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:05:37.871 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:05:37.872 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:05:37.872 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0830 ms
+2025-07-16 14:05:37.873 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.2956ms
+2025-07-16 14:05:37.873 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:06:31.312 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:06:31.312 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:06:31.312 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0583 ms
+2025-07-16 14:06:31.313 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.6195ms
+2025-07-16 14:06:31.313 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:08:15.023 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:08:15.023 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:08:15.023 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0831 ms
+2025-07-16 14:08:15.023 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.9497ms
+2025-07-16 14:08:15.024 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:09:14.193 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:09:14.193 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:09:14.233 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 39.9555 ms
+2025-07-16 14:09:14.234 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 40.8722ms
+2025-07-16 14:09:14.234 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:09:52.085 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:09:52.085 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:09:52.086 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.0977 ms
+2025-07-16 14:09:52.086 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8742ms
+2025-07-16 14:09:52.086 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:12:33.631 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:12:33.631 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:12:33.631 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1106 ms
+2025-07-16 14:12:33.632 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.0224ms
+2025-07-16 14:12:33.632 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:18:44.025 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:18:44.025 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:18:44.026 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1177 ms
+2025-07-16 14:18:44.026 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.9503ms
+2025-07-16 14:18:44.026 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:36:51.038 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:36:51.038 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:36:51.039 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.2202 ms
+2025-07-16 14:36:51.039 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 1.5189ms
+2025-07-16 14:36:51.040 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:47:26.041 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:47:26.042 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:47:26.042 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1022 ms
+2025-07-16 14:47:26.042 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 0.8386ms
+2025-07-16 14:47:26.042 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:48:53.934 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 14:48:53.936 +05:30 [INF] CORS policy execution successful.
+2025-07-16 14:48:53.937 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1042 ms
+2025-07-16 14:48:53.937 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 3.6568ms
+2025-07-16 14:48:53.938 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 14:53:31.424 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-16 14:53:51.969 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-16 14:54:25.326 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 14:55:12.869 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 14:55:12.966 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-16 14:55:12.968 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 14:55:12.969 +05:30 [INF] Hosting environment: Development
+2025-07-16 14:55:12.969 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-16 14:55:52.087 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-07-16 14:55:52.116 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-16 14:55:52.170 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:55:52.198 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 14:55:52.347 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 14:55:53.325 +05:30 [INF] User logged in: ruby@example.com
+2025-07-16 14:55:53.326 +05:30 [INF] Role: Admin
+2025-07-16 14:55:53.327 +05:30 [INF] Role: Admin
+2025-07-16 14:55:53.328 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 14:55:53.550 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 14:55:53.617 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:55:53.663 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1459.6232ms
+2025-07-16 14:55:53.665 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:55:53.670 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1507.4221 ms
+2025-07-16 14:55:53.680 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 545 application/json; charset=utf-8 1594.2926ms
+2025-07-16 14:56:38.780 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 66
+2025-07-16 14:56:38.784 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:56:38.785 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 14:56:38.842 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 14:56:39.580 +05:30 [INF] User logged in: jane.doe@email.com
+2025-07-16 14:56:39.580 +05:30 [INF] Role: patient
+2025-07-16 14:56:39.580 +05:30 [INF] Role: patient
+2025-07-16 14:56:39.581 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: patient
+2025-07-16 14:56:39.590 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 14:56:39.592 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:56:39.594 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 808.7034ms
+2025-07-16 14:56:39.594 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:56:39.594 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 810.4907 ms
+2025-07-16 14:56:39.595 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 552 application/json; charset=utf-8 815.5614ms
+2025-07-16 14:58:12.451 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 63
+2025-07-16 14:58:12.455 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:58:12.455 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 14:58:12.472 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 14:58:13.572 +05:30 [INF] User logged in: ruby@example.com
+2025-07-16 14:58:13.572 +05:30 [INF] Role: Admin
+2025-07-16 14:58:13.572 +05:30 [INF] Role: Admin
+2025-07-16 14:58:13.572 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 14:58:13.586 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 14:58:13.587 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 14:58:13.588 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1132.8565ms
+2025-07-16 14:58:13.589 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 14:58:13.589 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1134.2991 ms
+2025-07-16 14:58:13.589 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 545 application/json; charset=utf-8 1138.0665ms
+2025-07-16 15:23:57.423 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 15:23:57.431 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:23:57.432 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.2699 ms
+2025-07-16 15:23:57.433 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 9.8514ms
+2025-07-16 15:23:57.434 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 15:25:56.782 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 15:25:56.783 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:25:56.784 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.1872 ms
+2025-07-16 15:25:56.784 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 2.4845ms
+2025-07-16 15:25:56.784 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 15:26:07.607 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 15:26:07.608 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:26:07.610 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 2.3252ms
+2025-07-16 15:26:07.612 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-07-16 15:26:07.612 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:26:07.613 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 15:26:07.613 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 15:26:07.635 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 15:26:08.498 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-07-16 15:26:08.499 +05:30 [INF] Role: Admin
+2025-07-16 15:26:08.499 +05:30 [INF] Role: Admin
+2025-07-16 15:26:08.500 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 15:26:08.511 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 15:26:08.512 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 15:26:08.512 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 898.9771ms
+2025-07-16 15:26:08.513 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 15:26:08.513 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 900.6367 ms
+2025-07-16 15:26:08.514 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 555 application/json; charset=utf-8 902.3781ms
