@@ -526,3 +526,942 @@ WHERE [UserID] = @p2;
 2025-07-16 15:26:08.513 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
 2025-07-16 15:26:08.513 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 900.6367 ms
 2025-07-16 15:26:08.514 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 555 application/json; charset=utf-8 902.3781ms
+2025-07-16 15:28:57.436 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-16 15:29:17.310 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-16 15:29:51.187 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 15:30:38.467 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 15:30:38.536 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-16 15:30:38.539 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 15:30:38.539 +05:30 [INF] Hosting environment: Development
+2025-07-16 15:30:38.540 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-16 15:30:49.420 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 15:30:49.440 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-16 15:30:49.441 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:30:49.451 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 32.553ms
+2025-07-16 15:30:49.454 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-07-16 15:30:49.458 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:30:49.484 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 15:30:49.501 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 15:30:49.612 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 15:30:50.590 +05:30 [INF] User logged in: aakarshbatra01@gmail.com
+2025-07-16 15:30:50.591 +05:30 [INF] Role: Admin
+2025-07-16 15:30:50.592 +05:30 [INF] Role: Admin
+2025-07-16 15:30:50.593 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 15:30:50.738 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 15:30:50.798 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 15:30:50.851 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1343.2979ms
+2025-07-16 15:30:50.852 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 15:30:50.857 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1374.7538 ms
+2025-07-16 15:30:50.864 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 555 application/json; charset=utf-8 1409.3799ms
+2025-07-16 15:31:06.281 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-16 15:31:06.317 +05:30 [INF] Executing endpoint 'AuthController.Logout (HealthcareApi)'
+2025-07-16 15:31:06.321 +05:30 [INF] Route matched with {action = "Logout", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller AuthController (HealthcareApi).
+2025-07-16 15:31:06.412 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-16 15:31:06.422 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [RefreshToken] = @p0, [RefreshTokenExpiry] = @p1
+OUTPUT 1
+WHERE [UserID] = @p2;
+2025-07-16 15:31:06.424 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 15:31:06.426 +05:30 [INF] Executed action AuthController.Logout (HealthcareApi) in 104.9644ms
+2025-07-16 15:31:06.427 +05:30 [INF] Executed endpoint 'AuthController.Logout (HealthcareApi)'
+2025-07-16 15:31:06.427 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 110.6547 ms
+2025-07-16 15:31:06.428 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 200 37 application/json; charset=utf-8 146.743ms
+2025-07-16 15:31:10.446 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-16 15:31:10.470 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10503: Signature validation failed. Token does not have a kid. Keys tried: '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-16 15:31:10.471 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10503: Signature validation failed. Token does not have a kid. Keys tried: '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+2025-07-16 15:31:10.474 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-16 15:31:10.477 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-16 15:31:10.477 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 31.7883ms
+2025-07-16 15:31:13.310 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-16 15:31:13.313 +05:30 [INF] Executing endpoint 'AuthController.Logout (HealthcareApi)'
+2025-07-16 15:31:13.313 +05:30 [INF] Route matched with {action = "Logout", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller AuthController (HealthcareApi).
+2025-07-16 15:31:13.319 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__p_0
+2025-07-16 15:31:13.321 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 15:31:13.321 +05:30 [INF] Executed action AuthController.Logout (HealthcareApi) in 7.6507ms
+2025-07-16 15:31:13.322 +05:30 [INF] Executed endpoint 'AuthController.Logout (HealthcareApi)'
+2025-07-16 15:31:13.322 +05:30 [INF] HTTP POST /api/auth/logout responded 200 in 9.3337 ms
+2025-07-16 15:31:13.322 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 200 37 application/json; charset=utf-8 11.917ms
+2025-07-16 15:31:36.697 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 15:31:36.703 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:31:36.704 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.4632 ms
+2025-07-16 15:31:36.706 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 9.4656ms
+2025-07-16 15:31:36.712 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 15:31:55.760 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 15:31:55.761 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:31:55.762 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.2315 ms
+2025-07-16 15:31:55.762 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 2.1918ms
+2025-07-16 15:31:55.763 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 15:34:00.820 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene - null null
+2025-07-16 15:34:00.821 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 15:34:00.828 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Patient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.Patient]] SearchLucene(System.String, System.String, System.String, Int32, Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 15:34:00.831 +05:30 [INF] Lucene search for query 'null' with sort 'null' order 'null'
+2025-07-16 15:34:01.172 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 15:34:01.184 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi) in 356.2976ms
+2025-07-16 15:34:01.185 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 15:34:01.185 +05:30 [INF] HTTP GET /api/patient/search-lucene responded 200 in 364.4658 ms
+2025-07-16 15:34:01.185 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene - 200 3973 application/json; charset=utf-8 365.3745ms
+2025-07-16 15:36:09.991 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - null null
+2025-07-16 15:36:09.992 +05:30 [INF] CORS policy execution successful.
+2025-07-16 15:36:09.993 +05:30 [INF] HTTP GET /api/patient/appointments/upcoming responded 404 in 0.6167 ms
+2025-07-16 15:36:09.994 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/appointments/upcoming - 404 0 null 2.8344ms
+2025-07-16 15:36:09.994 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5122/api/patient/appointments/upcoming, Response status code: 404
+2025-07-16 16:37:29.330 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 16:37:29.384 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-16 16:37:29.402 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-16 16:37:29.459 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-16 16:37:29.469 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 16:37:29.474 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-16 16:37:29.486 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-16 16:37:29.496 +05:30 [INF] Applying migration '20250716110646_InitialCreate'.
+2025-07-16 16:37:29.534 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserID] int NOT NULL,
+    [Username] nvarchar(50) NOT NULL,
+    [PasswordHash] nvarchar(255) NOT NULL,
+    [Role] nvarchar(20) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    [RefreshToken] nvarchar(max) NULL,
+    [RefreshTokenExpiry] datetime2 NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserID])
+);
+2025-07-16 16:37:29.540 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Doctors] (
+    [DoctorID] int NOT NULL,
+    [UserID] int NOT NULL,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Specialization] nvarchar(100) NOT NULL,
+    [ContactNumber] nvarchar(20) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [Schedule] nvarchar(255) NOT NULL,
+    [CreatedAt] datetime2 NULL,
+    [ModifiedAt] datetime2 NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Doctors] PRIMARY KEY ([DoctorID]),
+    CONSTRAINT [FK_Doctors_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON DELETE CASCADE
+);
+2025-07-16 16:37:29.545 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Patients] (
+    [PatientID] int NOT NULL,
+    [UserID] int NULL,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [DateOfBirth] date NULL,
+    [Gender] nvarchar(10) NULL,
+    [ContactNumber] nvarchar(20) NULL,
+    [Address] nvarchar(255) NULL,
+    [MedicalHistory] nvarchar(1000) NULL,
+    [Allergies] nvarchar(500) NULL,
+    [CurrentMedications] nvarchar(500) NULL,
+    [EmergencyContactName] nvarchar(100) NULL,
+    [EmergencyContactNumber] nvarchar(20) NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Patients] PRIMARY KEY ([PatientID]),
+    CONSTRAINT [FK_Patients_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON DELETE CASCADE
+);
+2025-07-16 16:37:29.549 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Appointment] (
+    [AppointmentID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [AppointmentDate] datetime NOT NULL,
+    [Reason] varchar(255) NOT NULL,
+    [Status] varchar(20) NOT NULL DEFAULT 'Scheduled',
+    [Notes] text NULL,
+    [CreatedAt] datetime2 NULL,
+    [ModifiedAt] datetime2 NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK__Appointm__8ECDFCA218E8DF08] PRIMARY KEY ([AppointmentID]),
+    CONSTRAINT [FK__Appointme__Docto__440B1D61] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]),
+    CONSTRAINT [FK__Appointme__Patie__4316F928] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID])
+);
+2025-07-16 16:37:29.566 +05:30 [ERR] Failed executing DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MedicalRecords] (
+    [RecordID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [Diagnosis] nvarchar(255) NOT NULL,
+    [Treatment] nvarchar(500) NOT NULL,
+    [Medications] nvarchar(500) NULL,
+    [Notes] nvarchar(1000) NULL,
+    [RecordDate] datetime2 NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ModifiedAt] datetime2 NOT NULL,
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_MedicalRecords] PRIMARY KEY ([RecordID]),
+    CONSTRAINT [FK_MedicalRecords_Doctors_DoctorID] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_MedicalRecords_Patients_PatientID] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID]) ON DELETE CASCADE
+);
+2025-07-16 17:05:18.222 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 17:05:18.288 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-16 17:05:18.306 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-16 17:06:12.760 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 17:06:12.808 +05:30 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-16 17:06:12.824 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-07-16 17:06:12.878 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-07-16 17:06:12.890 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-07-16 17:06:12.895 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-07-16 17:06:12.902 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-07-16 17:06:12.911 +05:30 [INF] Applying migration '20250716113534_InitialCreate'.
+2025-07-16 17:06:12.959 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserID] int NOT NULL,
+    [Username] nvarchar(50) NOT NULL,
+    [PasswordHash] nvarchar(255) NOT NULL,
+    [Role] nvarchar(20) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    [RefreshToken] nvarchar(max) NULL,
+    [RefreshTokenExpiry] datetime2 NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserID])
+);
+2025-07-16 17:06:12.966 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Doctors] (
+    [DoctorID] int NOT NULL,
+    [UserID] int NOT NULL,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Specialization] nvarchar(100) NOT NULL,
+    [ContactNumber] nvarchar(20) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [Schedule] nvarchar(255) NOT NULL,
+    [CreatedAt] datetime2 NULL,
+    [ModifiedAt] datetime2 NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Doctors] PRIMARY KEY ([DoctorID]),
+    CONSTRAINT [FK_Doctors_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON DELETE CASCADE
+);
+2025-07-16 17:06:12.970 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Patients] (
+    [PatientID] int NOT NULL,
+    [UserID] int NULL,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [DateOfBirth] date NULL,
+    [Gender] nvarchar(10) NULL,
+    [ContactNumber] nvarchar(20) NULL,
+    [Address] nvarchar(255) NULL,
+    [MedicalHistory] nvarchar(1000) NULL,
+    [Allergies] nvarchar(500) NULL,
+    [CurrentMedications] nvarchar(500) NULL,
+    [EmergencyContactName] nvarchar(100) NULL,
+    [EmergencyContactNumber] nvarchar(20) NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Patients] PRIMARY KEY ([PatientID]),
+    CONSTRAINT [FK_Patients_Users_UserID] FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON DELETE CASCADE
+);
+2025-07-16 17:06:12.974 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Appointment] (
+    [AppointmentID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [AppointmentDate] datetime NOT NULL,
+    [Reason] varchar(255) NOT NULL,
+    [Status] varchar(20) NOT NULL DEFAULT 'Scheduled',
+    [Notes] text NULL,
+    [CreatedAt] datetime2 NULL,
+    [ModifiedAt] datetime2 NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Appointment] PRIMARY KEY ([AppointmentID]),
+    CONSTRAINT [FK_Appointment_Doctor] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]),
+    CONSTRAINT [FK_Appointment_Patient] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID])
+);
+2025-07-16 17:06:12.978 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [LabResults] (
+    [LabResultID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [TestName] nvarchar(255) NOT NULL,
+    [Result] nvarchar(255) NOT NULL,
+    [NormalRange] nvarchar(100) NOT NULL,
+    [Status] nvarchar(50) NOT NULL,
+    [TestDate] datetime2 NOT NULL,
+    [CreatedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_LabResults] PRIMARY KEY ([LabResultID]),
+    CONSTRAINT [FK_LabResults_Doctor] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_LabResults_Patient] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID]) ON DELETE NO ACTION
+);
+2025-07-16 17:06:12.983 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [MedicalRecords] (
+    [RecordID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [Diagnosis] nvarchar(255) NOT NULL,
+    [Treatment] nvarchar(500) NOT NULL,
+    [Medications] nvarchar(500) NULL,
+    [Notes] nvarchar(1000) NULL,
+    [RecordDate] datetime2 NOT NULL,
+    [CreatedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_MedicalRecords] PRIMARY KEY ([RecordID]),
+    CONSTRAINT [FK_MedicalRecords_Doctor] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_MedicalRecords_Patient] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID]) ON DELETE NO ACTION
+);
+2025-07-16 17:06:12.988 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Prescriptions] (
+    [PrescriptionID] int NOT NULL,
+    [PatientID] int NOT NULL,
+    [DoctorID] int NOT NULL,
+    [MedicationName] nvarchar(255) NOT NULL,
+    [Dosage] nvarchar(50) NOT NULL,
+    [Frequency] nvarchar(100) NOT NULL,
+    [StartDate] datetime2 NOT NULL,
+    [EndDate] datetime2 NOT NULL,
+    [Status] nvarchar(50) NOT NULL DEFAULT N'Active',
+    [Instructions] nvarchar(500) NULL,
+    [CreatedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [ModifiedAt] datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    [isActive] bit NOT NULL,
+    CONSTRAINT [PK_Prescriptions] PRIMARY KEY ([PrescriptionID]),
+    CONSTRAINT [FK_Prescriptions_Doctor] FOREIGN KEY ([DoctorID]) REFERENCES [Doctors] ([DoctorID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Prescriptions_Patient] FOREIGN KEY ([PatientID]) REFERENCES [Patients] ([PatientID]) ON DELETE NO ACTION
+);
+2025-07-16 17:06:12.992 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Appointment_DoctorID] ON [Appointment] ([DoctorID]);
+2025-07-16 17:06:12.994 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Appointment_PatientID] ON [Appointment] ([PatientID]);
+2025-07-16 17:06:12.997 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Doctors_UserID] ON [Doctors] ([UserID]);
+2025-07-16 17:06:13.002 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_LabResults_DoctorID] ON [LabResults] ([DoctorID]);
+2025-07-16 17:06:13.005 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_LabResults_PatientID] ON [LabResults] ([PatientID]);
+2025-07-16 17:06:13.007 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MedicalRecords_DoctorID] ON [MedicalRecords] ([DoctorID]);
+2025-07-16 17:06:13.010 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_MedicalRecords_PatientID] ON [MedicalRecords] ([PatientID]);
+2025-07-16 17:06:13.013 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Patients_UserID] ON [Patients] ([UserID]);
+2025-07-16 17:06:13.016 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Prescriptions_DoctorID] ON [Prescriptions] ([DoctorID]);
+2025-07-16 17:06:13.019 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Prescriptions_PatientID] ON [Prescriptions] ([PatientID]);
+2025-07-16 17:06:13.023 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250716113534_InitialCreate', N'9.0.6');
+2025-07-16 17:06:13.027 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-07-16 17:44:11.846 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-16 17:44:12.799 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-16 17:44:13.641 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 17:44:14.225 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 17:44:14.360 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-16 17:44:14.364 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 17:44:14.366 +05:30 [INF] Hosting environment: Development
+2025-07-16 17:44:14.366 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-16 17:44:29.762 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-07-16 17:44:29.787 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-16 17:44:29.788 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:44:29.815 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 17:44:29.831 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Patient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.Patient]] SearchLucene(System.String, System.String, System.String, Int32, Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 17:44:29.846 +05:30 [INF] Lucene search for query 'null' with sort 'null' order 'null'
+2025-07-16 17:44:29.883 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 17:44:29.950 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi) in 115.7064ms
+2025-07-16 17:44:29.951 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 17:44:29.955 +05:30 [INF] HTTP GET /api/patient/search-lucene responded 200 in 141.4740 ms
+2025-07-16 17:44:29.958 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - 200 4457 application/json; charset=utf-8 196.9786ms
+2025-07-16 17:44:33.387 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor?pageNumber=1&pageSize=10 - null null
+2025-07-16 17:44:33.389 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:44:33.390 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi)'
+2025-07-16 17:44:33.401 +05:30 [INF] Route matched with {action = "GetAll", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 17:44:33.435 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 17:44:33.439 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:44:33.440 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:44:33.464 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-07-16 17:44:33.468 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 17:44:33.474 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi) in 72.7816ms
+2025-07-16 17:44:33.474 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi)'
+2025-07-16 17:44:33.475 +05:30 [INF] HTTP GET /api/doctor responded 200 in 85.1955 ms
+2025-07-16 17:44:33.479 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor?pageNumber=1&pageSize=10 - 200 2005 application/json; charset=utf-8 92.033ms
+2025-07-16 17:44:35.054 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment?pageNumber=1&pageSize=10 - null null
+2025-07-16 17:44:35.056 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:44:35.060 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.GetAll (HealthcareApi)'
+2025-07-16 17:44:35.064 +05:30 [INF] Route matched with {action = "GetAll", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.AppointmentWithNamesDTO]]] GetAll(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-07-16 17:44:35.112 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-16 17:44:35.116 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:44:35.116 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:44:35.137 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-07-16 17:44:35.139 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 17:44:35.142 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.GetAll (HealthcareApi) in 78.4462ms
+2025-07-16 17:44:35.143 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.GetAll (HealthcareApi)'
+2025-07-16 17:44:35.143 +05:30 [INF] HTTP GET /api/appointment responded 200 in 83.4825 ms
+2025-07-16 17:44:35.143 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment?pageNumber=1&pageSize=10 - 200 2063 application/json; charset=utf-8 89.6137ms
+2025-07-16 17:45:11.543 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-07-16 17:45:11.544 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:11.545 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 1.807ms
+2025-07-16 17:45:11.546 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 85
+2025-07-16 17:45:11.547 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:11.548 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:45:11.552 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:45:11.598 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:45:11.600 +05:30 [WRN] Attempt to register with already used email: ruby@example.com
+2025-07-16 17:45:11.601 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2025-07-16 17:45:11.602 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 50.1332ms
+2025-07-16 17:45:11.602 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:45:11.603 +05:30 [INF] HTTP POST /api/auth/register responded 400 in 54.7777 ms
+2025-07-16 17:45:11.603 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 400 null text/plain; charset=utf-8 56.545ms
+2025-07-16 17:45:26.880 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-07-16 17:45:26.882 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:26.882 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 1.9077ms
+2025-07-16 17:45:26.884 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 85
+2025-07-16 17:45:26.884 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:26.885 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:45:26.885 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:45:26.890 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:45:27.736 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 100), @p3='?' (DbType = DateTime2), @p4='?' (Size = 255), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (Size = 20), @p8='?' (Size = 50), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserID], [CreatedAt], [Email], [ModifiedAt], [PasswordHash], [RefreshToken], [RefreshTokenExpiry], [Role], [Username], [isActive])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-07-16 17:45:27.744 +05:30 [INF] User registered: ruby@raishin.com
+2025-07-16 17:45:27.744 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 17:45:27.747 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 861.9486ms
+2025-07-16 17:45:27.748 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:45:27.748 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 863.3815 ms
+2025-07-16 17:45:27.749 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 43 application/json; charset=utf-8 864.6794ms
+2025-07-16 17:45:40.651 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 17:45:40.652 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:40.653 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.3941ms
+2025-07-16 17:45:40.655 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 52
+2025-07-16 17:45:40.655 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:40.656 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:40.659 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:45:40.671 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 17:45:41.209 +05:30 [WRN] Failed login attempt for email: ruby@raishin.com, rubyTester
+2025-07-16 17:45:41.210 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2025-07-16 17:45:41.210 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 551.4139ms
+2025-07-16 17:45:41.210 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:41.211 +05:30 [INF] HTTP POST /api/auth/login responded 401 in 554.6516 ms
+2025-07-16 17:45:41.211 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 401 null text/plain; charset=utf-8 555.779ms
+2025-07-16 17:45:48.018 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 17:45:48.019 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:48.019 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.7543ms
+2025-07-16 17:45:48.021 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 50
+2025-07-16 17:45:48.021 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:48.022 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:48.022 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:45:48.024 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 17:45:48.605 +05:30 [WRN] Failed login attempt for email: ruby@raishin.com, rubyTest
+2025-07-16 17:45:48.606 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2025-07-16 17:45:48.606 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 584.0106ms
+2025-07-16 17:45:48.606 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:48.606 +05:30 [INF] HTTP POST /api/auth/login responded 401 in 585.0756 ms
+2025-07-16 17:45:48.607 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 401 null text/plain; charset=utf-8 586.0022ms
+2025-07-16 17:45:51.570 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 52
+2025-07-16 17:45:51.570 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:45:51.572 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:51.572 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:45:51.576 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 17:45:52.130 +05:30 [WRN] Failed login attempt for email: ruby@raishin.com, rubyTester
+2025-07-16 17:45:52.130 +05:30 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2025-07-16 17:45:52.131 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 557.9356ms
+2025-07-16 17:45:52.131 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:45:52.131 +05:30 [INF] HTTP POST /api/auth/login responded 401 in 560.1576 ms
+2025-07-16 17:45:52.132 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 401 null text/plain; charset=utf-8 562.1881ms
+2025-07-16 17:46:49.812 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-07-16 17:46:49.813 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:46:49.814 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 1.2143ms
+2025-07-16 17:46:49.816 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 100
+2025-07-16 17:46:49.817 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:46:49.817 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:46:49.818 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:46:49.827 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:46:49.828 +05:30 [WRN] Attempt to register with already used email: aakarshbatra01@gmail.com
+2025-07-16 17:46:49.828 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2025-07-16 17:46:49.828 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 10.0504ms
+2025-07-16 17:46:49.829 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:46:49.829 +05:30 [INF] HTTP POST /api/auth/register responded 400 in 11.8690 ms
+2025-07-16 17:46:49.830 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 400 null text/plain; charset=utf-8 13.7194ms
+2025-07-16 17:46:54.319 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 100
+2025-07-16 17:46:54.319 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:46:54.320 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:46:54.320 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:46:54.323 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:46:55.306 +05:30 [ERR] Failed executing DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 100), @p3='?' (DbType = DateTime2), @p4='?' (Size = 255), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (Size = 20), @p8='?' (Size = 50), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserID], [CreatedAt], [Email], [ModifiedAt], [PasswordHash], [RefreshToken], [RefreshTokenExpiry], [Role], [Username], [isActive])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-07-16 17:46:55.332 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'HealthcareApi.Models.AssignmentDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-16 17:46:55.337 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 1016.0587ms
+2025-07-16 17:46:55.337 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:46:55.338 +05:30 [ERR] Unhandled exception occurred
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at AuthController.Register(RegisterRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 103
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-07-16 17:46:55.413 +05:30 [ERR] HTTP POST /api/auth/register responded 500 in 1093.6810 ms
+2025-07-16 17:46:55.414 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 500 null application/json 1095.2449ms
+2025-07-16 17:47:57.686 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-07-16 17:47:57.687 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:47:57.687 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 1.5019ms
+2025-07-16 17:47:57.689 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 100
+2025-07-16 17:47:57.690 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:47:57.690 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:47:57.691 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:47:57.699 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:47:58.873 +05:30 [ERR] Failed executing DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 100), @p3='?' (DbType = DateTime2), @p4='?' (Size = 255), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (Size = 20), @p8='?' (Size = 50), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserID], [CreatedAt], [Email], [ModifiedAt], [PasswordHash], [RefreshToken], [RefreshTokenExpiry], [Role], [Username], [isActive])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-07-16 17:47:58.877 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'HealthcareApi.Models.AssignmentDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-07-16 17:47:58.884 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 1192.1798ms
+2025-07-16 17:47:58.884 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:47:58.885 +05:30 [ERR] Unhandled exception occurred
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_Users'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:97589dd2-cfbe-4852-be58-0a63fd4ab977
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at AuthController.Register(RegisterRequest req) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\AuthController.cs:line 103
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-07-16 17:47:58.894 +05:30 [ERR] HTTP POST /api/auth/register responded 500 in 1203.5723 ms
+2025-07-16 17:47:58.894 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 500 null application/json 1204.8175ms
+2025-07-16 17:55:31.485 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-16 17:55:32.282 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-16 17:55:33.013 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 17:55:33.515 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-16 17:55:33.584 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-16 17:55:33.586 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-16 17:55:33.587 +05:30 [INF] Hosting environment: Development
+2025-07-16 17:55:33.587 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-16 17:55:51.550 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - null null
+2025-07-16 17:55:51.579 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-16 17:55:51.581 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:55:51.588 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/register - 204 null null 38.7827ms
+2025-07-16 17:55:51.591 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/register - application/json 100
+2025-07-16 17:55:51.594 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:55:51.624 +05:30 [INF] Executing endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:55:51.641 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:55:51.775 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__req_Email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__req_Email_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-07-16 17:55:52.643 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 100), @p3='?' (DbType = DateTime2), @p4='?' (Size = 255), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (Size = 20), @p8='?' (Size = 50), @p9='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([UserID], [CreatedAt], [Email], [ModifiedAt], [PasswordHash], [RefreshToken], [RefreshTokenExpiry], [Role], [Username], [isActive])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-07-16 17:55:52.656 +05:30 [INF] User registered: aakarshbatra02@gmail.com
+2025-07-16 17:55:52.662 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 17:55:52.690 +05:30 [INF] Executed action AuthController.Register (HealthcareApi) in 1045.6747ms
+2025-07-16 17:55:52.691 +05:30 [INF] Executed endpoint 'AuthController.Register (HealthcareApi)'
+2025-07-16 17:55:52.697 +05:30 [INF] HTTP POST /api/auth/register responded 200 in 1072.6813 ms
+2025-07-16 17:55:52.703 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/register - 200 43 application/json; charset=utf-8 1112.4981ms
+2025-07-16 17:56:00.168 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-16 17:56:00.170 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:56:00.171 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 2.4772ms
+2025-07-16 17:56:00.173 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 64
+2025-07-16 17:56:00.173 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:56:00.175 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:56:00.181 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-16 17:56:00.280 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-16 17:56:01.237 +05:30 [INF] User logged in: aakarshbatra02@gmail.com
+2025-07-16 17:56:01.238 +05:30 [INF] Role: Admin
+2025-07-16 17:56:01.239 +05:30 [INF] Role: Admin
+2025-07-16 17:56:01.240 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-16 17:56:01.263 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-16 17:56:01.326 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-16 17:56:01.335 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1154.0295ms
+2025-07-16 17:56:01.336 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-16 17:56:01.337 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1161.8505 ms
+2025-07-16 17:56:01.337 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 559 application/json; charset=utf-8 1164.6131ms
+2025-07-16 17:56:03.856 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-07-16 17:56:03.864 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:56:03.869 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 17:56:03.873 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Patient"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.Patient]] SearchLucene(System.String, System.String, System.String, Int32, Int32) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-16 17:56:03.883 +05:30 [INF] Lucene search for query 'null' with sort 'null' order 'null'
+2025-07-16 17:56:03.989 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Patient, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 17:56:04.013 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi) in 139.1107ms
+2025-07-16 17:56:04.014 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.SearchLucene (HealthcareApi)'
+2025-07-16 17:56:04.015 +05:30 [INF] HTTP GET /api/patient/search-lucene responded 200 in 146.2655 ms
+2025-07-16 17:56:04.016 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/search-lucene?pageNumber=1&pageSize=10 - 200 4456 application/json; charset=utf-8 159.2991ms
+2025-07-16 17:56:05.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor?pageNumber=1&pageSize=10 - null null
+2025-07-16 17:56:05.336 +05:30 [INF] CORS policy execution successful.
+2025-07-16 17:56:05.337 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi)'
+2025-07-16 17:56:05.346 +05:30 [INF] Route matched with {action = "GetAll", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-16 17:56:05.370 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-16 17:56:05.375 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:56:05.376 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-16 17:56:05.388 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-07-16 17:56:05.391 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-16 17:56:05.403 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi) in 56.9548ms
+2025-07-16 17:56:05.404 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.GetAll (HealthcareApi)'
+2025-07-16 17:56:05.404 +05:30 [INF] HTTP GET /api/doctor responded 200 in 67.1022 ms
+2025-07-16 17:56:05.404 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor?pageNumber=1&pageSize=10 - 200 2005 application/json; charset=utf-8 69.2311ms

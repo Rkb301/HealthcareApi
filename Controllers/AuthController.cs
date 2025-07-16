@@ -91,11 +91,13 @@ public class AuthController : ControllerBase
 #pragma warning disable CS8601 // Possible null reference assignment.
         var user = new User
         {
+            UserID = Random.Shared.Next(0, 999999),
             Username = req.Username,
             Email = req.Email,
             PasswordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(req.Password, 13),
             Role = req.Role,
-            CreatedAt = DateTime.Now
+            CreatedAt = DateTime.Now,
+            ModifiedAt = DateTime.Now
         };
 #pragma warning restore CS8601 // Possible null reference assignment.
 
