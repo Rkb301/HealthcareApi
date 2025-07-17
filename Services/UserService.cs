@@ -68,6 +68,11 @@ public class UserService : IUserService
             query = query.Where(u => param.Username.Contains(u.Username));
         }
 
+        if (param.UID?.Any() == true)
+        {
+            query = query.Where(u => param.UID.Contains(u.UserID));
+        }
+
         if (param.Role?.Any() == true)
         {
             query = query.Where(u => param.Role.Contains(u.Role));

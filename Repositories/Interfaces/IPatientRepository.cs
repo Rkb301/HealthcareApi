@@ -9,4 +9,5 @@ public interface IPatientRepository
     Task<Patient> GetByIdAsync(int id);
     Task<Patient> AddAsync(Patient patient);
     Task UpdateAsync(Patient patient);
+    Task<List<UpcomingAppointmentDTO>> GetUpcomingAppointmentsAsync(int? patientID, string? statusFilter);
 }

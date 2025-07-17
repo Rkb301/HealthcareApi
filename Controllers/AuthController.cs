@@ -158,7 +158,10 @@ public class AuthController : ControllerBase
             accessToken = new JwtSecurityTokenHandler().WriteToken(accessToken),
             refreshToken = refreshToken,
             expiresIn = accessToken.ValidTo,
-            role = user.Role
+            role = user.Role,
+            user.Email,
+            user.Username,
+            user.isActive
         });
     }
 

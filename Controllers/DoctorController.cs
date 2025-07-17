@@ -20,7 +20,7 @@ public class DoctorController : ControllerBase
 
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] DoctorQueryParams qp) =>
-        Ok(await _svc.SearchDoctors(qp));
+        Ok(await _svc.SearchDoctorsLucene(qp));
 
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id) =>
@@ -48,7 +48,13 @@ public class DoctorController : ControllerBase
     [HttpGet("search-lucene")]
     public async Task<IActionResult> SearchLucene(
         [FromQuery] DoctorQueryParams qp) =>
-        Ok(await _svc.SearchDoctors(qp));
+        Ok(await _svc.SearchDoctorsLucene(qp));
+
+    [HttpGet("search")]
+    public async Task<IActionResult> Search([FromQuery] DoctorQueryParams qp)
+    {
+        return Ok(await _svc.SearchDoctors(qp));
+    }
 
     [HttpGet("proc")]
     public async Task<IActionResult> PresentAppointments([FromQuery] int? id, [FromQuery] string? filter)

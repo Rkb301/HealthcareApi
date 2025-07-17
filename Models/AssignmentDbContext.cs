@@ -86,6 +86,17 @@ namespace HealthcareApi.Models
                 eb.Property(v => v.Allergies).HasColumnName("allergies");
                 eb.Property(v => v.CurrentMedications).HasColumnName("currentMedications");
             });
+
+            // ── UpcomingAppointmentsDTO (no key, view) ─────────────────────────────
+            modelBuilder.Entity<UpcomingAppointmentDTO>(eb =>
+            {
+                eb.HasNoKey().ToView(null);
+                eb.Property(v => v.Date).HasColumnName("Date");
+                eb.Property(v => v.Time).HasColumnName("Time");
+                eb.Property(v => v.Doctor).HasColumnName("Doctor");
+                eb.Property(v => v.Reason).HasColumnName("Reason");
+                eb.Property(v => v.Status).HasColumnName("Status");
+            });
         
             // ── MedicalRecord ────────────────────────────────────────────────────
             modelBuilder.Entity<MedicalRecord>(entity =>

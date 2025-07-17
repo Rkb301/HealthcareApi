@@ -1,3 +1,5 @@
+using System;
+using System.Linq.Expressions;
 using HealthcareApi.Extensions;
 using HealthcareApi.Models;
 using HealthcareApi.Repositories;
@@ -50,7 +52,7 @@ public class DoctorService : IDoctorService
     public async Task<Doctor?> GetDoctorById(int id) =>
         await _repo.GetByIdAsync(id);
 
-    public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams qp)
+    public async Task<PagedResult<Doctor>> SearchDoctorsLucene(DoctorQueryParams qp)
     {
         if (string.IsNullOrWhiteSpace(qp.Query))
         {
@@ -63,5 +65,40 @@ public class DoctorService : IDoctorService
     public async Task<List<CurrentAppointmentsDTO>> GetPresentAppointments(int? id, string? status)
     {
         return await _repo.GetTodayAppointmentsAsync(id, status);
+    }
+    
+    public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams qp)
+    {
+        var query = _repo.GetBaseQuery();
+
+        if (qp.UID?.Any() == true)
+        {
+            query = query.Where(d => qp.UID.Contains(d.UserID));
+        }
+
+        if (qp.Email?.Any() == true)
+        {
+            query = query.Where(d => qp.Email.Contains(d.Email));
+        }
+
+        if (qp.Sort?.Any() == true)
+        {
+            query = qp.Sort.Aggregate(
+                (IOrderedQueryable<Doctor>)query.OrderBy(GetSortExpression(qp.Sort.First(), qp.Order)),
+                (current, sortField) => current.ThenBy(GetSortExpression(sortField, qp.Order))
+            );
+        }
+
+        return await query.GetPagedResultAsync(qp.pageNumber, qp.pageSize);
+    }
+    
+    private Expression<Func<Doctor, object>> GetSortExpression(string field, string order)
+    {
+        return field.ToLower() switch
+        {
+            "userid" => d => d.UserID,
+            "email" => d => d.Email,
+            _ => d => d.DoctorID
+        };
     }
 }

@@ -59,7 +59,7 @@ public class PatientService : IPatientService
     {
         var patient = await _repository.GetByIdAsync(id);
         if (patient == null) return false;
-        
+
         patient.isActive = false;
         patient.ModifiedAt = DateTime.UtcNow;
         await _repository.UpdateAsync(patient);
@@ -69,36 +69,41 @@ public class PatientService : IPatientService
         return true;
     }
 
+    public async Task<List<UpcomingAppointmentDTO>> GetUpcomingAppointmentsAsync(int? id, string? status)
+    {
+        return await _repository.GetUpcomingAppointmentsAsync(id, status);
+    }
+
     public async Task<PagedResult<Patient>> SearchPatients(PatientQueryParams param)
     {
         var query = _repository.GetBaseQuery();
-        
+
         if (param.UID?.Any() == true)
             query = query.Where(p => param.UID.Contains((int)p.UserID));
-        
+
         if (param.FirstName?.Any() == true)
             query = query.Where(p => param.FirstName.Contains(p.FirstName));
-        
+
         if (param.LastName?.Any() == true)
             query = query.Where(p => param.LastName.Contains(p.LastName));
-        
+
         if (param.Dob?.Any() == true)
             query = query.Where(p => param.Dob.Contains((DateOnly)p.DateOfBirth));
-        
+
         if (param.Phone?.Any() == true)
             query = query.Where(p => param.Phone.Contains(p.ContactNumber));
 
-            if (param.Sort?.Any() == true)
-            {
-                query = param.Sort.Aggregate(
-                    (IOrderedQueryable<Patient>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
-                    (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
-                );
-            }
+        if (param.Sort?.Any() == true)
+        {
+            query = param.Sort.Aggregate(
+                (IOrderedQueryable<Patient>)query.OrderBy(GetSortExpression(param.Sort.First(), param.Order)),
+                (current, sortField) => current.ThenBy(GetSortExpression(sortField, param.Order))
+            );
+        }
 
         return await query.GetPagedResultAsync(param.pageNumber, param.pageSize);
     }
-    
+
     private Expression<Func<Patient, object>> GetSortExpression(string field, string order)
     {
         return field.ToLower() switch

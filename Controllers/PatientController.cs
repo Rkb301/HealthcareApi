@@ -153,19 +153,24 @@ public class PatientController : ControllerBase
             return StatusCode(500, "Internal server error");
         }
     }
-    
+
     [HttpGet("search-lucene")]
     public ActionResult<PagedResult<Patient>> SearchLucene(
-        [FromQuery] string? query, 
+        [FromQuery] string? query,
         [FromQuery] string? sort,
         [FromQuery] string? order,
-        int pageNumber = 1, 
+        int pageNumber = 1,
         int pageSize = 10)
     {
         _logger.LogInformation("Lucene search for query '{query}' with sort '{sort}' order '{order}'", query, sort, order);
         var result = _luceneIndexService.Search(query, pageNumber, pageSize, sort, order);
-        
+
         return Ok(result);
     }
 
+    [HttpGet("proc")]
+    public async Task<IActionResult> UpcomingAppointments([FromQuery] int? id, [FromQuery] string? status)
+    {
+        return Ok(await _patientService.GetUpcomingAppointmentsAsync(id, status));
+    }
 }
