@@ -204,7 +204,7 @@ public class AuthController : ControllerBase
         if (user != null)
         {
             user.RefreshToken = null;
-            user.RefreshTokenExpiry = null;
+            user.RefreshTokenExpiry = DateTime.Now;
             await _context.SaveChangesAsync();
         }
     

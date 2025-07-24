@@ -1,0 +1,1032 @@
+2025-07-22 09:52:41.158 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-22 09:52:42.206 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-22 09:52:43.025 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-22 09:52:43.728 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-22 09:52:43.966 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-22 09:52:43.969 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-22 09:52:43.970 +05:30 [INF] Hosting environment: Development
+2025-07-22 09:52:43.970 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-22 09:52:45.940 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 09:52:45.981 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-22 09:52:45.983 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:46.016 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 77.4283ms
+2025-07-22 09:52:46.024 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 09:52:46.029 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:46.127 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:52:46.156 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 09:52:46.395 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 09:52:47.652 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 09:52:47.652 +05:30 [INF] Role: Admin
+2025-07-22 09:52:47.654 +05:30 [INF] Role: Admin
+2025-07-22 09:52:47.654 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 09:52:47.771 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 09:52:47.816 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 09:52:47.858 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1681.7367ms
+2025-07-22 09:52:47.859 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:52:47.864 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1725.1919 ms
+2025-07-22 09:52:47.871 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 1830.6936ms
+2025-07-22 09:52:47.872 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:52:47.875 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:47.876 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 3.8752ms
+2025-07-22 09:52:47.880 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:52:47.890 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:47.949 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:52:47.965 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:52:47.992 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:52:48.176 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 09:52:48.184 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 09:52:48.185 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 09:52:48.212 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 09:52:48.215 +05:30 [INF] Found 1 users among search
+2025-07-22 09:52:48.217 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:52:48.238 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 269.4376ms
+2025-07-22 09:52:48.238 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:52:48.239 +05:30 [INF] HTTP GET /api/user/search responded 200 in 287.4128 ms
+2025-07-22 09:52:48.239 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 355.9408ms
+2025-07-22 09:52:48.245 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:52:48.246 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:48.247 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 1.4155ms
+2025-07-22 09:52:48.249 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:52:48.251 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:48.256 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:52:48.256 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:52:48.262 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:52:48.282 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 09:52:48.284 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 09:52:48.285 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 09:52:48.298 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 09:52:48.299 +05:30 [INF] Found 1 users among search
+2025-07-22 09:52:48.300 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:52:48.301 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 43.99ms
+2025-07-22 09:52:48.302 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:52:48.303 +05:30 [INF] HTTP GET /api/user/search responded 200 in 47.3020 ms
+2025-07-22 09:52:48.304 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 54.0218ms
+2025-07-22 09:52:49.993 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 09:52:49.994 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:52:50.002 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 09:52:50.006 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:52:50.007 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 13.7554ms
+2025-07-22 09:54:12.403 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 09:54:12.404 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:12.408 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 09:54:12.409 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:54:12.409 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 6.1773ms
+2025-07-22 09:54:13.911 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 09:54:13.912 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:13.913 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 2.6013ms
+2025-07-22 09:54:13.915 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 09:54:13.916 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:13.917 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:54:13.917 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 09:54:13.931 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 09:54:14.941 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 09:54:14.942 +05:30 [INF] Role: Admin
+2025-07-22 09:54:14.942 +05:30 [INF] Role: Admin
+2025-07-22 09:54:14.942 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 09:54:14.953 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 09:54:14.955 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 09:54:14.956 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1028.6468ms
+2025-07-22 09:54:14.957 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:54:14.957 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1030.7965 ms
+2025-07-22 09:54:14.958 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 1032.4461ms
+2025-07-22 09:54:14.962 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:54:14.963 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:14.963 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 1.4388ms
+2025-07-22 09:54:14.965 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:54:14.966 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:14.967 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:54:14.967 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:54:14.971 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:54:14.995 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 09:54:15.010 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 09:54:15.011 +05:30 [INF] Found 1 users among search
+2025-07-22 09:54:15.011 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:54:15.012 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 43.9747ms
+2025-07-22 09:54:15.012 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:54:15.012 +05:30 [INF] HTTP GET /api/user/search responded 200 in 45.2877 ms
+2025-07-22 09:54:15.013 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 46.9965ms
+2025-07-22 09:54:15.018 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:54:15.018 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:15.018 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 0.6992ms
+2025-07-22 09:54:15.021 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:54:15.021 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:15.022 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:54:15.022 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:54:15.023 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:54:15.029 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 09:54:15.035 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 09:54:15.035 +05:30 [INF] Found 1 users among search
+2025-07-22 09:54:15.036 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:54:15.037 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 14.0258ms
+2025-07-22 09:54:15.037 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:54:15.037 +05:30 [INF] HTTP GET /api/user/search responded 200 in 15.2923 ms
+2025-07-22 09:54:15.038 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 16.7244ms
+2025-07-22 09:54:16.374 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 09:54:16.375 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:54:16.377 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 09:54:16.378 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:54:16.379 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 4.772ms
+2025-07-22 09:55:45.845 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 09:55:45.846 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:55:45.847 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 09:55:45.847 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:55:45.848 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.1748ms
+2025-07-22 09:56:07.818 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 09:56:07.818 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:07.819 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 09:56:07.820 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:56:07.820 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 2.3999ms
+2025-07-22 09:56:08.834 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 09:56:08.834 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:08.835 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 0.8023ms
+2025-07-22 09:56:08.837 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 09:56:08.839 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:08.839 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:56:08.840 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 09:56:08.843 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 09:56:09.693 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 09:56:09.694 +05:30 [INF] Role: Admin
+2025-07-22 09:56:09.694 +05:30 [INF] Role: Admin
+2025-07-22 09:56:09.694 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 09:56:09.702 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 09:56:09.704 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 09:56:09.705 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 856.2937ms
+2025-07-22 09:56:09.705 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 09:56:09.706 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 858.4783 ms
+2025-07-22 09:56:09.706 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 860.9142ms
+2025-07-22 09:56:09.712 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:56:09.712 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:09.713 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 1.6064ms
+2025-07-22 09:56:09.716 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 09:56:09.716 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:09.718 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:56:09.719 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:56:09.720 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:56:09.724 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 09:56:09.726 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 09:56:09.727 +05:30 [INF] Found 1 users among search
+2025-07-22 09:56:09.728 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:56:09.730 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 10.3243ms
+2025-07-22 09:56:09.731 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:56:09.731 +05:30 [INF] HTTP GET /api/user/search responded 200 in 12.5701 ms
+2025-07-22 09:56:09.731 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 15.3954ms
+2025-07-22 09:56:09.748 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:56:09.750 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:09.751 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 2.6313ms
+2025-07-22 09:56:09.754 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 09:56:09.754 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:09.755 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:56:09.756 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 09:56:09.756 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 09:56:09.758 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 09:56:09.761 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 09:56:09.762 +05:30 [INF] Found 1 users among search
+2025-07-22 09:56:09.763 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 09:56:09.763 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 7.5206ms
+2025-07-22 09:56:09.764 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 09:56:09.764 +05:30 [INF] HTTP GET /api/user/search responded 200 in 8.7198 ms
+2025-07-22 09:56:09.765 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 10.7465ms
+2025-07-22 09:56:11.237 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 09:56:11.237 +05:30 [INF] CORS policy execution successful.
+2025-07-22 09:56:11.238 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 09:56:11.238 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 09:56:11.239 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 1.5473ms
+2025-07-22 10:11:51.564 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-07-22 10:11:52.436 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[EmergencyContactName], [p].[EmergencyContactNumber], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-07-22 10:11:53.205 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-22 10:11:53.871 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-22 10:11:53.955 +05:30 [INF] Now listening on: http://localhost:5122
+2025-07-22 10:11:53.958 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-22 10:11:53.958 +05:30 [INF] Hosting environment: Development
+2025-07-22 10:11:53.959 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-07-22 10:12:35.225 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 10:12:35.255 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-07-22 10:12:35.257 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:35.314 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 10:12:35.318 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:12:35.329 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 105.7144ms
+2025-07-22 10:12:36.452 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 10:12:36.456 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:36.460 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 8.155ms
+2025-07-22 10:12:36.462 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 10:12:36.465 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:36.475 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:12:36.502 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 10:12:36.712 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 10:12:37.847 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 10:12:37.847 +05:30 [INF] Role: Admin
+2025-07-22 10:12:37.848 +05:30 [INF] Role: Admin
+2025-07-22 10:12:37.848 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 10:12:37.964 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 10:12:38.017 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 10:12:38.072 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1566.4014ms
+2025-07-22 10:12:38.072 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:12:38.077 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1604.3051 ms
+2025-07-22 10:12:38.085 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 1622.5122ms
+2025-07-22 10:12:38.085 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:12:38.087 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:38.087 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 1.9653ms
+2025-07-22 10:12:38.089 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:12:38.094 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:38.135 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:12:38.148 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:12:38.173 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:12:38.300 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 10:12:38.308 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 10:12:38.309 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 10:12:38.327 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 10:12:38.330 +05:30 [INF] Found 1 users among search
+2025-07-22 10:12:38.331 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:12:38.358 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 209.6088ms
+2025-07-22 10:12:38.359 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:12:38.359 +05:30 [INF] HTTP GET /api/user/search responded 200 in 224.7976 ms
+2025-07-22 10:12:38.360 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 270.9453ms
+2025-07-22 10:12:38.367 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:12:38.368 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:38.369 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 2.0957ms
+2025-07-22 10:12:38.372 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:12:38.374 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:38.375 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:12:38.376 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:12:38.386 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:12:38.400 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 10:12:38.403 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 10:12:38.403 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 10:12:38.419 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 10:12:38.420 +05:30 [INF] Found 1 users among search
+2025-07-22 10:12:38.421 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:12:38.422 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 45.5074ms
+2025-07-22 10:12:38.423 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:12:38.423 +05:30 [INF] HTTP GET /api/user/search responded 200 in 47.8667 ms
+2025-07-22 10:12:38.424 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 51.0359ms
+2025-07-22 10:12:39.850 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:12:39.851 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:12:39.854 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:12:39.854 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:12:39.855 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 4.576ms
+2025-07-22 10:12:58.725 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:12:58.728 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:12:58.728 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:12:58.729 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 3.6434ms
+2025-07-22 10:14:14.463 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:14:14.463 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:14.466 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 3.1258ms
+2025-07-22 10:14:14.475 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:14:14.475 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:14.476 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:14:14.477 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:14:14.477 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.1783ms
+2025-07-22 10:14:17.807 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 10:14:17.808 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:17.809 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 10:14:17.809 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:14:17.809 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 1.6327ms
+2025-07-22 10:14:18.989 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 10:14:18.990 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:18.991 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.9993ms
+2025-07-22 10:14:18.994 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 10:14:18.995 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:18.995 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:14:18.996 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 10:14:19.009 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 10:14:19.986 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 10:14:19.987 +05:30 [INF] Role: Admin
+2025-07-22 10:14:19.987 +05:30 [INF] Role: Admin
+2025-07-22 10:14:19.987 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 10:14:19.993 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 10:14:19.995 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 10:14:19.996 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1000.2888ms
+2025-07-22 10:14:19.997 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:14:19.997 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1002.3714 ms
+2025-07-22 10:14:19.998 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 1003.723ms
+2025-07-22 10:14:20.003 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:14:20.004 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:20.004 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 1.0663ms
+2025-07-22 10:14:20.006 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:14:20.007 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:20.008 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:14:20.009 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:14:20.016 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:14:20.037 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 10:14:20.059 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 10:14:20.059 +05:30 [INF] Found 1 users among search
+2025-07-22 10:14:20.060 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:14:20.060 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 48.479ms
+2025-07-22 10:14:20.060 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:14:20.061 +05:30 [INF] HTTP GET /api/user/search responded 200 in 52.6913 ms
+2025-07-22 10:14:20.061 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 54.5912ms
+2025-07-22 10:14:20.066 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:14:20.066 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:20.067 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 0.7191ms
+2025-07-22 10:14:20.069 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:14:20.069 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:20.069 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:14:20.070 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:14:20.071 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:14:20.077 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 10:14:20.082 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 10:14:20.083 +05:30 [INF] Found 1 users among search
+2025-07-22 10:14:20.083 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:14:20.084 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 14.1429ms
+2025-07-22 10:14:20.084 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:14:20.085 +05:30 [INF] HTTP GET /api/user/search responded 200 in 15.3039 ms
+2025-07-22 10:14:20.085 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 16.5116ms
+2025-07-22 10:14:21.547 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:14:21.548 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:21.549 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.6137ms
+2025-07-22 10:14:21.551 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:14:21.552 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:14:21.554 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:14:21.559 +05:30 [INF] Route matched with {action = "UpcomingAppointments", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpcomingAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-22 10:14:21.594 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@PatientID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.usp_PatientUpcomingAppointmentsGet 
+                        @PatientID = @PatientID, 
+                        @StatusFilter = @StatusFilter
+2025-07-22 10:14:21.598 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.UpcomingAppointmentDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:14:21.600 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi) in 40.554ms
+2025-07-22 10:14:21.600 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:14:21.601 +05:30 [INF] HTTP GET /api/patient/proc responded 200 in 47.3541 ms
+2025-07-22 10:14:21.601 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 200 2 application/json; charset=utf-8 50.0777ms
+2025-07-22 10:15:04.673 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 10:15:04.673 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:04.674 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 10:15:04.674 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:15:04.674 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 1.1776ms
+2025-07-22 10:15:06.100 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 10:15:06.100 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:06.101 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.0761ms
+2025-07-22 10:15:06.103 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 10:15:06.104 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:06.105 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:15:06.105 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 10:15:06.110 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 10:15:07.056 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 10:15:07.057 +05:30 [INF] Role: Admin
+2025-07-22 10:15:07.057 +05:30 [INF] Role: Admin
+2025-07-22 10:15:07.057 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 10:15:07.065 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 10:15:07.066 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 10:15:07.068 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 962.6005ms
+2025-07-22 10:15:07.068 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:15:07.069 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 964.0888 ms
+2025-07-22 10:15:07.069 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 965.8651ms
+2025-07-22 10:15:07.074 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:15:07.075 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:07.075 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 0.7634ms
+2025-07-22 10:15:07.078 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:15:07.078 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:07.079 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:15:07.079 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:15:07.080 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:15:07.105 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 10:15:07.125 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 10:15:07.126 +05:30 [INF] Found 1 users among search
+2025-07-22 10:15:07.127 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:15:07.128 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 48.639ms
+2025-07-22 10:15:07.128 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:15:07.129 +05:30 [INF] HTTP GET /api/user/search responded 200 in 49.8467 ms
+2025-07-22 10:15:07.129 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 51.485ms
+2025-07-22 10:15:07.136 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:15:07.137 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:07.137 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 0.9039ms
+2025-07-22 10:15:07.139 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:15:07.140 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:07.140 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:15:07.141 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:15:07.141 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:15:07.148 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 10:15:07.153 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 10:15:07.154 +05:30 [INF] Found 1 users among search
+2025-07-22 10:15:07.154 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:15:07.155 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 14.3141ms
+2025-07-22 10:15:07.156 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:15:07.156 +05:30 [INF] HTTP GET /api/user/search responded 200 in 15.5122 ms
+2025-07-22 10:15:07.156 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 16.7558ms
+2025-07-22 10:15:09.047 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:15:09.048 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:09.048 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.1159ms
+2025-07-22 10:15:09.050 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:15:09.051 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:15:09.052 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:15:09.052 +05:30 [INF] Route matched with {action = "UpcomingAppointments", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpcomingAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-22 10:15:09.063 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@PatientID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.usp_PatientUpcomingAppointmentsGet 
+                        @PatientID = @PatientID, 
+                        @StatusFilter = @StatusFilter
+2025-07-22 10:15:09.064 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.UpcomingAppointmentDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:15:09.065 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi) in 12.7303ms
+2025-07-22 10:15:09.071 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:15:09.071 +05:30 [INF] HTTP GET /api/patient/proc responded 200 in 19.6339 ms
+2025-07-22 10:15:09.072 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 200 2 application/json; charset=utf-8 21.3056ms
+2025-07-22 10:17:02.010 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:02.015 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:02.016 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 5.9663ms
+2025-07-22 10:17:02.048 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:02.049 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:02.049 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:17:02.050 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:17:02.050 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.4921ms
+2025-07-22 10:17:13.923 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:13.924 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:13.924 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.0984ms
+2025-07-22 10:17:13.928 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:13.929 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:13.929 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:17:13.929 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:17:13.930 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 1.7027ms
+2025-07-22 10:17:26.453 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-07-22 10:17:26.454 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:26.455 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-22 10:17:26.455 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:17:26.455 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 2.3331ms
+2025-07-22 10:17:27.270 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-07-22 10:17:27.271 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.272 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 2.2992ms
+2025-07-22 10:17:27.274 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-07-22 10:17:27.274 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.275 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:17:27.275 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-07-22 10:17:27.281 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-07-22 10:17:27.879 +05:30 [INF] User logged in: ruby@raishin.com
+2025-07-22 10:17:27.880 +05:30 [INF] Role: Admin
+2025-07-22 10:17:27.880 +05:30 [INF] Role: Admin
+2025-07-22 10:17:27.880 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-07-22 10:17:27.885 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-07-22 10:17:27.885 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-22 10:17:27.886 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 610.1793ms
+2025-07-22 10:17:27.886 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-07-22 10:17:27.886 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 611.2600 ms
+2025-07-22 10:17:27.886 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 610 application/json; charset=utf-8 612.0619ms
+2025-07-22 10:17:27.892 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:17:27.892 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.892 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 0.5529ms
+2025-07-22 10:17:27.894 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-07-22 10:17:27.894 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.895 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:17:27.895 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:17:27.896 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:17:27.910 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-07-22 10:17:27.939 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-07-22 10:17:27.940 +05:30 [INF] Found 1 users among search
+2025-07-22 10:17:27.940 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:17:27.941 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 45.127ms
+2025-07-22 10:17:27.941 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:17:27.941 +05:30 [INF] HTTP GET /api/user/search responded 200 in 46.0825 ms
+2025-07-22 10:17:27.941 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 47.3275ms
+2025-07-22 10:17:27.946 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:17:27.947 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.947 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 0.8629ms
+2025-07-22 10:17:27.949 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-07-22 10:17:27.949 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:27.950 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:17:27.951 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-07-22 10:17:27.951 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-07-22 10:17:27.959 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-07-22 10:17:27.998 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-07-22 10:17:27.999 +05:30 [INF] Found 1 users among search
+2025-07-22 10:17:27.999 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:17:27.999 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 48.6603ms
+2025-07-22 10:17:28.000 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-07-22 10:17:28.000 +05:30 [INF] HTTP GET /api/user/search responded 200 in 50.1707 ms
+2025-07-22 10:17:28.002 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 51.7973ms
+2025-07-22 10:17:28.910 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:28.911 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:28.911 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.794ms
+2025-07-22 10:17:28.913 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:17:28.913 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:17:28.914 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:17:28.915 +05:30 [INF] Route matched with {action = "UpcomingAppointments", controller = "Patient"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpcomingAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.PatientController (HealthcareApi).
+2025-07-22 10:17:28.930 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@PatientID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.usp_PatientUpcomingAppointmentsGet 
+                        @PatientID = @PatientID, 
+                        @StatusFilter = @StatusFilter
+2025-07-22 10:17:28.933 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.UpcomingAppointmentDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 10:17:28.933 +05:30 [INF] Executed action HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi) in 18.4469ms
+2025-07-22 10:17:28.934 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.PatientController.UpcomingAppointments (HealthcareApi)'
+2025-07-22 10:17:28.934 +05:30 [INF] HTTP GET /api/patient/proc responded 200 in 19.6917 ms
+2025-07-22 10:17:28.934 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 200 2 application/json; charset=utf-8 21.2143ms
+2025-07-22 10:25:23.793 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:25:23.794 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:25:23.794 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.0303ms
+2025-07-22 10:25:23.798 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:25:23.799 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:25:23.799 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:25:23.800 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:25:23.800 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.0234ms
+2025-07-22 10:36:10.847 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:36:10.848 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:36:10.848 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.2318ms
+2025-07-22 10:36:10.850 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:36:10.850 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:36:10.851 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:36:10.851 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:36:10.851 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 1.3781ms
+2025-07-22 10:36:39.687 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:36:39.687 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:36:39.687 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.7384ms
+2025-07-22 10:36:39.692 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 10:36:39.692 +05:30 [INF] CORS policy execution successful.
+2025-07-22 10:36:39.693 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 10:36:39.693 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 10:36:39.694 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 1.6639ms
+2025-07-22 11:05:10.640 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:05:10.641 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:05:10.641 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.0254ms
+2025-07-22 11:05:10.645 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:05:10.647 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:05:10.650 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:05:10.650 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:05:10.650 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 5.3951ms
+2025-07-22 11:07:20.650 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:07:20.652 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:07:20.653 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 3.3463ms
+2025-07-22 11:07:20.660 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:07:20.662 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:07:20.665 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:07:20.665 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:07:20.666 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 5.276ms
+2025-07-22 11:09:06.528 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:09:06.528 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:09:06.529 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.7025ms
+2025-07-22 11:09:06.534 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:09:06.534 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:09:06.535 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:09:06.536 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:09:06.537 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.8042ms
+2025-07-22 11:17:46.916 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:17:46.916 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:17:46.917 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.8064ms
+2025-07-22 11:17:46.925 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:17:46.926 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:17:46.926 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:17:46.927 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:17:46.927 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.4533ms
+2025-07-22 11:21:47.657 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:21:47.657 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:21:47.657 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.7474ms
+2025-07-22 11:21:47.670 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:21:47.671 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:21:47.671 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:21:47.672 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:21:47.672 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 2.3867ms
+2025-07-22 11:25:30.500 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:25:30.500 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:25:30.501 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.7487ms
+2025-07-22 11:25:30.503 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:25:30.504 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:25:30.505 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:25:30.506 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:25:30.507 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 3.3357ms
+2025-07-22 11:26:19.399 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:26:19.399 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:26:19.400 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 0.904ms
+2025-07-22 11:26:19.402 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 11:26:19.403 +05:30 [INF] CORS policy execution successful.
+2025-07-22 11:26:19.403 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 11:26:19.404 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 11:26:19.404 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 1.5464ms
+2025-07-22 11:27:33.099 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=cardiology - null null
+2025-07-22 11:27:33.103 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:57:33'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-22 11:27:33.157 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:57:33'.
+2025-07-22 11:27:33.158 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:27:33.163 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-22 11:27:33.287 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 11:27:33.292 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 127.8095ms
+2025-07-22 11:27:33.292 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:27:33.292 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 134.7468 ms
+2025-07-22 11:27:33.292 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=cardiology - 200 398 application/json; charset=utf-8 193.395ms
+2025-07-22 11:28:00.362 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene? - null null
+2025-07-22 11:28:00.365 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:58:00'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-22 11:28:00.366 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:58:00'.
+2025-07-22 11:28:00.367 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:28:00.367 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-22 11:28:00.389 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-22 11:28:00.390 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 11:28:00.391 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-22 11:28:00.398 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-07-22 11:28:00.400 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 11:28:00.401 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 33.5371ms
+2025-07-22 11:28:00.402 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:28:00.402 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 35.7618 ms
+2025-07-22 11:28:00.402 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene? - 200 2005 application/json; charset=utf-8 40.745ms
+2025-07-22 11:29:24.186 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=dermato - null null
+2025-07-22 11:29:24.187 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:24'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-22 11:29:24.188 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:24'.
+2025-07-22 11:29:24.188 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:24.189 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-22 11:29:24.219 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 11:29:24.219 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 30.3936ms
+2025-07-22 11:29:24.220 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:24.220 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 31.8613 ms
+2025-07-22 11:29:24.221 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=dermato - 200 406 application/json; charset=utf-8 34.1972ms
+2025-07-22 11:29:46.282 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene? - null null
+2025-07-22 11:29:46.284 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:46'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-22 11:29:46.285 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:46'.
+2025-07-22 11:29:46.286 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:46.286 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-22 11:29:46.298 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-07-22 11:29:46.306 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-07-22 11:29:46.307 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 11:29:46.308 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 21.0737ms
+2025-07-22 11:29:46.311 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:46.315 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 29.3199 ms
+2025-07-22 11:29:46.315 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene? - 200 2005 application/json; charset=utf-8 32.9196ms
+2025-07-22 11:29:49.802 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=dermat - null null
+2025-07-22 11:29:49.803 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:49'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-07-22 11:29:49.803 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '18-07-2025 11:21:45', Current time (UTC): '22-07-2025 05:59:49'.
+2025-07-22 11:29:49.804 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:49.804 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-22 11:29:49.839 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-22 11:29:49.839 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 35.16ms
+2025-07-22 11:29:49.840 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-07-22 11:29:49.840 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 36.9324 ms
+2025-07-22 11:29:49.841 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=dermat - 200 406 application/json; charset=utf-8 38.6976ms
+2025-07-22 12:08:14.748 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - null null
+2025-07-22 12:08:14.750 +05:30 [INF] CORS policy execution successful.
+2025-07-22 12:08:14.750 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/patient/proc - 204 null null 1.852ms
+2025-07-22 12:08:14.753 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/patient/proc - null null
+2025-07-22 12:08:14.754 +05:30 [INF] CORS policy execution successful.
+2025-07-22 12:08:14.755 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Patient)
+2025-07-22 12:08:14.755 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-22 12:08:14.756 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/patient/proc - 401 0 null 3.0638ms

@@ -81,6 +81,11 @@ public class DoctorService : IDoctorService
             query = query.Where(d => qp.Email.Contains(d.Email));
         }
 
+        if (qp.Specialization?.Any() == true)
+        {
+            query = query.Where(d => qp.Specialization == d.Specialization);
+        }
+
         if (qp.Sort?.Any() == true)
         {
             query = qp.Sort.Aggregate(

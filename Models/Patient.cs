@@ -38,7 +38,6 @@ namespace HealthcareApi.Models
         [StringLength(255)]
         public string? Address { get; set; }
 
-        // PRESERVED: Additional medical fields
         [StringLength(1000)]
         public string? MedicalHistory { get; set; }
 
@@ -48,18 +47,16 @@ namespace HealthcareApi.Models
         [StringLength(500)]
         public string? CurrentMedications { get; set; }
 
-        // PRESERVED: Emergency contact fields (added to maintain compatibility)
-        [StringLength(100)]
-        public string? EmergencyContactName { get; set; }
+        // [StringLength(100)]
+        // public string? EmergencyContactName { get; set; }
 
-        [StringLength(20)]
-        public string? EmergencyContactNumber { get; set; }
+        // [StringLength(20)]
+        // public string? EmergencyContactNumber { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
         public bool isActive { get; set; } = true;
 
-        // PRESERVED: Navigation properties with JsonIgnore
         [JsonIgnore]
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
@@ -78,7 +75,6 @@ namespace HealthcareApi.Models
         public virtual ICollection<LabResult> LabResults { get; set; } = new List<LabResult>();
 
 
-        // PRESERVED: Custom validation logic
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (DateOfBirth.HasValue && DateOfBirth.Value > DateOnly.FromDateTime(DateTime.UtcNow))

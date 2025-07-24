@@ -1,0 +1,14 @@
+2025-07-24 09:45:28.669 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/proc?doctorId=NaN - null null
+2025-07-24 09:45:28.696 +05:30 [INF] CORS policy execution successful.
+2025-07-24 09:45:28.697 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-24 09:45:28.697 +05:30 [INF] Route matched with {action = "PresentAppointments", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PresentAppointments(System.Nullable`1[System.Int32], System.String) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-07-24 09:45:28.790 +05:30 [INF] Executed DbCommand (56ms) [Parameters=[@DoctorID='?', @StatusFilter='?'], CommandType='"Text"', CommandTimeout='30']
+
+                    EXEC dbo.GetTodayAppointDoctor 
+                        @DoctorID = @DoctorID, 
+                        @StatusFilter = @StatusFilter
+2025-07-24 09:45:28.791 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[HealthcareApi.Models.CurrentAppointmentsDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-24 09:45:28.791 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi) in 93.315ms
+2025-07-24 09:45:28.792 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.PresentAppointments (HealthcareApi)'
+2025-07-24 09:45:28.792 +05:30 [INF] HTTP GET /api/doctor/proc responded 200 in 95.5692 ms
+2025-07-24 09:45:28.792 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/proc?doctorId=NaN - 200 2 application/json; charset=utf-8 122.824ms

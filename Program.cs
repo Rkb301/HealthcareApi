@@ -11,6 +11,8 @@ using Lucene.Net.Store;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Index;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 var AllowCORS = "_AllowCORS";
 
@@ -73,14 +75,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer           = true,
-            ValidateAudience         = true,
-            ValidateLifetime         = true,
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer              = builder.Configuration["AuthConfiguration:Issuer"],
-            ValidAudience            = builder.Configuration["AuthConfiguration:Audience"],
-            IssuerSigningKey         = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Key"]))
+            ValidIssuer = builder.Configuration["AuthConfiguration:Issuer"],
+            ValidAudience = builder.Configuration["AuthConfiguration:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["AuthConfiguration:Key"])),
+            RoleClaimType = ClaimTypes.Role
         };
     });
 builder.Services.AddAuthorization(opts => 

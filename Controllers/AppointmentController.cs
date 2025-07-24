@@ -1,5 +1,6 @@
 using HealthcareApi.Models;
 using HealthcareApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,13 +16,18 @@ public class AppointmentController : ControllerBase
 
     [HttpGet]
     public async Task<ActionResult<PagedResult<AppointmentWithNamesDTO>>> GetAll(
-        [FromQuery] AppointmentQueryParams qp) =>
-        Ok(await _svc.SearchAppointments(qp));
+        [FromQuery] AppointmentQueryParams qp)
+    {
+        return Ok(await _svc.SearchAppointments(qp));
+    }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id) =>
-        (await _svc.GetAppointmentById(id)) is Appointment a ? Ok(a) : NotFound();
+    public async Task<IActionResult> Get(int id)
+    {
+        return (await _svc.GetAppointmentById(id)) is Appointment a ? Ok(a) : NotFound();
+    }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Post(Appointment a)
     {
@@ -38,11 +44,15 @@ public class AppointmentController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id) =>
-        await _svc.SoftDeleteAppointment(id) ? NoContent() : NotFound();
+    public async Task<IActionResult> Delete(int id)
+    {
+        return await _svc.SoftDeleteAppointment(id) ? NoContent() : NotFound();
+    }
 
     [HttpGet("search-lucene")]
     public async Task<IActionResult> SearchLucene(
-        [FromQuery] AppointmentQueryParams qp) =>
-        Ok(await _svc.SearchAppointments(qp));
+        [FromQuery] AppointmentQueryParams qp)
+    {
+        return Ok(await _svc.SearchAppointments(qp));
+    }
 }

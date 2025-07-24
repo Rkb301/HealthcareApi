@@ -25,7 +25,7 @@ public class PatientController : ControllerBase
         _luceneIndexService = lucene;
     }
 
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<ActionResult<List<Patient>>> GetPatients()
     {
@@ -43,7 +43,7 @@ public class PatientController : ControllerBase
         }
     }
 
-    // [Authorize]
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<Patient>> GetPatient(int id)
     {
@@ -65,7 +65,7 @@ public class PatientController : ControllerBase
         }
     }
 
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Patient>> PostPatient(Patient patient)
     {
@@ -86,7 +86,7 @@ public class PatientController : ControllerBase
         }
     }
 
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [HttpPatch("{id}")]
     public async Task<IActionResult> PatchPatient(int id, [FromBody] JsonPatchDocument<Patient> patchDoc)
     {
@@ -114,7 +114,7 @@ public class PatientController : ControllerBase
         }
     }
 
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePatient(int id)
     {
@@ -154,6 +154,7 @@ public class PatientController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "Admin, Patient")]
     [HttpGet("search-lucene")]
     public ActionResult<PagedResult<Patient>> SearchLucene(
         [FromQuery] string? query,
@@ -168,6 +169,7 @@ public class PatientController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(Roles = "Admin, Patient")]
     [HttpGet("proc")]
     public async Task<IActionResult> UpcomingAppointments([FromQuery] int? id, [FromQuery] string? status)
     {

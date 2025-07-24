@@ -4,6 +4,7 @@ public class DoctorQueryParams
 {
     public List<int>? UID { get; set; }
     public List<string>? Email { get; set; }
+    public string? Specialization { get; set; }
     public string? Query { get; set; }
     public List<string>? Sort  { get; set; }
     public string? Order       { get; set; }
