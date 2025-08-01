@@ -58,31 +58,47 @@ public class AppointmentService: IAppointmentService
     {
         if (string.IsNullOrWhiteSpace(qp.Query))
         {
-            var query = _repo.GetBaseQuery();
+            // Non-search path - include patient/doctor names efficiently
+            var query = _repo.GetBaseQuery()
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor);
+                
             return await query
                 .Select(a => new AppointmentWithNamesDTO
                 {
-                    AppointmentID   = a.AppointmentID,
-                    PatientName     = a.Patient.FirstName + " " + a.Patient.LastName,
-                    DoctorName      = a.Doctor.FirstName  + " " + a.Doctor.LastName,
+                    AppointmentID = a.AppointmentID,
+                    PatientName = a.Patient.FirstName + " " + a.Patient.LastName,
+                    DoctorName = a.Doctor.FirstName + " " + a.Doctor.LastName,
                     AppointmentDate = a.AppointmentDate,
-                    Reason          = a.Reason,
-                    Status          = a.Status,
-                    Notes           = a.Notes
+                    Reason = a.Reason,
+                    Status = a.Status,
+                    Notes = a.Notes
                 })
                 .GetPagedResultAsync(qp.pageNumber, qp.pageSize);
         }
-
+    
+        // names included in search results directly
         var lucRes = _lucene.Search(qp.Query, qp.pageNumber, qp.pageSize, qp.Sort?.FirstOrDefault(), qp.Order);
+        
+        // Get appointment IDs for efficient batch loading
+        var appointmentIds = lucRes.Data.Select(dto => dto.AppointmentID).ToList();
+        var appointmentsWithNames = await _ctx.Appointments
+            .Include(a => a.Patient)
+            .Include(a => a.Doctor)
+            .Where(a => appointmentIds.Contains(a.AppointmentID))
+            .ToDictionaryAsync(a => a.AppointmentID);
+    
+        // Update DTOs with names efficiently
         foreach (var dto in lucRes.Data)
         {
-            var a = await _ctx.Appointments
-                .Include(x => x.Patient)
-                .Include(x => x.Doctor)
-                .FirstAsync(x => x.AppointmentID == dto.AppointmentID);
-            dto.PatientName = a.Patient.FirstName + " " + a.Patient.LastName;
-            dto.DoctorName  = a.Doctor.FirstName  + " " + a.Doctor.LastName;
+            if (appointmentsWithNames.TryGetValue(dto.AppointmentID, out var appointment))
+            {
+                dto.PatientName = $"{appointment.Patient.FirstName} {appointment.Patient.LastName}";
+                dto.DoctorName = $"{appointment.Doctor.FirstName} {appointment.Doctor.LastName}";
+            }
         }
+        
         return lucRes;
     }
+
 }

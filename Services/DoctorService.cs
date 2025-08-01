@@ -70,22 +70,23 @@ public class DoctorService : IDoctorService
     public async Task<PagedResult<Doctor>> SearchDoctors(DoctorQueryParams qp)
     {
         var query = _repo.GetBaseQuery();
-
+    
         if (qp.UID?.Any() == true)
         {
             query = query.Where(d => qp.UID.Contains(d.UserID));
         }
-
+    
         if (qp.Email?.Any() == true)
         {
             query = query.Where(d => qp.Email.Contains(d.Email));
         }
-
-        if (qp.Specialization?.Any() == true)
+    
+        if (!string.IsNullOrWhiteSpace(qp.Specialization))
         {
-            query = query.Where(d => qp.Specialization == d.Specialization);
+            // Fix: Use Contains instead of equality
+            query = query.Where(d => d.Specialization.Contains(qp.Specialization));
         }
-
+    
         if (qp.Sort?.Any() == true)
         {
             query = qp.Sort.Aggregate(
@@ -93,9 +94,10 @@ public class DoctorService : IDoctorService
                 (current, sortField) => current.ThenBy(GetSortExpression(sortField, qp.Order))
             );
         }
-
+    
         return await query.GetPagedResultAsync(qp.pageNumber, qp.pageSize);
     }
+
     
     private Expression<Func<Doctor, object>> GetSortExpression(string field, string order)
     {

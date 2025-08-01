@@ -11604,3 +11604,946 @@ INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
 2025-08-01 13:15:20.308 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
 2025-08-01 13:15:20.309 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 91.8554 ms
 2025-08-01 13:15:20.309 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - 200 70 application/json; charset=utf-8 95.0563ms
+2025-08-01 13:17:11.430 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-08-01 13:17:12.381 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 13:17:13.927 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 13:17:14.482 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 13:17:14.558 +05:30 [INF] Now listening on: http://localhost:5122
+2025-08-01 13:17:14.561 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 13:17:14.562 +05:30 [INF] Hosting environment: Development
+2025-08-01 13:17:14.562 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-08-01 13:17:36.069 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - null null
+2025-08-01 13:17:36.095 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-08-01 13:17:36.164 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:17:36.185 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:17:36.270 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:17:36.336 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 146.6612ms
+2025-08-01 13:17:36.337 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:17:36.339 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 177.4085 ms
+2025-08-01 13:17:36.342 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - 200 70 application/json; charset=utf-8 274.4179ms
+2025-08-01 13:21:08.968 +05:30 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:09.890 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:11.560 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:12.249 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 13:21:12.326 +05:30 [INF] Now listening on: http://localhost:5122
+2025-08-01 13:21:12.329 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 13:21:12.329 +05:30 [INF] Hosting environment: Development
+2025-08-01 13:21:12.329 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-08-01 13:21:15.795 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=d - null null
+2025-08-01 13:21:15.821 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-08-01 13:21:15.823 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:15.833 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=d - 204 null null 39.1404ms
+2025-08-01 13:21:15.841 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=d - null null
+2025-08-01 13:21:15.846 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:15.964 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 07:35:54', Current time (UTC): '01-08-2025 07:51:15'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-08-01 13:21:15.982 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 07:35:54', Current time (UTC): '01-08-2025 07:51:15'.
+2025-08-01 13:21:15.989 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Doctor|Patient)
+2025-08-01 13:21:15.993 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-01 13:21:15.994 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=d - 401 0 null 152.8755ms
+2025-08-01 13:21:17.752 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-08-01 13:21:17.753 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:17.757 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-08-01 13:21:17.759 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-01 13:21:17.759 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 7.4479ms
+2025-08-01 13:21:18.655 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-08-01 13:21:18.656 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:18.657 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 2.1982ms
+2025-08-01 13:21:18.659 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-08-01 13:21:18.660 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:18.680 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 13:21:18.722 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-08-01 13:21:18.872 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-08-01 13:21:20.327 +05:30 [INF] User logged in: ruby@raishin.com
+2025-08-01 13:21:20.327 +05:30 [INF] Role: Admin
+2025-08-01 13:21:20.328 +05:30 [INF] Role: Admin
+2025-08-01 13:21:20.329 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-08-01 13:21:20.402 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-08-01 13:21:20.427 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 13:21:20.453 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1728.037ms
+2025-08-01 13:21:20.454 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 13:21:20.457 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1793.7958 ms
+2025-08-01 13:21:20.464 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 631 application/json; charset=utf-8 1805.0843ms
+2025-08-01 13:21:20.465 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-08-01 13:21:20.466 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:20.466 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 1.6399ms
+2025-08-01 13:21:20.470 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-08-01 13:21:20.476 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:20.505 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 13:21:20.521 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-08-01 13:21:20.548 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-08-01 13:21:20.707 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-08-01 13:21:20.716 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:20.718 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:20.733 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-08-01 13:21:20.736 +05:30 [INF] Found 1 users among search
+2025-08-01 13:21:20.740 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:20.784 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 262.2298ms
+2025-08-01 13:21:20.784 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 13:21:20.785 +05:30 [INF] HTTP GET /api/user/search responded 200 in 280.6433 ms
+2025-08-01 13:21:20.785 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 315.0542ms
+2025-08-01 13:21:20.791 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-08-01 13:21:20.792 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:20.792 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 1.0999ms
+2025-08-01 13:21:20.795 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-08-01 13:21:20.795 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:20.797 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 13:21:20.798 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-08-01 13:21:20.805 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-08-01 13:21:20.823 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-08-01 13:21:20.826 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:20.826 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:20.837 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-08-01 13:21:20.838 +05:30 [INF] Found 1 users among search
+2025-08-01 13:21:20.839 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:20.840 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 41.7745ms
+2025-08-01 13:21:20.840 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 13:21:20.840 +05:30 [INF] HTTP GET /api/user/search responded 200 in 44.1036 ms
+2025-08-01 13:21:20.841 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 46.2419ms
+2025-08-01 13:21:23.112 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 13:21:23.114 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:23.114 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 204 null null 2.5007ms
+2025-08-01 13:21:23.117 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 13:21:23.118 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:23.121 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:23.129 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:21:23.183 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:23.196 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:23.196 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 13:21:23.212 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-08-01 13:21:23.214 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:23.219 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 89.4877ms
+2025-08-01 13:21:23.219 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:23.219 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 98.3818 ms
+2025-08-01 13:21:23.220 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 200 2036 application/json; charset=utf-8 102.3651ms
+2025-08-01 13:21:25.577 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jan - null null
+2025-08-01 13:21:25.578 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:25.579 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jan - 204 null null 1.0769ms
+2025-08-01 13:21:25.581 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jan - null null
+2025-08-01 13:21:25.581 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:25.583 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:25.583 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:21:25.669 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:25.669 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 85.5824ms
+2025-08-01 13:21:25.670 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:25.670 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 87.2921 ms
+2025-08-01 13:21:25.670 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jan - 200 70 application/json; charset=utf-8 89.2106ms
+2025-08-01 13:21:26.989 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 13:21:26.990 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:26.992 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:26.992 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:21:27.002 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:27.005 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-08-01 13:21:27.005 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:27.007 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 14.527ms
+2025-08-01 13:21:27.007 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:27.008 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 15.8459 ms
+2025-08-01 13:21:27.009 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 200 2036 application/json; charset=utf-8 19.538ms
+2025-08-01 13:21:28.025 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=18 - null null
+2025-08-01 13:21:28.026 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:28.027 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=18 - 204 null null 2.0218ms
+2025-08-01 13:21:28.029 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=18 - null null
+2025-08-01 13:21:28.029 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:28.031 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:28.031 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:21:28.107 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__dto_AppointmentID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] = @__dto_AppointmentID_0
+2025-08-01 13:21:28.109 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:28.110 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 78.9283ms
+2025-08-01 13:21:28.111 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:28.112 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 81.0748 ms
+2025-08-01 13:21:28.112 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=18 - 200 259 application/json; charset=utf-8 83.5363ms
+2025-08-01 13:21:32.292 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 13:21:32.293 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:32.293 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 204 null null 0.908ms
+2025-08-01 13:21:32.295 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 13:21:32.296 +05:30 [INF] CORS policy execution successful.
+2025-08-01 13:21:32.297 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:32.297 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 13:21:32.301 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 13:21:32.303 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-08-01 13:21:32.304 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 13:21:32.305 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 7.6363ms
+2025-08-01 13:21:32.305 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 13:21:32.306 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 9.0969 ms
+2025-08-01 13:21:32.306 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 200 2036 application/json; charset=utf-8 10.6869ms
+2025-08-01 14:07:42.529 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive]
+FROM [Patients] AS [p]
+WHERE [p].[isActive] = CAST(1 AS bit)
+2025-08-01 14:07:43.486 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 14:07:45.235 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:07:45.973 +05:30 [INF] User profile is available. Using 'C:\Users\aakarsh.batra\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 14:07:46.062 +05:30 [INF] Now listening on: http://localhost:5122
+2025-08-01 14:07:46.066 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 14:07:46.067 +05:30 [INF] Hosting environment: Development
+2025-08-01 14:07:46.067 +05:30 [INF] Content root path: C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi
+2025-08-01 14:08:01.847 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - null null
+2025-08-01 14:08:01.888 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-08-01 14:08:01.952 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 08:14:56', Current time (UTC): '01-08-2025 08:38:01'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-08-01 14:08:01.967 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 08:14:56', Current time (UTC): '01-08-2025 08:38:01'.
+2025-08-01 14:08:01.972 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Doctor|Patient)
+2025-08-01 14:08:01.976 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-01 14:08:01.982 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - 401 0 null 139.7028ms
+2025-08-01 14:08:05.379 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 65
+2025-08-01 14:08:05.393 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 14:08:05.420 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-08-01 14:08:05.561 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-08-01 14:08:06.830 +05:30 [INF] User logged in: ruby@raishin.com
+2025-08-01 14:08:06.830 +05:30 [INF] Role: Admin
+2025-08-01 14:08:06.832 +05:30 [INF] Role: Admin
+2025-08-01 14:08:06.832 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-08-01 14:08:06.920 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-08-01 14:08:06.945 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 14:08:06.987 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 1560.1256ms
+2025-08-01 14:08:06.988 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 14:08:06.994 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 1605.4049 ms
+2025-08-01 14:08:07.001 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 631 application/json; charset=utf-8 1621.4934ms
+2025-08-01 14:08:14.492 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - null null
+2025-08-01 14:08:14.502 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:14.510 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:14.795 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:14.799 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:14.813 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 301.9965ms
+2025-08-01 14:08:14.813 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:14.814 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 312.5754 ms
+2025-08-01 14:08:14.815 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=dav - 200 1039 application/json; charset=utf-8 322.4897ms
+2025-08-01 14:08:18.071 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=david - null null
+2025-08-01 14:08:18.076 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:18.076 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:18.136 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:18.138 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:18.140 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 62.7987ms
+2025-08-01 14:08:18.140 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:18.140 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 64.8851 ms
+2025-08-01 14:08:18.141 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=david - 200 841 application/json; charset=utf-8 69.9713ms
+2025-08-01 14:08:25.687 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=davis - null null
+2025-08-01 14:08:25.689 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:25.689 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:25.711 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:25.712 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:25.713 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 23.5216ms
+2025-08-01 14:08:25.713 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:25.714 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 24.8210 ms
+2025-08-01 14:08:25.714 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=davis - 200 838 application/json; charset=utf-8 26.4168ms
+2025-08-01 14:08:31.149 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=david%20davis - null null
+2025-08-01 14:08:31.151 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:31.152 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:31.188 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:31.190 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:31.191 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 38.8045ms
+2025-08-01 14:08:31.191 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:31.192 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 40.9533 ms
+2025-08-01 14:08:31.192 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=david%20davis - 200 1039 application/json; charset=utf-8 42.8198ms
+2025-08-01 14:08:45.309 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - null null
+2025-08-01 14:08:45.310 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:45.315 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - 204 null null 5.9964ms
+2025-08-01 14:08:45.318 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - null null
+2025-08-01 14:08:45.319 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:45.319 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 08:21:20', Current time (UTC): '01-08-2025 08:38:45'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-08-01 14:08:45.320 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '01-08-2025 08:21:20', Current time (UTC): '01-08-2025 08:38:45'.
+2025-08-01 14:08:45.320 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Doctor|Patient)
+2025-08-01 14:08:45.321 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-01 14:08:45.321 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - 401 0 null 3.2566ms
+2025-08-01 14:08:46.258 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/logout - null 0
+2025-08-01 14:08:46.259 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:46.261 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-08-01 14:08:46.261 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2025-08-01 14:08:46.261 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/logout - 401 0 null 3.4536ms
+2025-08-01 14:08:47.392 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - null null
+2025-08-01 14:08:47.393 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:47.394 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/auth/login - 204 null null 1.2731ms
+2025-08-01 14:08:47.396 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5122/api/auth/login - application/json 53
+2025-08-01 14:08:47.396 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:47.397 +05:30 [INF] Executing endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 14:08:47.398 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller AuthController (HealthcareApi).
+2025-08-01 14:08:47.408 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE LOWER(LTRIM(RTRIM([u].[Email]))) = @__normalizedEmail_0
+2025-08-01 14:08:48.292 +05:30 [INF] User logged in: ruby@raishin.com
+2025-08-01 14:08:48.293 +05:30 [INF] Role: Admin
+2025-08-01 14:08:48.293 +05:30 [INF] Role: Admin
+2025-08-01 14:08:48.293 +05:30 [INF] claims of token: http://schemas.microsoft.com/ws/2008/06/identity/claims/role: Admin
+2025-08-01 14:08:48.302 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [ModifiedAt] = @p0, [RefreshToken] = @p1, [RefreshTokenExpiry] = @p2
+OUTPUT 1
+WHERE [UserID] = @p3;
+2025-08-01 14:08:48.304 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`7[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 14:08:48.304 +05:30 [INF] Executed action AuthController.Login (HealthcareApi) in 905.6638ms
+2025-08-01 14:08:48.304 +05:30 [INF] Executed endpoint 'AuthController.Login (HealthcareApi)'
+2025-08-01 14:08:48.304 +05:30 [INF] HTTP POST /api/auth/login responded 200 in 907.4258 ms
+2025-08-01 14:08:48.305 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5122/api/auth/login - 200 631 application/json; charset=utf-8 909.1015ms
+2025-08-01 14:08:48.312 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-08-01 14:08:48.312 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:48.312 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 204 null null 0.6745ms
+2025-08-01 14:08:48.315 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - null null
+2025-08-01 14:08:48.315 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:48.316 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 14:08:48.330 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-08-01 14:08:48.347 +05:30 [INF] Searching users with params {"UID":null,"Username":["Ruby"],"Role":null,"Email":["ruby@raishin.com"],"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-08-01 14:08:48.389 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+2025-08-01 14:08:48.395 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:48.396 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:48.402 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_Username_0='?' (Size = 4000), @__param_Email_1='?' (Size = 4000), @__p_2='?' (DbType = Int32), @__p_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[Username] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_Username_0) WITH ([value] nvarchar(50) '$') AS [p]
+) AND [u].[Email] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__param_Email_1) WITH ([value] nvarchar(100) '$') AS [p0]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_2 ROWS FETCH NEXT @__p_3 ROWS ONLY
+2025-08-01 14:08:48.403 +05:30 [INF] Found 1 users among search
+2025-08-01 14:08:48.404 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:48.415 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 84.1478ms
+2025-08-01 14:08:48.415 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 14:08:48.416 +05:30 [INF] HTTP GET /api/user/search responded 200 in 99.3773 ms
+2025-08-01 14:08:48.416 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?username=Ruby&email=ruby@raishin.com - 200 509 application/json; charset=utf-8 101.3529ms
+2025-08-01 14:08:48.421 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - null null
+2025-08-01 14:08:48.421 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:48.421 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/user/search?uid=21982 - 204 null null 0.891ms
+2025-08-01 14:08:48.424 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - null null
+2025-08-01 14:08:48.424 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:48.425 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 14:08:48.425 +05:30 [INF] Route matched with {action = "GetWithParams", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PagedResult`1[HealthcareApi.Models.User]]] GetWithParams(HealthcareApi.Models.UserQueryParams) on controller HealthcareApi.Controllers.UserController (HealthcareApi).
+2025-08-01 14:08:48.430 +05:30 [INF] Searching users with params {"UID":[21982],"Username":null,"Role":null,"Email":null,"CreatedAt":null,"ModifiedAt":null,"isActive":null,"Sort":null,"Order":null,"pageNumber":1,"pageSize":10,"$type":"UserQueryParams"}
+2025-08-01 14:08:48.438 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_UID_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+2025-08-01 14:08:48.440 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:48.441 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:48.450 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__param_UID_0='?' (Size = 4000), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[Email], [u].[ModifiedAt], [u].[PasswordHash], [u].[RefreshToken], [u].[RefreshTokenExpiry], [u].[Role], [u].[Username], [u].[isActive]
+FROM [Users] AS [u]
+WHERE [u].[UserID] IN (
+    SELECT [p].[value]
+    FROM OPENJSON(@__param_UID_0) WITH ([value] int '$') AS [p]
+)
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+2025-08-01 14:08:48.451 +05:30 [INF] Found 1 users among search
+2025-08-01 14:08:48.451 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.User, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:48.452 +05:30 [INF] Executed action HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi) in 26.2695ms
+2025-08-01 14:08:48.452 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.UserController.GetWithParams (HealthcareApi)'
+2025-08-01 14:08:48.453 +05:30 [INF] HTTP GET /api/user/search responded 200 in 28.0079 ms
+2025-08-01 14:08:48.453 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/user/search?uid=21982 - 200 509 application/json; charset=utf-8 29.6403ms
+2025-08-01 14:08:49.778 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:08:49.779 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:49.779 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 204 null null 0.9574ms
+2025-08-01 14:08:49.782 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:08:49.782 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:49.783 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:49.784 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:49.805 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 14:08:49.810 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:49.810 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:49.828 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-08-01 14:08:49.830 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:49.831 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 46.8266ms
+2025-08-01 14:08:49.831 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:49.832 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 48.9322 ms
+2025-08-01 14:08:49.832 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 200 2036 application/json; charset=utf-8 50.4555ms
+2025-08-01 14:08:51.295 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - null null
+2025-08-01 14:08:51.296 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:51.297 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - 204 null null 1.2163ms
+2025-08-01 14:08:51.299 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - null null
+2025-08-01 14:08:51.299 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:51.300 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:51.301 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:51.313 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:51.315 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:51.316 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 14.7383ms
+2025-08-01 14:08:51.316 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:51.316 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 15.9765 ms
+2025-08-01 14:08:51.317 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=j - 200 1989 application/json; charset=utf-8 17.6218ms
+2025-08-01 14:08:52.004 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jo - null null
+2025-08-01 14:08:52.004 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:52.005 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jo - 204 null null 1.0802ms
+2025-08-01 14:08:52.007 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jo - null null
+2025-08-01 14:08:52.007 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:52.009 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:52.009 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:52.052 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:52.053 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:52.054 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 44.4723ms
+2025-08-01 14:08:52.054 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:52.055 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 46.0735 ms
+2025-08-01 14:08:52.055 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=jo - 200 1974 application/json; charset=utf-8 48.1695ms
+2025-08-01 14:08:52.567 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=john - null null
+2025-08-01 14:08:52.568 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:52.569 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=john - 204 null null 1.3917ms
+2025-08-01 14:08:52.571 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=john - null null
+2025-08-01 14:08:52.571 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:52.572 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:52.573 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:52.591 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__appointmentIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[CreatedAt], [a].[DoctorID], [a].[ModifiedAt], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status], [a].[isActive], [p].[PatientID], [p].[Address], [p].[Allergies], [p].[ContactNumber], [p].[CreatedAt], [p].[CurrentMedications], [p].[DateOfBirth], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[MedicalHistory], [p].[ModifiedAt], [p].[UserID], [p].[isActive], [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Appointment] AS [a]
+INNER JOIN [Patients] AS [p] ON [a].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a].[DoctorID] = [d].[DoctorID]
+WHERE [a].[AppointmentID] IN (
+    SELECT [a0].[value]
+    FROM OPENJSON(@__appointmentIds_0) WITH ([value] int '$') AS [a0]
+)
+2025-08-01 14:08:52.593 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:52.593 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 20.4973ms
+2025-08-01 14:08:52.594 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:52.594 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 22.2288 ms
+2025-08-01 14:08:52.594 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10&query=john - 200 1974 application/json; charset=utf-8 23.7794ms
+2025-08-01 14:08:53.397 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:08:53.398 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:53.398 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:53.399 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Appointment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.AppointmentQueryParams) on controller HealthcareApi.Controllers.AppointmentController (HealthcareApi).
+2025-08-01 14:08:53.406 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Appointment] AS [a]
+WHERE [a].[isActive] = CAST(1 AS bit)
+2025-08-01 14:08:53.409 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[AppointmentID], [p].[FirstName] + N' ' + [p].[LastName] AS [PatientName], [d].[FirstName] + N' ' + [d].[LastName] AS [DoctorName], [a0].[AppointmentDate], [a0].[Reason], [a0].[Status], [a0].[Notes]
+FROM (
+    SELECT [a].[AppointmentID], [a].[AppointmentDate], [a].[DoctorID], [a].[Notes], [a].[PatientID], [a].[Reason], [a].[Status]
+    FROM [Appointment] AS [a]
+    WHERE [a].[isActive] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [a0]
+INNER JOIN [Patients] AS [p] ON [a0].[PatientID] = [p].[PatientID]
+INNER JOIN [Doctors] AS [d] ON [a0].[DoctorID] = [d].[DoctorID]
+2025-08-01 14:08:53.409 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.AppointmentWithNamesDTO, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:53.410 +05:30 [INF] Executed action HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi) in 11.1174ms
+2025-08-01 14:08:53.411 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.AppointmentController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:53.411 +05:30 [INF] HTTP GET /api/appointment/search-lucene responded 200 in 12.7283 ms
+2025-08-01 14:08:53.411 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/appointment/search-lucene?pageNumber=1&pageSize=10 - 200 2036 application/json; charset=utf-8 14.3956ms
+2025-08-01 14:08:56.430 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:08:56.431 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:56.432 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 204 null null 2.0837ms
+2025-08-01 14:08:56.435 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:08:56.436 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:56.437 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:56.442 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:08:56.466 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:08:56.468 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:56.469 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-01 14:08:56.481 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:08:56.484 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:08:56.494 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 51.5101ms
+2025-08-01 14:08:56.495 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:56.495 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 58.8707 ms
+2025-08-01 14:08:56.496 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 61.3538ms
+2025-08-01 14:08:59.037 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=jo - null null
+2025-08-01 14:08:59.038 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:59.039 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=jo - 204 null null 1.6948ms
+2025-08-01 14:08:59.041 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=jo - null null
+2025-08-01 14:08:59.042 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:08:59.043 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:59.043 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:08:59.054 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 10.6479ms
+2025-08-01 14:08:59.055 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:08:59.056 +05:30 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at HealthcareApi.Services.LuceneDoctorIndexService.<>c__DisplayClass6_0.<Search>b__0(ScoreDoc h) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 80
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.Fill(IList`1 source, Span`1 destination, Func`2 func, Int32 sourceIndex)
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.ToList()
+   at HealthcareApi.Services.LuceneDoctorIndexService.Search(String queryText, Int32 pageNumber, Int32 pageSize, String sortField, String sortOrder) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 74
+   at HealthcareApi.Services.DoctorService.SearchDoctorsLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\DoctorService.cs:line 62
+   at HealthcareApi.Controllers.DoctorController.SearchLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\DoctorController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-08-01 14:08:59.117 +05:30 [ERR] HTTP GET /api/doctor/search-lucene responded 500 in 74.8430 ms
+2025-08-01 14:08:59.118 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=jo - 500 null application/json 76.7402ms
+2025-08-01 14:09:19.532 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene - null null
+2025-08-01 14:09:19.533 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:19.534 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:19.543 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:19.549 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:19.550 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:19.551 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 17.3204ms
+2025-08-01 14:09:19.552 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:19.552 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 19.3992 ms
+2025-08-01 14:09:19.553 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene - 200 1991 application/json; charset=utf-8 20.9826ms
+2025-08-01 14:09:26.933 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=j - null null
+2025-08-01 14:09:26.934 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:26.935 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:26.945 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 9.846ms
+2025-08-01 14:09:26.945 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:26.946 +05:30 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at HealthcareApi.Services.LuceneDoctorIndexService.<>c__DisplayClass6_0.<Search>b__0(ScoreDoc h) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 80
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.Fill(IList`1 source, Span`1 destination, Func`2 func, Int32 sourceIndex)
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.ToList()
+   at HealthcareApi.Services.LuceneDoctorIndexService.Search(String queryText, Int32 pageNumber, Int32 pageSize, String sortField, String sortOrder) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 74
+   at HealthcareApi.Services.DoctorService.SearchDoctorsLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\DoctorService.cs:line 62
+   at HealthcareApi.Controllers.DoctorController.SearchLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\DoctorController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-08-01 14:09:26.950 +05:30 [ERR] HTTP GET /api/doctor/search-lucene responded 500 in 16.0341 ms
+2025-08-01 14:09:26.950 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?query=j - 500 null application/json 17.6029ms
+2025-08-01 14:09:31.001 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:31.001 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:31.002 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 204 null null 1.3396ms
+2025-08-01 14:09:31.005 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:31.005 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:31.006 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:31.006 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:31.010 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:31.014 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:31.015 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:31.016 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 10.0607ms
+2025-08-01 14:09:31.016 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:31.017 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 11.2028 ms
+2025-08-01 14:09:31.017 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 12.7624ms
+2025-08-01 14:09:33.888 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smi - null null
+2025-08-01 14:09:33.889 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:33.892 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smi - 204 null null 3.481ms
+2025-08-01 14:09:33.913 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smi - null null
+2025-08-01 14:09:33.914 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:33.917 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:33.918 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:33.995 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:33.996 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 77.3357ms
+2025-08-01 14:09:33.996 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:33.997 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 81.5274 ms
+2025-08-01 14:09:33.997 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smi - 200 390 application/json; charset=utf-8 84.1052ms
+2025-08-01 14:09:34.916 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smith - null null
+2025-08-01 14:09:34.916 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:34.917 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smith - 204 null null 1.0891ms
+2025-08-01 14:09:34.919 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smith - null null
+2025-08-01 14:09:34.920 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:34.921 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:34.921 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:34.933 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:34.934 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 12.1179ms
+2025-08-01 14:09:34.934 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:34.935 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 14.0977 ms
+2025-08-01 14:09:34.935 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=smith - 200 390 application/json; charset=utf-8 15.8771ms
+2025-08-01 14:09:35.487 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:35.487 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:35.488 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:35.488 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:35.491 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:35.494 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:35.494 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:35.495 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 6.4625ms
+2025-08-01 14:09:35.495 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:35.496 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 7.9205 ms
+2025-08-01 14:09:35.496 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 9.6435ms
+2025-08-01 14:09:37.064 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=brown - null null
+2025-08-01 14:09:37.064 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:37.065 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=brown - 204 null null 0.6829ms
+2025-08-01 14:09:37.066 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=brown - null null
+2025-08-01 14:09:37.067 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:37.068 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:37.068 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:37.078 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 9.6343ms
+2025-08-01 14:09:37.079 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:37.079 +05:30 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at HealthcareApi.Services.LuceneDoctorIndexService.<>c__DisplayClass6_0.<Search>b__0(ScoreDoc h) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 80
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.Fill(IList`1 source, Span`1 destination, Func`2 func, Int32 sourceIndex)
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.ToList()
+   at HealthcareApi.Services.LuceneDoctorIndexService.Search(String queryText, Int32 pageNumber, Int32 pageSize, String sortField, String sortOrder) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 74
+   at HealthcareApi.Services.DoctorService.SearchDoctorsLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\DoctorService.cs:line 62
+   at HealthcareApi.Controllers.DoctorController.SearchLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\DoctorController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-08-01 14:09:37.083 +05:30 [ERR] HTTP GET /api/doctor/search-lucene responded 500 in 15.1153 ms
+2025-08-01 14:09:37.083 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=brown - 500 null application/json 16.8653ms
+2025-08-01 14:09:41.144 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:41.145 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:41.145 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 204 null null 0.8726ms
+2025-08-01 14:09:41.147 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:41.148 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:41.149 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:41.149 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:41.153 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:41.155 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:41.156 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:41.156 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 6.4548ms
+2025-08-01 14:09:41.157 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:41.157 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 8.6080 ms
+2025-08-01 14:09:41.158 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 10.2707ms
+2025-08-01 14:09:44.367 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=wilson - null null
+2025-08-01 14:09:44.368 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:44.368 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=wilson - 204 null null 1.3568ms
+2025-08-01 14:09:44.370 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=wilson - null null
+2025-08-01 14:09:44.371 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:44.372 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:44.373 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:44.415 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 42.4467ms
+2025-08-01 14:09:44.416 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:44.416 +05:30 [ERR] Unhandled exception occurred
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at HealthcareApi.Services.LuceneDoctorIndexService.<>c__DisplayClass6_0.<Search>b__0(ScoreDoc h) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 80
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.Fill(IList`1 source, Span`1 destination, Func`2 func, Int32 sourceIndex)
+   at System.Linq.Enumerable.SelectListPartitionIterator`2.ToList()
+   at HealthcareApi.Services.LuceneDoctorIndexService.Search(String queryText, Int32 pageNumber, Int32 pageSize, String sortField, String sortOrder) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\LuceneDoctorIndexService.cs:line 74
+   at HealthcareApi.Services.DoctorService.SearchDoctorsLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Services\DoctorService.cs:line 62
+   at HealthcareApi.Controllers.DoctorController.SearchLucene(DoctorQueryParams qp) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Controllers\DoctorController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at ErrorHandlerMiddleware.Invoke(HttpContext context) in C:\Users\aakarsh.batra\Assignment\Week2\HealthcareApi\Middleware\ErrorHandlingMiddleware.cs:line 19
+2025-08-01 14:09:44.419 +05:30 [ERR] HTTP GET /api/doctor/search-lucene responded 500 in 47.4540 ms
+2025-08-01 14:09:44.420 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=wilson - 500 null application/json 49.4848ms
+2025-08-01 14:09:46.421 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:46.422 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:46.422 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 204 null null 0.832ms
+2025-08-01 14:09:46.424 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:46.425 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:46.426 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:46.426 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:46.429 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:46.431 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:46.432 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:46.433 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 6.6849ms
+2025-08-01 14:09:46.434 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:46.434 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 8.2204 ms
+2025-08-01 14:09:46.434 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 9.6857ms
+2025-08-01 14:09:48.498 +05:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=83 - null null
+2025-08-01 14:09:48.498 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:48.499 +05:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=83 - 204 null null 0.6853ms
+2025-08-01 14:09:48.501 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=83 - null null
+2025-08-01 14:09:48.501 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:48.502 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:48.502 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:48.523 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:48.524 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 21.1414ms
+2025-08-01 14:09:48.524 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:48.525 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 23.2807 ms
+2025-08-01 14:09:48.526 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10&query=83 - 200 405 application/json; charset=utf-8 24.8723ms
+2025-08-01 14:09:49.932 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - null null
+2025-08-01 14:09:49.933 +05:30 [INF] CORS policy execution successful.
+2025-08-01 14:09:49.934 +05:30 [INF] Executing endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:49.935 +05:30 [INF] Route matched with {action = "SearchLucene", controller = "Doctor"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchLucene(HealthcareApi.Models.DoctorQueryParams) on controller HealthcareApi.Controllers.DoctorController (HealthcareApi).
+2025-08-01 14:09:49.938 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+2025-08-01 14:09:49.939 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[DoctorID], [d].[ContactNumber], [d].[CreatedAt], [d].[Email], [d].[FirstName], [d].[LastName], [d].[ModifiedAt], [d].[Schedule], [d].[Specialization], [d].[UserID], [d].[isActive]
+FROM [Doctors] AS [d]
+WHERE [d].[isActive] = CAST(1 AS bit)
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-08-01 14:09:49.940 +05:30 [INF] Executing OkObjectResult, writing value of type 'PagedResult`1[[HealthcareApi.Models.Doctor, HealthcareApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-01 14:09:49.941 +05:30 [INF] Executed action HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi) in 5.8045ms
+2025-08-01 14:09:49.941 +05:30 [INF] Executed endpoint 'HealthcareApi.Controllers.DoctorController.SearchLucene (HealthcareApi)'
+2025-08-01 14:09:49.941 +05:30 [INF] HTTP GET /api/doctor/search-lucene responded 200 in 7.3945 ms
+2025-08-01 14:09:49.942 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5122/api/doctor/search-lucene?pageNumber=1&pageSize=10 - 200 1991 application/json; charset=utf-8 9.6605ms

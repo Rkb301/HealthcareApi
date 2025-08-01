@@ -21,7 +21,9 @@ public class LuceneAppointmentIndexService
         nameof(Appointment.AppointmentDate),
         nameof(Appointment.Reason),
         nameof(Appointment.Status),
-        nameof(Appointment.Notes)
+        nameof(Appointment.Notes),
+        "PatientName",
+        "DoctorName"
     };
 
     public LuceneAppointmentIndexService(IndexWriter writer, StandardAnalyzer analyzer)
@@ -41,7 +43,9 @@ public class LuceneAppointmentIndexService
                 new StringField(nameof(Appointment.AppointmentDate), a.AppointmentDate.ToString("o"), Field.Store.YES),
                 new TextField(nameof(Appointment.Reason), a.Reason ?? "", Field.Store.YES),
                 new TextField(nameof(Appointment.Status), a.Status ?? "", Field.Store.YES),
-                new TextField(nameof(Appointment.Notes), a.Notes ?? "", Field.Store.YES)
+                new TextField(nameof(Appointment.Notes), a.Notes ?? "", Field.Store.YES),
+                new TextField("PatientName", $"{a.Patient?.FirstName} {a.Patient?.LastName}", Field.Store.YES),
+                new TextField("DoctorName", $"{a.Doctor?.FirstName} {a.Doctor?.LastName}", Field.Store.YES)
             };
             _writer.AddDocument(doc);
         }
