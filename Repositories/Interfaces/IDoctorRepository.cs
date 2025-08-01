@@ -9,4 +9,5 @@ public interface IDoctorRepository
     Task<Doctor> AddAsync(Doctor doctor);
     Task UpdateAsync(Doctor doctor);
     Task<List<CurrentAppointmentsDTO>> GetTodayAppointmentsAsync(int? doctorId, string? statusFilter);
+    Task<List<Doctor>> GetAllActiveDoctorsAsync();
 }

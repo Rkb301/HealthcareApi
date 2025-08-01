@@ -49,5 +49,13 @@ namespace HealthcareApi.Repositories
 
             return appointments;
         }
+
+        public async Task<List<Doctor>> GetAllActiveDoctorsAsync()
+        {
+            return await _context.Doctors
+                .Where(d => d.isActive)
+                .OrderBy(d => d.DoctorID)
+                .ToListAsync();
+        }
     }
 }
