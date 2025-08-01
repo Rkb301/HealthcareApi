@@ -168,8 +168,7 @@ public class LucenePatientIndexService
             Data = results,
             TotalCount = topDocs.TotalHits,
             PageNumber = pageNumber,
-            PageSize = pageSize,
-            TotalPages = (int)Math.Ceiling((double)topDocs.TotalHits / pageSize)
+            PageSize = pageSize
         };
     }
 

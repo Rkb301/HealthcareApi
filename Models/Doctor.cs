@@ -49,18 +49,19 @@ namespace HealthcareApi.Models
         // PRESERVED: Navigation properties
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
+        [JsonIgnore]
         [ForeignKey("UserID")]
-        public virtual User User { get; set; } = null!;
+        public virtual User? User { get; set; } = null!;
 
         [JsonIgnore]
-        public virtual ICollection<MedicalRecord> MedicalRecords { get; set; }
+        public virtual ICollection<MedicalRecord>? MedicalRecords { get; set; }
             = new List<MedicalRecord>();
 
         [JsonIgnore]
-        public virtual ICollection<Prescription> Prescriptions { get; set; }
+        public virtual ICollection<Prescription>? Prescriptions { get; set; }
             = new List<Prescription>();
         
         [JsonIgnore]
-        public virtual ICollection<LabResult> LabResults { get; set; } = new List<LabResult>();
+        public virtual ICollection<LabResult>? LabResults { get; set; } = new List<LabResult>();
     }
 }

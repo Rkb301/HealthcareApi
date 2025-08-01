@@ -20,8 +20,7 @@ public static class QueryExtensions
             Data = data,
             TotalCount = totalCount,
             PageNumber = pageNumber,
-            PageSize = pageSize,
-            TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize)
+            PageSize = pageSize
         };
     }
 }

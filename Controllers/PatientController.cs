@@ -43,7 +43,7 @@ public class PatientController : ControllerBase
         }
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin, Patient, Doctor")]
     [HttpGet("{id}")]
     public async Task<ActionResult<Patient>> GetPatient(int id)
     {
@@ -93,7 +93,7 @@ public class PatientController : ControllerBase
         if (patchDoc == null)
         {
             _logger.LogWarning("Patch document is null");
-            return BadRequest();
+            return BadRequest("Patch document is null");
         }
 
         try
@@ -105,7 +105,7 @@ public class PatientController : ControllerBase
         catch (NotFoundException)
         {
             _logger.LogWarning("Patient with ID {id} not found", id);
-            return NotFound();
+            return NotFound("Patient not found");
         }
         catch (Exception ex)
         {

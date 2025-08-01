@@ -6,6 +6,7 @@ using Lucene.Net.Search;
 using Lucene.Net.Store;
 using Lucene.Net.Util;
 using HealthcareApi.Models;
+using System.Runtime.InteropServices;
 
 namespace HealthcareApi.Services;
 
@@ -76,11 +77,11 @@ public class LuceneAppointmentIndexService
                 var d = searcher.Doc(h.Doc);
                 return new AppointmentWithNamesDTO
                 {
-                    AppointmentID   = int.Parse(d.Get(nameof(Appointment.AppointmentID))),
+                    AppointmentID = int.Parse(d.Get(nameof(Appointment.AppointmentID))),
                     AppointmentDate = DateTime.Parse(d.Get(nameof(Appointment.AppointmentDate))),
-                    Reason          = d.Get(nameof(Appointment.Reason)),
-                    Status          = d.Get(nameof(Appointment.Status)),
-                    Notes           = d.Get(nameof(Appointment.Notes))
+                    Reason = d.Get(nameof(Appointment.Reason)),
+                    Status = d.Get(nameof(Appointment.Status)),
+                    Notes = d.Get(nameof(Appointment.Notes))
                 };
             })
             .ToList();
@@ -90,8 +91,7 @@ public class LuceneAppointmentIndexService
             Data       = hits,
             TotalCount = (int)top.TotalHits,
             PageNumber = pageNumber,
-            PageSize   = pageSize,
-            TotalPages = (int)Math.Ceiling(top.TotalHits / (double)pageSize)
+            PageSize   = pageSize
         };
     }
 }

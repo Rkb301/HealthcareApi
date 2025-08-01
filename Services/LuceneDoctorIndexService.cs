@@ -94,8 +94,7 @@ public class LuceneDoctorIndexService
             Data       = hits,
             TotalCount = (int)top.TotalHits,
             PageNumber = pageNumber,
-            PageSize   = pageSize,
-            TotalPages = (int)Math.Ceiling(top.TotalHits / (double)pageSize)
+            PageSize   = pageSize
         };
     }
 }

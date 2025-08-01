@@ -1,6 +1,7 @@
 using HealthcareApi.Models;
 using HealthcareApi.Repositories;
 using HealthcareApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +19,17 @@ public class DoctorController : ControllerBase
         _repo = repo;
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] DoctorQueryParams qp) =>
         Ok(await _svc.SearchDoctorsLucene(qp));
 
+    [Authorize(Roles = "Admin, Doctor")]
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id) =>
         (await _svc.GetDoctorById(id)) is Doctor d ? Ok(d) : NotFound();
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Post(Doctor d)
     {
@@ -33,6 +37,7 @@ public class DoctorController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = created.DoctorID }, created);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPatch("{id}")]
     public async Task<IActionResult> Patch(int id, [FromBody] JsonPatchDocument patch)
     {
@@ -41,10 +46,12 @@ public class DoctorController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id) =>
         await _svc.SoftDeleteDoctor(id) ? NoContent() : NotFound();
 
+    [Authorize(Roles = "Admin, Doctor")]
     [HttpGet("search-lucene")]
     public async Task<IActionResult> SearchLucene(
         [FromQuery] DoctorQueryParams qp) =>
@@ -56,6 +63,7 @@ public class DoctorController : ControllerBase
         return Ok(await _svc.SearchDoctors(qp));
     }
 
+    [Authorize(Roles = "Admin, Doctor")]
     [HttpGet("proc")]
     public async Task<IActionResult> PresentAppointments([FromQuery] int? id, [FromQuery] string? filter)
     {
